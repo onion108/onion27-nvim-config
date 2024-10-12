@@ -1,0 +1,71 @@
+{
+
+    "languageserver": {
+        "rust": {
+            "command": "rust-analyzer",
+            "filetypes": ["rust"],
+            "rootPatterns": ["Cargo.toml"]
+        },
+        "sourcekit-lsp": {
+            "filetypes": ["swift"],
+            "command": "sourcekit-lsp",
+            "rootPatterns": ["Package.swift"],
+            "trace.server": "on"
+        },
+        "csharp-ls": {
+            "command": "/Users/onion27/.dotnet/tools/csharp-ls",
+            "filetypes": ["cs"],
+            "rootPatterns": ["*.csproj", ".hg/", "*.sln"],
+            "trace.server": "verbose"
+        },
+        "v-analyzer": {
+            "command": "v-analyzer",
+            "filetypes": ["vlang"],
+            "rootPatterns": ["v.mod", "build.vsh"]
+        },
+        "serve-d": {
+            "command": "serve-d",
+            "filetypes": ["d"],
+            "trace.server": "on",
+            "rootPatterns": ["dub.json", "dub.sdl"]
+        },
+        "typst": {
+            "command": "typst-lsp",
+            "filetypes": ["typst"]
+        },
+        "glsl": {
+            "command": "glsl_analyzer",
+            "filetypes": ["glsl"]
+        },
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": [".stack.yaml", ".hie-bios", "BUILD.bazel", "cabal.config", "package.yaml"],
+            "filetypes": [
+                "hs", "lhs", "haskell"
+            ]
+        }
+    },
+
+    "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
+    "clangd.trace.server": "verbose",
+    "inlayHint.enable": true,
+    "inlayHint.display": true,
+    "semanticTokens.enable": true,
+    "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/liberica-jdk-17.jdk/Contents/Home",
+    "java.import.gradle.version": "8.5",
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.updates.checkOnStartup": false,
+    "rust-analyzer.server.path": "/Users/onion27/.cargo/bin/rust-analyzer",
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "diagnostic.locationlistUpdate": true,
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "kotlin.languageServer.transport": "stdio",
+    "zig.path": "~/apps/zls",
+    "zig.enabled": true,
+    "solargraph.transport": "stdio",
+    "solargraph.commandPath": "/opt/homebrew/lib/ruby/gems/3.3.0/bin/solargraph",
+    "powershell.integratedConsole.showOnStartup": false,
+    "Lua.semantic.enable": false
+}
