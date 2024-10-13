@@ -10,18 +10,20 @@ end
 
 -- Specify the theme to use.
 -- Values: "vscode" or other theme names.
-options.THEME = "dracula"
---options.THEME = "vscode"
+options.THEME = "gruber-darker"
 
 -- Specify the airline theme to use.
-options.AIRLINE_THEME = "dracula"
+options.AIRLINE_THEME = "atomic"
 
--- Determine if use dynamic line number or not.
--- By turning this on, absolute line numbers will be enabled for insert mode and relative line numbers will be displayed on other modes.
-options.DYNAMIC_LINE_NUMBER = true
-
--- Determine if treat terminal buffer as a filetype.
-options.TERMBUF_FILETYPE = true
+-- Enabled tweaks
+options.TWEAKS = {
+    "compilation-mode",
+    "dynamic-line-number",
+    "telescope-keybind",
+    "right-click-menu",
+    "termbuf-filetype",
+    "neotree-keybind"
+}
 
 -- {{{ Modifications
 

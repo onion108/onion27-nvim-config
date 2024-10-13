@@ -10,12 +10,12 @@ vim.g.coc_global_extensions = {
     "coc-lua",
     "coc-solargraph",
     "coc-groovy",
-    "coc-tsserver",
     "coc-pyright",
     "coc-kotlin",
     "coc-cmake",
     "coc-powershell",
-    "coc-vetur"
+    "coc-vetur",
+    "coc-deno",
 }
 
 
@@ -37,6 +37,7 @@ vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 local keyset = vim.keymap.set
+local desckey = require("common.utils.keymap")
 -- Autocomplete
 function _G.check_back_space()
     local col = vim.fn.col('.') - 1
@@ -45,9 +46,9 @@ end
 
 -- Use Tab for trigger completion with characters ahead and navigate
 -- NOTE: There's always a completion item selected by default, you may want to enable
--- no select by setting `"suggest.noselect": true` in your configuration file
+--       no select by setting `"suggest.noselect": true` in your configuration file
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
--- other plugins before putting this into your config
+--       other plugins before putting this into your config
 local completion_opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', completion_opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], completion_opts)
@@ -142,6 +143,8 @@ keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = 
 -- Run the Code Lens actions on the current line
 keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
 
+-- Remap keys for toggle inlay hint.
+desckey.define_keymap("n", "<leader>ti", "<cmd>CocCommand document.toggleInlayHint<CR>", "Toggle Inlay Hint", { silent = true })
 
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server
@@ -185,27 +188,27 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
--- provide custom statusline: lightline.vim, vim-airline
-vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
+--       provide custom statusline: lightline.vim, vim-airline
+-- vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
 -- Mappings for CoCList
 -- code actions and coc stuff
 ---@diagnostic disable-next-line: redefined-local
 local opts = {silent = true, nowait = true}
 -- Show all diagnostics
-keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+-- keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
 -- Manage extensions
-keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
+-- keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
 -- Show commands
-keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
+-- keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
 -- Find symbol of current document
-keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+-- keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
 -- Search workspace symbols
-keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+-- keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
 -- Do default action for next item
-keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
+-- keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item
-keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
+-- keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+-- keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 

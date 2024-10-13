@@ -17,11 +17,10 @@ set cursorline
 set clipboard=unnamedplus
 set ttyfast
 set foldmethod=marker
+set cino=m1,l1,j1,(0,ws,Ws
 "set guicursor=n-v-c-i:block
 
-lua require('common.plugins')
-
-" tender Setups 
+" tender Setups
 if (has("termguicolors"))
     set termguicolors
 endif
@@ -36,5 +35,13 @@ if exists('g:vscode')
 else
     lua require('terminal.main')
 endif
-hi default CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
-PackerCompile
+
+augroup ColorSchemeModify
+    autocmd!
+    autocmd User LazyLoad highlight link cErrInParen NONE
+    autocmd User LazyLoad highlight link cErrinBracket NONE
+    autocmd User LazyLoad highlight! link CocMenuSel PmenuSel
+    autocmd User LazyLoad hi CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
+augroup END
+
+

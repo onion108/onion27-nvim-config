@@ -30,6 +30,7 @@ map('n', '<leader>tl', '<Cmd>BufferLast<CR>', opts)
 map('n', '<leader>tp', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
 map('n', '<leader>tc', '<Cmd>BufferClose<CR>', opts)
+map('n', '<leader>tC', '<Cmd>BufferClose!<CR>', opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands

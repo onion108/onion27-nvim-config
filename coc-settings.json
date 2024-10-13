@@ -1,10 +1,9 @@
 {
 
     "languageserver": {
-        "rust": {
-            "command": "rust-analyzer",
-            "filetypes": ["rust"],
-            "rootPatterns": ["Cargo.toml"]
+        "vala": {
+            "command": "vala-language-server",
+            "filetypes": ["vala", "genie"]
         },
         "sourcekit-lsp": {
             "filetypes": ["swift"],
@@ -42,16 +41,18 @@
             "args": ["--lsp"],
             "rootPatterns": [".stack.yaml", ".hie-bios", "BUILD.bazel", "cabal.config", "package.yaml"],
             "filetypes": [
-                "hs", "lhs", "haskell"
+                "hs", "lhs", "haskell", "lhaskell"
             ]
         }
     },
 
+
     "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
     "clangd.trace.server": "verbose",
+    "clangd.arguments": ["-header-insertion=never"],
     "inlayHint.enable": true,
-    "inlayHint.display": true,
-    "semanticTokens.enable": true,
+    "inlayHint.display": false,
+    "semanticTokens.enable": false,
     "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/liberica-jdk-17.jdk/Contents/Home",
     "java.import.gradle.version": "8.5",
     "rust-analyzer.procMacro.enable": true,
@@ -60,6 +61,7 @@
     "coc.preferences.extensionUpdateCheck": "daily",
     "diagnostic.locationlistUpdate": true,
     "diagnostic.virtualText": true,
+    "diagnostic.virtualTextPrefix": "■ ",
     "diagnostic.virtualTextCurrentLineOnly": false,
     "kotlin.languageServer.transport": "stdio",
     "zig.path": "~/apps/zls",
@@ -67,5 +69,9 @@
     "solargraph.transport": "stdio",
     "solargraph.commandPath": "/opt/homebrew/lib/ruby/gems/3.3.0/bin/solargraph",
     "powershell.integratedConsole.showOnStartup": false,
-    "Lua.semantic.enable": false
+    "Lua.semantic.enable": false,
+    "deno.enable": true,
+    "deno.inlayHints.parameterNames.enabled": "literals",
+    "deno.inlayHints.variableTypes.enabled": true,
+    "deno.inlayHints.functionLikeReturnTypes.enabled": true 
 }

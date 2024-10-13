@@ -5,7 +5,6 @@ if options.retro_mode() then
     vim.cmd [[set guicursor=n-v-c-i:block]]
 end
 
-vim.notify("Enhanced nvim configurations with Lua 💪", vim.log.levels.INFO)
 
 vim.o.background = 'dark'
 
@@ -65,25 +64,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require('terminal.coc-config')
 require('terminal.barbar')
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.schedule(function()
-            vim.api.nvim_command [[Neotree]]
-        end)
-    end
-})
+--vim.api.nvim_create_autocmd("VimEnter", {
+    --callback = function()
+        --vim.schedule(function()
+            --vim.api.nvim_command [[Neotree]]
+        --end)
+    --end
+--})
 
 -- Other setups
 
 require("todo-comments").setup()
 
-if options.DYNAMIC_LINE_NUMBER then
-    require("terminal.tweaks.dynamic-line-number")
+for _, tweak in ipairs(options.TWEAKS) do
+    local ok = pcall(require, "terminal.tweaks." .. tweak)
+    if not ok then
+        vim.notify("Cannot load tweak " .. tweak, vim.log.levels.ERROR)
+    end
 end
-if options.TERMBUF_FILETYPE then
-    require("terminal.tweaks.termbuf-filetype")
-end
-require("terminal.tweaks.duplicate-line")
 
 -- Language Setup
 require("terminal.languages.zig")
@@ -97,7 +95,10 @@ end
 
 -- context.vim setup
 vim.g.context_highlight_normal = 'PMenu'
+vim.g.AutoPairsMapCR = 0
 
 -- scrollbar setup
 require("scrollbar").setup()
+
+vim.cmd [[AirlineRefresh]]
 
