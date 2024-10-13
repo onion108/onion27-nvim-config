@@ -60,6 +60,7 @@
     "coc.preferences.extensionUpdateCheck": "daily",
     "diagnostic.locationlistUpdate": true,
     "diagnostic.virtualText": true,
+    "diagnostic.virtualTextPrefix": "■ ",
     "diagnostic.virtualTextCurrentLineOnly": false,
     "kotlin.languageServer.transport": "stdio",
     "zig.path": "~/apps/zls",
