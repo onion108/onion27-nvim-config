@@ -47,6 +47,7 @@
         }
     },
 
+
     "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
     "clangd.trace.server": "verbose",
     "clangd.arguments": ["-header-insertion=never"],

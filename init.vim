@@ -17,6 +17,7 @@ set cursorline
 set clipboard=unnamedplus
 set ttyfast
 set foldmethod=marker
+set cino=m1,l1
 "set guicursor=n-v-c-i:block
 
 lua require('common.plugins')
@@ -36,5 +37,6 @@ if exists('g:vscode')
 else
     lua require('terminal.main')
 endif
+
 hi default CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
 PackerCompile

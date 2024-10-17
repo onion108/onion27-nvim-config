@@ -43,7 +43,6 @@ function exports.load(use)
     use 'maxbane/vim-asm_ca65'
     use 'ARM9/arm-syntax-vim'
     use 'folke/todo-comments.nvim'
-    use 'lvimuser/lsp-inlayhints.nvim'
     use "nvim-lua/plenary.nvim"
     use 'nvim-telescope/telescope.nvim'
     use 'vim-airline/vim-airline'
@@ -94,7 +93,7 @@ function exports.load(use)
     use { 'petertriho/nvim-scrollbar' }
     use "blazkowolf/gruber-darker.nvim"
     use "m6vrm/gruber.vim"
-    use { 
+    use {
         "https://git.sr.ht/~swaits/scratch.nvim",
         config = function()
             require("scratch").setup()
