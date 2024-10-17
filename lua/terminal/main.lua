@@ -84,6 +84,7 @@ if options.TERMBUF_FILETYPE then
     require("terminal.tweaks.termbuf-filetype")
 end
 require("terminal.tweaks.duplicate-line")
+require("terminal.tweaks.clear-line")
 
 -- Language Setup
 require("terminal.languages.zig")
