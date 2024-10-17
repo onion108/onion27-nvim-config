@@ -45,9 +45,9 @@ end
 
 -- Use Tab for trigger completion with characters ahead and navigate
 -- NOTE: There's always a completion item selected by default, you may want to enable
--- no select by setting `"suggest.noselect": true` in your configuration file
+--       no select by setting `"suggest.noselect": true` in your configuration file
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
--- other plugins before putting this into your config
+--       other plugins before putting this into your config
 local completion_opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', completion_opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], completion_opts)
@@ -185,7 +185,7 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
--- provide custom statusline: lightline.vim, vim-airline
+--       provide custom statusline: lightline.vim, vim-airline
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
 -- Mappings for CoCList
