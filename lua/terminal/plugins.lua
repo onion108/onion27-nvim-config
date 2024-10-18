@@ -96,9 +96,17 @@ function exports.load(use)
     use {
         "https://git.sr.ht/~swaits/scratch.nvim",
         config = function()
-            require("scratch").setup()
+            require("scratch").setup({
+                buffer_name = "[SCRATCH]"
+            })
+            local wk = require("which-key")
+            vim.keymap.set("n", "<leader>bs", "<cmd>Scratch<cr>", {silent=true})
+            wk.add({
+                { "<leader>bs", desc = "Open Scratch Buffer" }
+            })
         end
     }
+    use 'drmingdrmer/vim-indent-lua'
 end
 
 return exports
