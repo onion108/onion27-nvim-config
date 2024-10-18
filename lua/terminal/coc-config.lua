@@ -10,12 +10,12 @@ vim.g.coc_global_extensions = {
     "coc-lua",
     "coc-solargraph",
     "coc-groovy",
-    "coc-tsserver",
     "coc-pyright",
     "coc-kotlin",
     "coc-cmake",
     "coc-powershell",
-    "coc-vetur"
+    "coc-vetur",
+    "coc-deno"
 }
 
 
