@@ -5,7 +5,6 @@ if options.retro_mode() then
     vim.cmd [[set guicursor=n-v-c-i:block]]
 end
 
-vim.notify("Enhanced nvim configurations with Lua 💪", vim.log.levels.INFO)
 
 vim.o.background = 'dark'
 
@@ -85,6 +84,7 @@ if options.TERMBUF_FILETYPE then
 end
 require("terminal.tweaks.duplicate-line")
 require("terminal.tweaks.clear-line")
+require("terminal.tweaks.telescope-grep")
 
 -- Language Setup
 require("terminal.languages.zig")
@@ -102,4 +102,6 @@ vim.g.AutoPairsMapCR = 0
 
 -- scrollbar setup
 require("scrollbar").setup()
+
+vim.cmd [[AirlineRefresh]]
 

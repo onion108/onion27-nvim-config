@@ -1,6 +1,6 @@
 return {
     { "sheerun/vim-polyglot", lazy = false },
-    {"neoclide/coc.nvim", branch = 'release'},
+    {"neoclide/coc.nvim", branch = "release"},
     { "dracula/vim" },
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
@@ -43,8 +43,8 @@ return {
     {"folke/todo-comments.nvim"},
     {"nvim-lua/plenary.nvim"},
     {"nvim-telescope/telescope.nvim"},
-    {"vim-airline/vim-airline"},
-    {"vim-airline/vim-airline-themes"},
+    {"vim-airline/vim-airline-themes", lazy = false},
+    {"vim-airline/vim-airline", lazy = false},
     {"lewis6991/gitsigns.nvim"},
     {"nvim-tree/nvim-web-devicons"},
     {"romgrk/barbar.nvim"},
@@ -53,51 +53,45 @@ return {
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
+        end,
+        opt = {}
     },
 
 
     -- Colorschemes
-    {'kvrohit/mellow.nvim'},
-    { 'Mofiqul/vscode.nvim'},
-    { 'navarasu/onedark.nvim'},
-    { 'ollykel/v-vim'},
-    {'kaarmu/typst.vim', ft = {'typst'}},
-    { 'morhetz/gruvbox'},
-    { 'sainnhe/gruvbox-material'},
-    { "akinsho/toggleterm.nvim", version = '*', config = function()
+    {"kvrohit/mellow.nvim"},
+    { "Mofiqul/vscode.nvim"},
+    { "navarasu/onedark.nvim"},
+    { "ollykel/v-vim"},
+    {"kaarmu/typst.vim", ft = {"typst"}},
+    { "morhetz/gruvbox"},
+    { "sainnhe/gruvbox-material"},
+    { "akinsho/toggleterm.nvim", version = "*", config = function()
         require("toggleterm").setup {
             insert_mappings = false,
             open_mapping = [[<leader>ot]]
         }
-        end
+    end
     },
-    {'ziglang/zig.vim', lazy = true},
-    {'PyGamer0/vim-apl'},
-     { 'wellle/context.vim' },
-     { 'edluffy/hologram.nvim' },
-     { 'petertriho/nvim-scrollbar' },
-    {"blazkowolf/gruber-darker.nvim"},
-    {"m6vrm/gruber.vim"},
+    { "ziglang/zig.vim", lazy = true},
+    { "PyGamer0/vim-apl", lazy = true},
+    { "wellle/context.vim" },
+    { "edluffy/hologram.nvim" },
+    { "petertriho/nvim-scrollbar" },
+    { "blazkowolf/gruber-darker.nvim" },
+    { "m6vrm/gruber.vim" },
     {
         "https://git.sr.ht/~swaits/scratch.nvim",
         config = function()
             require("scratch").setup({
                 buffer_name = "[SCRATCH]"
             })
-            local wk = require("which-key")
-            vim.keymap.set("n", "<leader>bs", "<cmd>Scratch<cr>", {silent=true})
-            wk.add({
-                { "<leader>bs", desc = "Open Scratch Buffer" }
-            })
+
+            local keymap = require("common.utils.keymap")
+            keymap.define_keymap("n", "<leader>bs", "<cmd>Scratch<cr>", "Open Scratch Buffer", {silent = true})
         end
     },
-    {'drmingdrmer/vim-indent-lua'}
+    { "drmingdrmer/vim-indent-lua" }
 }
 
 

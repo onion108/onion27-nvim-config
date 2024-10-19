@@ -1,11 +1,4 @@
-vim.keymap.set("n", "gl", "m0yyp`0j", {silent = true})
+local keymap = require("common.utils.keymap")
 
-local function register_keybind()
-    local wk = require("which-key")
-    wk.add({
-        { "gl", desc = "Duplicate line" }
-    })
-end
-
-pcall(register_keybind)
+keymap.define_keymap("n", "gl", "m0yyp`0j", "Duplicate line",{silent = true})
 
