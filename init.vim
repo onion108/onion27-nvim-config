@@ -20,8 +20,6 @@ set foldmethod=marker
 set cino=m1,l1
 "set guicursor=n-v-c-i:block
 
-lua require('common.plugins')
-
 " tender Setups 
 if (has("termguicolors"))
     set termguicolors
@@ -39,4 +37,3 @@ else
 endif
 
 hi default CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
-PackerCompile
