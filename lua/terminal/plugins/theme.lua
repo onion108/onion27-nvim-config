@@ -11,6 +11,12 @@ return {
     {
         "Shatur/neovim-ayu",
         lazy = true,
-        opt = {}
+        config = function ()
+            require("ayu").setup {
+                overrides = {
+                    LineNr = { fg = "#aaaaaa" },
+                }
+            }
+        end,
     },
 }
