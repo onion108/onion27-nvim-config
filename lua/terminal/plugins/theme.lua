@@ -12,10 +12,13 @@ return {
         "Shatur/neovim-ayu",
         lazy = true,
         config = function ()
+            local colors = require("ayu.colors")
+            colors.generate()
             require("ayu").setup {
-                overrides = {
-                    LineNr = { fg = "#aaaaaa" },
-                }
+                overrides = function() return {
+                    LineNr = { fg = "#888888" },
+                    CursorLineNr = { fg = colors.accent, bg = colors.line, bold = true }
+                } end
             }
         end,
     },
