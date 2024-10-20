@@ -1,9 +1,8 @@
 return {
-    { "sheerun/vim-polyglot", lazy = false },
-    {"neoclide/coc.nvim", branch = "release"},
-    { "dracula/vim" },
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
+
+    -- {{{ NeoTree
     {
         "nvim-neo-tree/neo-tree.nvim",
         dependencies = {
@@ -33,53 +32,55 @@ return {
             })
         end
     },
-    {"mhinz/vim-startify"},
-    {"jiangmiao/auto-pairs"},
-    {"jacoborus/tender.vim"},
-    {"Pocco81/auto-save.nvim"},
-    {"udalov/kotlin-vim"},
-    {"maxbane/vim-asm_ca65"},
-    {"ARM9/arm-syntax-vim"},
-    {"folke/todo-comments.nvim"},
-    {"nvim-lua/plenary.nvim"},
-    {"nvim-telescope/telescope.nvim"},
-    {"vim-airline/vim-airline-themes", lazy = false},
-    {"vim-airline/vim-airline", lazy = false},
-    {"lewis6991/gitsigns.nvim"},
-    {"nvim-tree/nvim-web-devicons"},
-    {"romgrk/barbar.nvim"},
+    -- }}}
+
+    { "mhinz/vim-startify" },
+    { "jiangmiao/auto-pairs", event = "BufRead" },
+    { "Pocco81/auto-save.nvim" },
+    { "folke/todo-comments.nvim", event = "BufRead" },
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { "nvim-telescope/telescope.nvim", lazy = true },
+    { "vim-airline/vim-airline-themes", lazy = false },
+    { "vim-airline/vim-airline", lazy = false },
+    { "lewis6991/gitsigns.nvim", lazy = false },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "romgrk/barbar.nvim" },
+
+    -- {{{ which-key
     {
         "folke/which-key.nvim",
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opt = {}
+        opt = {},
+        lazy = true
     },
+    -- }}}
 
 
-    -- Colorschemes
-    {"kvrohit/mellow.nvim"},
-    { "Mofiqul/vscode.nvim"},
-    { "navarasu/onedark.nvim"},
-    { "ollykel/v-vim"},
-    {"kaarmu/typst.vim", ft = {"typst"}},
-    { "morhetz/gruvbox"},
-    { "sainnhe/gruvbox-material"},
-    { "akinsho/toggleterm.nvim", version = "*", config = function()
-        require("toggleterm").setup {
-            insert_mappings = false,
-            open_mapping = [[<leader>ot]]
-        }
-    end
+    -- {{{ ToggleTerm
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = function()
+            require("toggleterm").setup {
+                insert_mappings = false,
+                open_mapping = [[<leader>ot]]
+            }
+        end,
+        lazy = true,
+        cmd = {
+            "ToggleTerm",
+            "TermExec"
+        },
     },
-    { "ziglang/zig.vim", lazy = true},
-    { "PyGamer0/vim-apl", lazy = true},
-    { "wellle/context.vim" },
-    { "edluffy/hologram.nvim" },
+    -- }}}
+
+    { "edluffy/hologram.nvim", lazy = true },
     { "petertriho/nvim-scrollbar" },
-    { "blazkowolf/gruber-darker.nvim" },
-    { "m6vrm/gruber.vim" },
+
+    -- {{{ Scratch Buffer 
     {
         "https://git.sr.ht/~swaits/scratch.nvim",
         config = function()
@@ -91,7 +92,7 @@ return {
             keymap.define_keymap("n", "<leader>bs", "<cmd>Scratch<cr>", "Open Scratch Buffer", {silent = true})
         end
     },
-    { "drmingdrmer/vim-indent-lua" }
+    -- }}}
 }
 
 
