@@ -76,15 +76,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 require("todo-comments").setup()
 
-if options.DYNAMIC_LINE_NUMBER then
-    require("terminal.tweaks.dynamic-line-number")
+for _, tweak in ipairs(options.TWEAKS) do
+    local ok = pcall(require, "terminal.tweaks." .. tweak)
+    if not ok then
+        vim.notify("Cannot load tweak " .. tweak, vim.log.levels.ERROR)
+    end
 end
-if options.TERMBUF_FILETYPE then
-    require("terminal.tweaks.termbuf-filetype")
-end
-require("terminal.tweaks.duplicate-line")
-require("terminal.tweaks.clear-line")
-require("terminal.tweaks.telescope-grep")
 
 -- Language Setup
 require("terminal.languages.zig")

@@ -16,12 +16,14 @@ options.THEME = "habamax"
 -- Specify the airline theme to use.
 options.AIRLINE_THEME = "base16"
 
--- Determine if use dynamic line number or not.
--- By turning this on, absolute line numbers will be enabled for insert mode and relative line numbers will be displayed on other modes.
-options.DYNAMIC_LINE_NUMBER = true
-
--- Determine if treat terminal buffer as a filetype.
-options.TERMBUF_FILETYPE = true
+-- Enabled tweaks
+options.TWEAKS = {
+    "clear-line",
+    "compilation-mode",
+    "duplicate-line",
+    "dynamic-line-number",
+    "telescope-grep"
+}
 
 -- {{{ Modifications
 
