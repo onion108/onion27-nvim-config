@@ -10,11 +10,11 @@ end
 
 -- Specify the theme to use.
 -- Values: "vscode" or other theme names.
-options.THEME = "habamax"
+options.THEME = "ayu"
 --options.THEME = "vscode"
 
 -- Specify the airline theme to use.
-options.AIRLINE_THEME = "base16"
+options.AIRLINE_THEME = "atomic"
 
 -- Enabled tweaks
 options.TWEAKS = {

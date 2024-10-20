@@ -8,4 +8,9 @@ return {
     { "sainnhe/gruvbox-material", lazy = true },
     { "blazkowolf/gruber-darker.nvim", lazy = true },
     { "m6vrm/gruber.vim", lazy = true },
+    {
+        "Shatur/neovim-ayu",
+        lazy = true,
+        opt = {}
+    },
 }
