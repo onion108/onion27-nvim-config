@@ -1,6 +1,18 @@
 return {
-    { "ryanoasis/vim-devicons", lazy = false },
-    { "honza/vim-snippets", lazy = true },
+     
+    -- {{{ Scratch Buffer 
+    {
+        "https://git.sr.ht/~swaits/scratch.nvim",
+        config = function()
+            require("scratch").setup({
+                buffer_name = "[SCRATCH]"
+            })
+
+            local keymap = require("common.utils.keymap")
+            keymap.define_keymap("n", "<leader>bs", "<cmd>Scratch<cr>", "Open Scratch Buffer", {silent = true})
+        end
+    },
+    -- }}}
 
     -- {{{ NeoTree
     {
@@ -34,18 +46,6 @@ return {
     },
     -- }}}
 
-    { "mhinz/vim-startify" },
-    { "jiangmiao/auto-pairs", event = "BufRead" },
-    { "Pocco81/auto-save.nvim" },
-    { "folke/todo-comments.nvim", event = "BufRead" },
-    { "nvim-lua/plenary.nvim", lazy = true },
-    { "nvim-telescope/telescope.nvim", lazy = true },
-    { "vim-airline/vim-airline-themes", lazy = false },
-    { "vim-airline/vim-airline", lazy = false },
-    { "lewis6991/gitsigns.nvim", lazy = false },
-    { "nvim-tree/nvim-web-devicons", lazy = true },
-    { "romgrk/barbar.nvim" },
-
     -- {{{ which-key
     {
         "folke/which-key.nvim",
@@ -57,7 +57,6 @@ return {
         lazy = true
     },
     -- }}}
-
 
     -- {{{ ToggleTerm
     {
@@ -77,22 +76,45 @@ return {
     },
     -- }}}
 
-    { "edluffy/hologram.nvim", lazy = true },
-    { "petertriho/nvim-scrollbar" },
-
-    -- {{{ Scratch Buffer 
+    -- {{{ telescope
     {
-        "https://git.sr.ht/~swaits/scratch.nvim",
-        config = function()
-            require("scratch").setup({
-                buffer_name = "[SCRATCH]"
-            })
+        "nvim-telescope/telescope.nvim",
+        lazy = true,
+        opts = {
+                extensions = {
+                    coc = {
+                        theme = 'ivy',
+                        prefer_locations = true,
+                        push_cursor_on_edit = true,
+                        timeout = 3000
+                    }
+                }
+            }
+        },
+    -- }}}
 
-            local keymap = require("common.utils.keymap")
-            keymap.define_keymap("n", "<leader>bs", "<cmd>Scratch<cr>", "Open Scratch Buffer", {silent = true})
-        end
+    -- {{{ nvim-telescope
+    {
+        "fannheyward/telescope-coc.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        lazy = true,
     },
     -- }}}
+
+    { "ryanoasis/vim-devicons", lazy = false },
+    { "honza/vim-snippets", lazy = true },
+    { "mhinz/vim-startify" },
+    { "jiangmiao/auto-pairs", event = "BufRead" },
+    { "Pocco81/auto-save.nvim" },
+    { "folke/todo-comments.nvim", event = "BufRead" },
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { "vim-airline/vim-airline-themes", lazy = false },
+    { "vim-airline/vim-airline", lazy = false },
+    { "lewis6991/gitsigns.nvim", lazy = false },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "romgrk/barbar.nvim" },
+    { "edluffy/hologram.nvim", lazy = true },
+    { "petertriho/nvim-scrollbar" },
 }
 
 

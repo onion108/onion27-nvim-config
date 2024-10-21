@@ -22,6 +22,7 @@
   "onedark.nvim": { "branch": "master", "commit": "fae34f7c635797f4bf62fb00e7d0516efa8abe37" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "scratch.nvim": { "branch": "main", "commit": "6230634669d29bf05ab4e85b3c7df8fd8402dcb4" },
+  "telescope-coc.nvim": { "branch": "master", "commit": "b305a2c4f5de45f93b94e1a72078edd6d62e8cc1" },
   "telescope.nvim": { "branch": "master", "commit": "df534c3042572fb958586facd02841e10186707c" },
   "tender.vim": { "branch": "master", "commit": "a5b769250d5c62b6a794d5cd397998699278be57" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
