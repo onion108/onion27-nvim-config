@@ -14,15 +14,19 @@ vim.api.nvim_create_user_command("Compile", function (args)
             vim.notify("No recent compilation command found", vim.log.levels.ERROR)
             return
         end
-        compilation_command = last_compilation_command
+            compilation_command = last_compilation_command
     else
         compilation_command = args.args
     end
-    last_compilation_command = compilation_command
+    if not args.bang then
+        last_compilation_command = compilation_command
+    end
 
     toggleterm.exec(compilation_command)
 end, {
-    nargs = "?"
+    nargs = "?",
+    bang = true,
+    complete = "shellcmdline"
 })
 
 
