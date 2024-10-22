@@ -1,16 +1,41 @@
 return {
-     
+
     -- {{{ Scratch Buffer 
     {
-        "https://git.sr.ht/~swaits/scratch.nvim",
-        config = function()
-            require("scratch").setup({
-                buffer_name = "[SCRATCH]"
-            })
-
-            local keymap = require("common.utils.keymap")
-            keymap.define_keymap("n", "<leader>bs", "<cmd>Scratch<cr>", "Open Scratch Buffer", {silent = true})
-        end
+        "LintaoAmons/scratch.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            { "nvim-telescope/telescope.nvim" }
+        },
+        config = function ()
+            require("scratch").setup {
+                scratch_file_dir = vim.fn.stdpath("cache") .. "/scratch.nvim",
+                window_cmd = "edit",
+                use_telescope = true,
+                filetypes = {
+                    "js",
+                    "ts",
+                    "lua",
+                    "c",
+                    "cc",
+                    "txt"
+                }
+            }
+        end,
+        keys = {
+            { "<leader>bs", "<cmd>Scratch<cr>", desc = "Open or Create Scratch File", mode = "n" }
+        },
+        hooks = {
+            {
+                -- TODO: How to correct barbar? 
+                callback = function ()
+                    vim.schedule(function ()
+                        vim.cmd [[ Neotree toggle ]]
+                        vim.cmd [[ Neotree toggle ]]
+                    end)
+                end,
+            },
+        },
     },
     -- }}}
 
