@@ -1,4 +1,5 @@
 return {
+    -- {{{ Nerd Commenter
     {
         "preservim/nerdcommenter",
         lazy = true,
@@ -17,5 +18,19 @@ return {
             { "<leader>cb", desc = "Comment aligned down to both", mode = {"n", "v"} },
             { "<leader>cu", desc = "Uncomment current line(s)", mode = {"n", "v"} },
         }
-    }
+    },
+    -- }}}
+
+    -- {{{ which-key
+    {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opt = {},
+        lazy = true
+    },
+    -- }}}
+
 }

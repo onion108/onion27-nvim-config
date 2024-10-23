@@ -18,9 +18,7 @@ options.AIRLINE_THEME = "atomic"
 
 -- Enabled tweaks
 options.TWEAKS = {
-    "clear-line",
     "compilation-mode",
-    "duplicate-line",
     "dynamic-line-number",
     "telescope-grep"
 }

@@ -71,18 +71,6 @@ return {
     },
     -- }}}
 
-    -- {{{ which-key
-    {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opt = {},
-        lazy = true
-    },
-    -- }}}
-
     -- {{{ ToggleTerm
     {
         "akinsho/toggleterm.nvim",
