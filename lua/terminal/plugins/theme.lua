@@ -22,6 +22,7 @@ return {
                     CursorLineNr = { fg = colors.accent, bg = colors.line, bold = true },
                     WinSeparator = { fg = "#aaaaaa", bg = colors.bg },
                     NormalFloat = { bg = "#181818" },
+                    CocSemTypeTypeParameter = { link = "Type" }
                 } end
             }
         end,
