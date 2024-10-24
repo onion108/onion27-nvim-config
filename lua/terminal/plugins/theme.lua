@@ -21,6 +21,7 @@ return {
                     LineNr = { fg = "#888888" },
                     CursorLineNr = { fg = colors.accent, bg = colors.line, bold = true },
                     WinSeparator = { fg = "#aaaaaa", bg = colors.bg },
+                    NormalFloat = { bg = "#181818" },
                 } end
             }
         end,
