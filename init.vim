@@ -17,7 +17,7 @@ set cursorline
 set clipboard=unnamedplus
 set ttyfast
 set foldmethod=marker
-set cino=m1,l1
+set cino=m1,l1,j1,(0,ws,Ws
 "set guicursor=n-v-c-i:block
 
 " tender Setups 

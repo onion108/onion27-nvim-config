@@ -30,7 +30,7 @@
   "typst.vim": { "branch": "main", "commit": "4d18ced62599ffe5b3c0e5e49566d5456121bc02" },
   "v-vim": { "branch": "master", "commit": "1dc1388bafb89072f8349dbd96f9462ae22237cb" },
   "vim": { "branch": "master", "commit": "65f4225e0526516a67d56c8ac09925a209138e53" },
-  "vim-airline": { "branch": "master", "commit": "81eca994860645acbb58442285cdd70df5c71d2b" },
+  "vim-airline": { "branch": "master", "commit": "3ddcab16c26760d7b94ef0b1f8b62f9bc1ea8cba" },
   "vim-airline-themes": { "branch": "master", "commit": "a9aa25ce323b2dd04a52706f4d1b044f4feb7617" },
   "vim-apl": { "branch": "main", "commit": "beedb4c4928bba6495633f0521655866449439a3" },
   "vim-asm_ca65": { "branch": "master", "commit": "57e1203db2411c2541b55a13c3498d282c0236f3" },
