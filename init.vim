@@ -36,8 +36,12 @@ else
     lua require('terminal.main')
 endif
 
-augroup InlayHintColors
+augroup ColorSchemeModify
     autocmd!
     autocmd ColorScheme * hi CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
+    autocmd User LazyLoad highlight link cErrInParen NONE
+    autocmd User LazyLoad highlight link cErrinBracket NONE   
     autocmd User LazyLoad hi CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
 augroup END
+
+
