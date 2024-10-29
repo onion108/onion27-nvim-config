@@ -65,5 +65,6 @@
     "solargraph.transport": "stdio",
     "solargraph.commandPath": "/opt/homebrew/lib/ruby/gems/3.3.0/bin/solargraph",
     "powershell.integratedConsole.showOnStartup": false,
-    "Lua.semantic.enable": false
+    "Lua.semantic.enable": false,
+    "deno.enable": true
 }
