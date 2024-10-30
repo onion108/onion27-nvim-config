@@ -66,5 +66,8 @@
     "solargraph.commandPath": "/opt/homebrew/lib/ruby/gems/3.3.0/bin/solargraph",
     "powershell.integratedConsole.showOnStartup": false,
     "Lua.semantic.enable": false,
-    "deno.enable": true
+    "deno.enable": true,
+    "deno.inlayHints.parameterNames.enabled": "literals",
+    "deno.inlayHints.variableTypes.enabled": true,
+    "deno.inlayHints.functionLikeReturnTypes.enabled": true 
 }

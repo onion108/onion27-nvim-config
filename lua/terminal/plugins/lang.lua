@@ -10,4 +10,56 @@ return {
     { "ziglang/zig.vim", lazy = true, ft = "zig" },
     { "PyGamer0/vim-apl", lazy = true, ft = "apl" },
     { "drmingdrmer/vim-indent-lua", ft = "lua" },
+
+    -- {{{ Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function ()
+            local configs = require("nvim-treesitter.configs")
+
+            configs.setup({
+                ensure_installed = {
+                    "c",
+                    "c_sharp",
+                    "cpp",
+                    "d",
+                    "lua",
+                    "vim",
+                    "vimdoc",
+                    "query",
+                    "java",
+                    "go",
+                    "elixir",
+                    "heex",
+                    "javascript",
+                    "html",
+                    "xml",
+                    "rust",
+                    "zig",
+                },
+                sync_install = false,
+                highlight = { enable = true },
+                indent = { enable = true },
+            })
+        end
+    },
+    -- }}}
+
+    -- {{{ Autotag
+    {
+        "windwp/nvim-ts-autotag",
+        config = function ()
+            require('nvim-ts-autotag').setup({
+                opts = {
+                    enable_close = true,
+                    enable_rename = true,
+                    enable_close_on_slash = false
+                },
+            })
+        end
+    }
+    -- }}}
+
+
 }
