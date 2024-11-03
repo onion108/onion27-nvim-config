@@ -37,6 +37,7 @@ return {
                     "xml",
                     "rust",
                     "zig",
+                    "lisp",
                 },
                 sync_install = false,
                 highlight = { enable = true },
