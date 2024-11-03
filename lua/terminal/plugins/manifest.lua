@@ -9,6 +9,7 @@ return {
         },
         config = function ()
             require("scratch").setup {
+                file_picker = "telescope",
                 scratch_file_dir = vim.fn.stdpath("cache") .. "/scratch.nvim",
                 window_cmd = "edit",
                 use_telescope = true,
@@ -106,7 +107,7 @@ return {
         },
     -- }}}
 
-    -- {{{ nvim-telescope
+    -- {{{ coc-telescope
     {
         "fannheyward/telescope-coc.nvim",
         dependencies = { "nvim-telescope/telescope.nvim" },
