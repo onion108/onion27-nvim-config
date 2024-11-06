@@ -144,7 +144,7 @@ return {
     { "mhinz/vim-startify" },
     { "jiangmiao/auto-pairs", event = "BufRead" },
     { "Pocco81/auto-save.nvim" },
-    { "folke/todo-comments.nvim", event = "BufRead" },
+    { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
     { "nvim-lua/plenary.nvim", lazy = true },
     { "vim-airline/vim-airline-themes", lazy = false },
     { "vim-airline/vim-airline", lazy = false },
