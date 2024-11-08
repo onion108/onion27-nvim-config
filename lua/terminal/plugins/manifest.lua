@@ -142,7 +142,7 @@ return {
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
     { "mhinz/vim-startify" },
-    { "jiangmiao/auto-pairs", event = "BufRead" },
+    { "jiangmiao/auto-pairs", lazy = false },
     { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
     { "nvim-lua/plenary.nvim", lazy = true },
