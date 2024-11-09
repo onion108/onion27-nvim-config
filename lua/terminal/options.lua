@@ -20,7 +20,7 @@ options.AIRLINE_THEME = "atomic"
 options.TWEAKS = {
     "compilation-mode",
     "dynamic-line-number",
-    "telescope-grep",
+    "telescope-keybind",
     "right-click-menu"
 }
 
