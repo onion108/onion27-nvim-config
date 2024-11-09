@@ -22,7 +22,8 @@ options.TWEAKS = {
     "dynamic-line-number",
     "telescope-keybind",
     "right-click-menu",
-    "termbuf-filetype"
+    "termbuf-filetype",
+    "neotree-keybind"
 }
 
 -- {{{ Modifications
