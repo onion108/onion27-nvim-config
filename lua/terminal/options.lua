@@ -21,7 +21,8 @@ options.TWEAKS = {
     "compilation-mode",
     "dynamic-line-number",
     "telescope-keybind",
-    "right-click-menu"
+    "right-click-menu",
+    "termbuf-filetype"
 }
 
 -- {{{ Modifications

@@ -6,12 +6,14 @@ vim.api.nvim_create_autocmd(
         pattern = "*",
         callback = function(event)
             vim.bo.filetype = "terminal"
+            vim.cmd [[set nonu]]
+            vim.cmd [[set nornu]]
         end
     }
 )
 
 vim.api.nvim_create_autocmd(
-    { "BufEnter" }, {
+    { "BufNew" }, {
         group = termbuf_group,
         pattern = "*",
         callback = function(event)
