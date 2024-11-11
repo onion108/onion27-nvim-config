@@ -20,23 +20,10 @@ return {
 
             configs.setup({
                 ensure_installed = {
-                    "c",
-                    "c_sharp",
                     "cpp",
-                    "d",
                     "lua",
-                    "vim",
-                    "vimdoc",
-                    "query",
-                    "java",
-                    "go",
-                    "elixir",
-                    "heex",
-                    "javascript",
                     "html",
                     "xml",
-                    "rust",
-                    "zig",
                     "commonlisp",
                 },
                 sync_install = false,
