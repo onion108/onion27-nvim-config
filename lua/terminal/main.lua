@@ -64,13 +64,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require('terminal.coc-config')
 require('terminal.barbar')
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.schedule(function()
-            vim.api.nvim_command [[Neotree]]
-        end)
-    end
-})
+--vim.api.nvim_create_autocmd("VimEnter", {
+    --callback = function()
+        --vim.schedule(function()
+            --vim.api.nvim_command [[Neotree]]
+        --end)
+    --end
+--})
 
 -- Other setups
 
