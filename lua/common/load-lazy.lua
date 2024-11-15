@@ -34,10 +34,10 @@ require("lazy").setup({
     spec = {
         -- import your plugins
         { import = "common.plugins" },
-        { import = "vscode.plugins", cond = function(x) 
+        { import = "vscode.plugins", cond = function(x)
             return vim.fn.exists("g:vscode") ~= 0
         end },
-        { import = "terminal.plugins", cond = function(x) 
+        { import = "terminal.plugins", cond = function(x)
             return vim.fn.exists("g:vscode") == 0
         end },
     },
