@@ -20,7 +20,6 @@ return {
 
             configs.setup({
                 ensure_installed = {
-                    "cpp",
                     "lua",
                     "html",
                     "xml",
