@@ -138,7 +138,6 @@ return {
     },
     --}}}
 
-
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
     { "mhinz/vim-startify" },
