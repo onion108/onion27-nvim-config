@@ -8,6 +8,7 @@ return {
     { "sainnhe/gruvbox-material", lazy = true },
     { "blazkowolf/gruber-darker.nvim", lazy = true },
     { "m6vrm/gruber.vim", lazy = true },
+    { "arzg/vim-colors-xcode", lazy = true },
 
     -- {{{ Ayu theme
     {

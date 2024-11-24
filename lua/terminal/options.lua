@@ -10,8 +10,7 @@ end
 
 -- Specify the theme to use.
 -- Values: "vscode" or other theme names.
-options.THEME = "ayu"
---options.THEME = "vscode"
+options.THEME = "xcodedarkhc"
 
 -- Specify the airline theme to use.
 options.AIRLINE_THEME = "atomic"
