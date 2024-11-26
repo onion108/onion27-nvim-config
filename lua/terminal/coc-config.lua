@@ -37,6 +37,7 @@ vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 local keyset = vim.keymap.set
+local desckey = require("common.utils.keymap")
 -- Autocomplete
 function _G.check_back_space()
     local col = vim.fn.col('.') - 1
@@ -142,6 +143,8 @@ keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = 
 -- Run the Code Lens actions on the current line
 keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
 
+-- Remap keys for toggle inlay hint.
+desckey.define_keymap("n", "<leader>ti", "<cmd>CocCommand document.toggleInlayHint<CR>", "Toggle Inlay Hint", { silent = true })
 
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server
