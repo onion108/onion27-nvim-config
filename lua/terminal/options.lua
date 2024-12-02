@@ -10,7 +10,7 @@ end
 
 -- Specify the theme to use.
 -- Values: "vscode" or other theme names.
-options.THEME = "xcodedarkhc"
+options.THEME = "gruber-darker"
 
 -- Specify the airline theme to use.
 options.AIRLINE_THEME = "atomic"

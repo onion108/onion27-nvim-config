@@ -6,7 +6,6 @@ return {
     { "dracula/vim", lazy = true },
     { "morhetz/gruvbox", lazy = true },
     { "sainnhe/gruvbox-material", lazy = true },
-    { "blazkowolf/gruber-darker.nvim", lazy = true },
     { "m6vrm/gruber.vim", lazy = true },
     { "arzg/vim-colors-xcode", lazy = true },
 
@@ -27,6 +26,21 @@ return {
                 } end
             }
         end,
+    },
+    -- }}}
+
+    -- {{{ Gruber darker
+    {
+        "blazkowolf/gruber-darker.nvim",
+        lazy = true,
+        opts = {
+            italic = {
+                strings = false,
+                comments = false,
+                operators = false,
+                folds = false,
+            },
+        }
     },
     -- }}}
 

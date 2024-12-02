@@ -51,7 +51,7 @@
     "clangd.trace.server": "verbose",
     "clangd.arguments": ["-header-insertion=never"],
     "inlayHint.enable": true,
-    "inlayHint.display": true,
+    "inlayHint.display": false,
     "semanticTokens.enable": true,
     "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/liberica-jdk-17.jdk/Contents/Home",
     "java.import.gradle.version": "8.5",
