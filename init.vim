@@ -20,7 +20,7 @@ set foldmethod=marker
 set cino=m1,l1,j1,(0,ws,Ws
 "set guicursor=n-v-c-i:block
 
-" tender Setups 
+" tender Setups
 if (has("termguicolors"))
     set termguicolors
 endif
@@ -38,9 +38,8 @@ endif
 
 augroup ColorSchemeModify
     autocmd!
-    "autocmd ColorScheme * hi CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
     autocmd User LazyLoad highlight link cErrInParen NONE
-    autocmd User LazyLoad highlight link cErrinBracket NONE   
+    autocmd User LazyLoad highlight link cErrinBracket NONE
     autocmd User LazyLoad highlight! link CocMenuSel PmenuSel
     autocmd User LazyLoad hi CocInlayHint ctermbg=247 guifg=#000000 guibg=#999999
 augroup END
