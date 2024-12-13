@@ -22,7 +22,8 @@ options.TWEAKS = {
     "telescope-keybind",
     "right-click-menu",
     "termbuf-filetype",
-    "neotree-keybind"
+    "neotree-keybind",
+    "v-filetype"
 }
 
 -- {{{ Modifications

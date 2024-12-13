@@ -53,7 +53,7 @@
     "inlayHint.enable": true,
     "inlayHint.display": false,
     "semanticTokens.enable": false,
-    "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/liberica-jdk-17.jdk/Contents/Home",
+    "java.import.gradle.java.home": "/opt/homebrew/Cellar/openjdk@11/11.0.25/libexec/openjdk.jdk/Contents/Home",
     "java.import.gradle.version": "8.5",
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.updates.checkOnStartup": false,
@@ -73,5 +73,11 @@
     "deno.enable": true,
     "deno.inlayHints.parameterNames.enabled": "literals",
     "deno.inlayHints.variableTypes.enabled": true,
-    "deno.inlayHints.functionLikeReturnTypes.enabled": true 
+    "deno.inlayHints.functionLikeReturnTypes.enabled": true,
+    "java.imports.gradle.wrapper.checksums": [
+      {
+        "sha256": "e2b82129ab64751fd40437007bd2f7f2afb3c6e41a9198e628650b22d5824a14",
+        "allowed": true
+      }
+    ]
 }
