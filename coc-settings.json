@@ -12,7 +12,7 @@
             "trace.server": "on"
         },
         "csharp-ls": {
-            "command": "/Users/onion27/.dotnet/tools/csharp-ls",
+            "command": "csharp-ls",
             "filetypes": ["cs"],
             "rootPatterns": ["*.csproj", ".hg/", "*.sln"],
             "trace.server": "verbose"
@@ -20,8 +20,15 @@
         "v-analyzer": {
             "command": "v-analyzer",
             "filetypes": ["vlang"],
-            "rootPatterns": ["v.mod", "build.vsh"]
+            "rootPatterns": ["v.mod", "build.vsh"],
+            "trace.server": "verbose"
         },
+        //"v-analyzer": {
+            //"port": "1145",
+            //"filetypes": ["vlang"],
+            //"rootPatterns": ["v.mod", "build.vsh"],
+            //"trace.server": "verbose"
+        //},
         "serve-d": {
             "command": "serve-d",
             "filetypes": ["d"],
@@ -39,7 +46,7 @@
         "haskell": {
             "command": "haskell-language-server-wrapper",
             "args": ["--lsp"],
-            "rootPatterns": [".stack.yaml", ".hie-bios", "BUILD.bazel", "cabal.config", "package.yaml"],
+            "rootPatterns": [".stack.yaml", ".hie-bios", "BUILD.bazel", "cabal.config", "package.yaml", "*.cabal"],
             "filetypes": [
                 "hs", "lhs", "haskell", "lhaskell"
             ]
