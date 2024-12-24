@@ -23,7 +23,8 @@ options.TWEAKS = {
     "right-click-menu",
     "termbuf-filetype",
     "neotree-keybind",
-    "v-filetype"
+    "v-filetype",
+    "c3-filetype"
 }
 
 -- {{{ Modifications
