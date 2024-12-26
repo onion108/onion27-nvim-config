@@ -5,11 +5,15 @@
             "command": "vala-language-server",
             "filetypes": ["vala", "genie"]
         },
+        "c3": {
+            "filetypes": ["c3"],
+            "command": "c3lsp",
+            "rootPatterns": ["c3lsp.json"]
+        },
         "sourcekit-lsp": {
             "filetypes": ["swift"],
             "command": "sourcekit-lsp",
-            "rootPatterns": ["Package.swift"],
-            "trace.server": "on"
+            "rootPatterns": ["Package.swift"]
         },
         "csharp-ls": {
             "command": "csharp-ls",
@@ -20,8 +24,7 @@
         "v-analyzer": {
             "command": "v-analyzer",
             "filetypes": ["vlang"],
-            "rootPatterns": ["v.mod", "build.vsh"],
-            "trace.server": "verbose"
+            "rootPatterns": ["v.mod", "build.vsh"]
         },
         //"v-analyzer": {
             //"port": "1145",
@@ -86,5 +89,6 @@
         "sha256": "e2b82129ab64751fd40437007bd2f7f2afb3c6e41a9198e628650b22d5824a14",
         "allowed": true
       }
-    ]
+    ],
+    "d.config.dubCompiler": "ldc2"
 }

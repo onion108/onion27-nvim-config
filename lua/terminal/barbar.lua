@@ -1,6 +1,6 @@
 vim.g.barbar_auto_setup = false
 require("barbar").setup({
-    exlude_ft = {"terminal"},
+    exlude_ft = {"terminal", "qf"},
     sidebar_filetypes = {
         ['neo-tree'] = true
     },
