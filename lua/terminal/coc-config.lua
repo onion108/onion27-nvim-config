@@ -6,7 +6,6 @@ vim.g.coc_global_extensions = {
     "coc-rust-analyzer",
     "coc-zig",
     "coc-java",
-    "coc-dlang",
     "coc-lua",
     "coc-solargraph",
     "coc-groovy",
