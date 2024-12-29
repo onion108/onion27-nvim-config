@@ -74,7 +74,7 @@
     "diagnostic.virtualTextPrefix": "■ ",
     "diagnostic.virtualTextCurrentLineOnly": false,
     "kotlin.languageServer.transport": "stdio",
-    "zig.path": "~/apps/zls",
+    "zig.path": "~/apps/bin/zls",
     "zig.enabled": true,
     "solargraph.transport": "stdio",
     "solargraph.commandPath": "/opt/homebrew/lib/ruby/gems/3.3.0/bin/solargraph",
