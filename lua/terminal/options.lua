@@ -24,7 +24,9 @@ options.TWEAKS = {
     "termbuf-filetype",
     "neotree-keybind",
     "v-filetype",
-    "c3-filetype"
+    "c3-filetype",
+    "xmake-filetype",
+    "c-highlight-correction",
 }
 
 -- {{{ Modifications

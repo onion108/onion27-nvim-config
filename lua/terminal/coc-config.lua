@@ -15,6 +15,7 @@ vim.g.coc_global_extensions = {
     "coc-powershell",
     "coc-vetur",
     "coc-deno",
+    "coc-xmake",
 }
 
 
