@@ -24,7 +24,8 @@ return {
             }
         end,
         keys = {
-            { "<leader>bs", "<cmd>Scratch<cr>", desc = "Open or Create Scratch File", mode = "n" }
+            { "<leader>bs", "<cmd>Scratch<cr>", desc = "Create Scratch File", mode = "n" },
+            { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File", mode = "n" }
         },
         hooks = {
             {
