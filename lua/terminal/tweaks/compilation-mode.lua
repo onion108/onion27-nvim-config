@@ -1,5 +1,22 @@
 local ok, toggleterm = pcall(require, "toggleterm")
 
+local COMPILE_START_PATTERN = "vimtcompile:"
+local CREATE_27ONION_KEYBIND = true
+
+--- @return string|nil
+local function try_find_compilation_command()
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local result = nil
+    for _, line in ipairs(lines) do
+        local i = line:find(COMPILE_START_PATTERN)
+        if i ~= nil then
+            result = line:sub(i+COMPILE_START_PATTERN:len())
+            break
+        end
+    end
+    return result
+end
+
 if not ok then
     vim.notify("Cannot load toggleterm.nvim", vim.log.levels.ERROR)
     return
@@ -11,10 +28,17 @@ vim.api.nvim_create_user_command("Compile", function (args)
     local compilation_command
     if args.args == nil or (string.gsub(args.args, "^%s*(.-)%s*$", "%1")):len() == 0 then
         if last_compilation_command == nil then
-            vim.notify("No recent compilation command found", vim.log.levels.ERROR)
-            return
-        end
+            -- Try to find a command line in the current buffer when not provided
+            local command = try_find_compilation_command()
+            if command == nil then
+                vim.notify("No recent compilation command found and no command find in current buffer", vim.log.levels.ERROR)
+                return
+            else
+                compilation_command = command
+            end
+        else
             compilation_command = last_compilation_command
+        end
     else
         compilation_command = args.args
     end
@@ -29,4 +53,19 @@ end, {
     complete = "shellcmdline"
 })
 
+vim.api.nvim_create_user_command("RefreshCompile", function (args)
+    local compile_command = try_find_compilation_command()
+    if compile_command == nil then
+        vim.notify("Cannot find compilation command from current buffer", vim.log.levels.ERROR)
+        return
+    end
+    last_compilation_command = compile_command
+end, {})
+
+
+if CREATE_27ONION_KEYBIND then
+    local keymap = require("common.utils.keymap")
+    keymap.define_keymap("n", "<leader>CC", "<cmd>Compile<cr>", "Run compile command", { silent = true })
+    keymap.define_keymap("n", "<leader>CR", "<cmd>RefreshCompile<cr>", "Refresh compile command from buffer", { silent = true })
+end
 
