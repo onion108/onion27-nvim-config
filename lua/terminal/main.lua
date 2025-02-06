@@ -12,6 +12,7 @@ vim.g.onedark_config = {
     style = 'darker'
 }
 
+
 -- Theme Setup
 
 require("terminal.theme-setup.mellow-setup")
