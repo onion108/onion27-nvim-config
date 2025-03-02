@@ -16,6 +16,7 @@ vim.g.coc_global_extensions = {
     "coc-vetur",
     "coc-deno",
     "coc-xmake",
+    "@yaegassy/coc-csharp-ls",
 }
 
 

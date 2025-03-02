@@ -9,6 +9,7 @@ return {
     { "PyGamer0/vim-apl", lazy = true, ft = "apl" },
     { "drmingdrmer/vim-indent-lua", ft = "lua" },
     { "Airbus5717/c3.vim", ft = "c3" },
+    { "jlcrochet/vim-cs", ft = "cs" },
 
     -- {{{ Polyglot
     {
