@@ -18,6 +18,7 @@ set clipboard=unnamedplus
 set ttyfast
 set foldmethod=marker
 set cino=m1,l1,j1,(0,ws,Ws
+set foldopen="jump,mark,quickfix,search,tag"
 "set guicursor=n-v-c-i:block
 
 " tender Setups
