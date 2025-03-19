@@ -10,13 +10,14 @@ return {
     { "drmingdrmer/vim-indent-lua", ft = "lua" },
     { "Airbus5717/c3.vim", ft = "c3" },
     { "jlcrochet/vim-cs", ft = "cs" },
+    { "HerringtonDarkholme/yats.vim", ft = "typescript", lazy = false },
 
     -- {{{ Polyglot
     {
         "sheerun/vim-polyglot",
         lazy = false,
         init = function()
-            vim.g.polyglot_disabled = { "markdown" }
+            vim.g.polyglot_disabled = { "markdown", "typescript" }
         end
     },
     -- }}}

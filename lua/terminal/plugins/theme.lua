@@ -8,6 +8,7 @@ return {
     { "sainnhe/gruvbox-material", lazy = true },
     { "m6vrm/gruber.vim", lazy = true },
     { "arzg/vim-colors-xcode", lazy = true },
+    { "scottmckendry/cyberdream.nvim", lazy = true },
 
     -- {{{ Ayu theme
     {
@@ -41,6 +42,27 @@ return {
                 folds = false,
             },
         }
+    },
+    -- }}}
+
+    -- {{{ bamboo
+    {
+        'ribru17/bamboo.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('bamboo').setup {
+                code_style = {
+                    keywords = { bold = true },
+                    conditionals = { italic = false, bold = true },
+                    namespaces = { italic = false },
+                    parameters = { italic = false },
+                },
+                highlights = {
+                    BufferCurrent = { fg = "#ff91ff", bold = true }
+                },
+            }
+        end,
     },
     -- }}}
 
