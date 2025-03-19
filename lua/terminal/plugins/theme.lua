@@ -59,7 +59,8 @@ return {
                     parameters = { italic = false },
                 },
                 highlights = {
-                    BufferCurrent = { fg = "#ff91ff", bold = true }
+                    BufferCurrent = { fg = "#ff91ff", bold = true },
+                    NormalFloat = { bg = "#181818" }
                 },
             }
         end,
