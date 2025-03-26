@@ -96,24 +96,9 @@ return {
         "nvim-telescope/telescope.nvim",
         lazy = true,
         opts = {
-                extensions = {
-                    coc = {
-                        theme = 'ivy',
-                        prefer_locations = true,
-                        push_cursor_on_edit = true,
-                        timeout = 3000
-                    }
-                }
+                extensions = {}
             }
         },
-    -- }}}
-
-    -- {{{ coc-telescope
-    {
-        "fannheyward/telescope-coc.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim" },
-        lazy = true,
-    },
     -- }}}
 
     --{{{ LazyGit
@@ -147,7 +132,15 @@ return {
     { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
     { "nvim-lua/plenary.nvim", lazy = true },
     { "vim-airline/vim-airline-themes", lazy = false },
-    { "vim-airline/vim-airline", lazy = false },
+
+    {
+        "vim-airline/vim-airline",
+        lazy = false,
+        config = function ()
+            vim.g["airline#extensions#nvimlsp#enabled"] = 1
+        end
+    },
+
     { "lewis6991/gitsigns.nvim", lazy = false },
     { "nvim-tree/nvim-web-devicons", lazy = true },
     { "romgrk/barbar.nvim" },

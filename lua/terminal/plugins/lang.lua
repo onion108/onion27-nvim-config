@@ -1,5 +1,4 @@
 return {
-    { "neoclide/coc.nvim", branch = "release" },
     { "udalov/kotlin-vim", ft = "kotlin" },
     { "ARM9/arm-syntax-vim", ft = "arm" },
     { "maxbane/vim-asm_ca65", ft = "asm_ca65" },

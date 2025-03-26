@@ -8,7 +8,6 @@ local success = pcall(function()
     keymap.define_keymap("n", "<leader>gf", "<cmd>Telescope find_files<cr>", "Find file", { silent = true })
     keymap.define_keymap("n", "<leader>gF", function () builtin.find_files { hidden = true, no_ignore = true, no_ignore_parent = true } end, "Find file", { silent = true })
     keymap.define_keymap("n", "<leader>gb", "<cmd>Telescope buffers<cr>", "Find buffer", { silent = true })
-    keymap.define_keymap("n", "<leader><space>", "<cmd>Telescope coc commands<CR>", "Coc Command", { silent = true })
 end)
 
 if not success then
