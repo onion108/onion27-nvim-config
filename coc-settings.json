@@ -62,7 +62,7 @@
     "clangd.arguments": ["-header-insertion=never"],
     "inlayHint.enable": true,
     "inlayHint.display": false,
-    "semanticTokens.enable": true,
+    "semanticTokens.enable": false,
     "java.import.gradle.java.home": "/opt/homebrew/Cellar/openjdk@11/11.0.25/libexec/openjdk.jdk/Contents/Home",
     "java.import.gradle.version": "8.5",
     "rust-analyzer.procMacro.enable": true,

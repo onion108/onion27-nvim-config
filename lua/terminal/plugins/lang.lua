@@ -31,6 +31,17 @@ return {
 
             configs.setup({
                 ensure_installed = {
+                    "rust",
+                    "c",
+                    "d",
+                    "c_sharp",
+                    "haskell",
+                    "json",
+                    "json5",
+                    "objc",
+                    "v",
+                    "vala",
+                    "zig",
                     "cpp",
                     "lua",
                     "html",
@@ -38,7 +49,7 @@ return {
                     "commonlisp",
                 },
                 sync_install = false,
-                highlight = { enable = false },
+                highlight = { enable = true },
                 indent = { enable = true },
             })
         end
