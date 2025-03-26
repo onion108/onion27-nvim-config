@@ -15,12 +15,6 @@
             "command": "sourcekit-lsp",
             "rootPatterns": ["Package.swift"]
         },
-        //"csharp-ls": {
-            //"command": "csharp-ls",
-            //"filetypes": ["cs"],
-            //"rootPatterns": ["*.csproj", ".hg/", "*.sln"],
-            //"trace.server": "verbose"
-        //},
         "v-analyzer": {
             "command": "v-analyzer",
             "filetypes": ["vlang"],
