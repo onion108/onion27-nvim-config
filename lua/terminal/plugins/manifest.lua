@@ -141,9 +141,33 @@ return {
     },
     -- }}}
 
+    -- {{{ dashboard-nvim
+    {
+        "nvimdev/dashboard-nvim",
+        lazy = false,
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+        opts = {
+            config = {
+                header = {
+                    '███╗   ███╗██╗███████╗██╗   ██╗██╗  ██╗██╗',
+                    '████╗ ████║██║╚══███╔╝██║   ██║██║ ██╔╝██║',
+                    '██╔████╔██║██║  ███╔╝ ██║   ██║█████╔╝ ██║',
+                    '██║╚██╔╝██║██║ ███╔╝  ██║   ██║██╔═██╗ ██║',
+                    '██║ ╚═╝ ██║██║███████╗╚██████╔╝██║  ██╗██║',
+                    '╚═╝     ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝',
+                },
+                week_header = { enable = false, },
+            },
+            hide = {
+                statusline = false,
+            },
+            shortcut_type = "number",
+        }
+    },
+    -- }}}
+
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
-    { "mhinz/vim-startify" },
     { "jiangmiao/auto-pairs", lazy = false },
     { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
