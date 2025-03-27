@@ -28,6 +28,7 @@ options.TWEAKS = {
     "xmake-filetype",
     "c-highlight-correction",
     "deno-lsp-correction",
+    "csharp-lsp-correction",
 }
 
 -- {{{ Modifications
