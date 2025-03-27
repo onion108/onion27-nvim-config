@@ -29,6 +29,8 @@ return {
                 ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
                 ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
                 ["<Esc>"] = { "hide", "fallback" },
+                ["<C-l>"] = { "snippet_forward", "fallback" },
+                ["<C-h>"] = { "snippet_backward", "fallback" },
             },
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
@@ -165,5 +167,11 @@ return {
             require("telescope").load_extension("csharpls_definition")
         end
     },
-    { "Decodetalkers/csharpls-extended-lsp.nvim", lazy = false },
+    {
+        "Decodetalkers/csharpls-extended-lsp.nvim",
+        lazy = false,
+        config = function ()
+            require("csharpls_extended").buf_read_cmd_bind()
+        end
+    },
 }
