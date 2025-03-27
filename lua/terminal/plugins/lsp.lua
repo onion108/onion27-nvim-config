@@ -106,7 +106,7 @@ return {
                 serve_d = {},
                 c3_lsp = {},
                 sourcekit = {
-                    filetype = { "swift" },
+                    filetypes = { "swift" },
                     single_file_support = true,
                 },
             },
