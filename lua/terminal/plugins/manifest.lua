@@ -124,6 +124,23 @@ return {
     },
     --}}}
 
+    -- {{{ lualine
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {
+            sections = {
+                lualine_a = {'mode'},
+                lualine_b = {'branch', 'diff', 'diagnostics'},
+                lualine_c = {'filename', 'lsp_status'},
+                lualine_x = {'encoding', 'fileformat', 'filetype'},
+                lualine_y = {'progress'},
+                lualine_z = {'location'}
+            },
+        }
+    },
+    -- }}}
+
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
     { "mhinz/vim-startify" },
@@ -131,21 +148,34 @@ return {
     { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
     { "nvim-lua/plenary.nvim", lazy = true },
-    { "vim-airline/vim-airline-themes", lazy = false },
-
-    {
-        "vim-airline/vim-airline",
-        lazy = false,
-        config = function ()
-            vim.g["airline#extensions#nvimlsp#enabled"] = 1
-        end
-    },
-
     { "lewis6991/gitsigns.nvim", lazy = false },
     { "nvim-tree/nvim-web-devicons", lazy = true },
     { "romgrk/barbar.nvim" },
     { "edluffy/hologram.nvim", lazy = true },
     { "petertriho/nvim-scrollbar" },
+    {
+        "rcarriga/nvim-notify", config = function()
+            vim.notify = require("notify")
+            local notify = require 'notify'
+            vim.lsp.handlers['window/showMessage'] = function(_, result, ctx)
+                local client = vim.lsp.get_client_by_id(ctx.client_id)
+                if not client then return end
+                local lvl = ({
+                    'ERROR',
+                    'WARN',
+                    'INFO',
+                    'DEBUG',
+                })[result.type]
+                notify({ result.message }, lvl, {
+                    title = 'LSP | ' .. client.name,
+                    timeout = 10000,
+                    keep = function()
+                        return lvl == 'ERROR' or lvl == 'WARN'
+                    end,
+                })
+            end
+        end, lazy = false, priority = 114514
+    },
 }
 
 

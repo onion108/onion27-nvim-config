@@ -12,9 +12,6 @@ end
 -- Values: "vscode" or other theme names.
 options.THEME = "bamboo"
 
--- Specify the airline theme to use.
-options.AIRLINE_THEME = "atomic"
-
 -- Enabled tweaks
 options.TWEAKS = {
     "compilation-mode",
@@ -35,7 +32,6 @@ options.TWEAKS = {
 
 if options.retro_mode() then
     options.THEME = "default"
-    options.AIRLINE_THEME = "term"
 end
 
 -- }}}

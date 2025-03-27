@@ -44,8 +44,6 @@ else
 
 end
 
-vim.g.airline_theme = options.AIRLINE_THEME
-
 -- Theme Setup end
 
 require('terminal.barbar')
@@ -78,5 +76,4 @@ vim.g.AutoPairsMapCR = 0
 -- scrollbar setup
 require("scrollbar").setup()
 
-vim.cmd [[AirlineRefresh]]
 
