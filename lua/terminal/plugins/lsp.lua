@@ -105,6 +105,10 @@ return {
                 vala_ls = {},
                 serve_d = {},
                 c3_lsp = {},
+                sourcekit = {
+                    filetype = { "swift" },
+                    single_file_support = true,
+                },
             },
             extra_servers = {
                 haskell = {
