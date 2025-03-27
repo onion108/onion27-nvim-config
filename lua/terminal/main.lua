@@ -5,6 +5,8 @@ if options.retro_mode() then
     vim.cmd [[set guicursor=n-v-c-i:block]]
 end
 
+vim.o.mopt = "wait:1000,history:5000"
+
 
 vim.o.background = 'dark'
 
@@ -75,5 +77,4 @@ vim.g.AutoPairsMapCR = 0
 
 -- scrollbar setup
 require("scrollbar").setup()
-
 
