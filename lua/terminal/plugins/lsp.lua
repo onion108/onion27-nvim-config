@@ -137,7 +137,7 @@ return {
                 { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
             }
             vim.diagnostic.config {
-                virtual_text = { prefix = icons.ui.VirtualPrefix, current_line = true },
+                virtual_text = { prefix = icons.ui.VirtualPrefix, current_line = false },
 
                 signs = {
                     active = signs,
