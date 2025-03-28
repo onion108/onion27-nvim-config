@@ -168,6 +168,13 @@ return {
             key.define_keymap("n", "<leader>ti", function ()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, "Toggle Inlay Hint", { silent = true })
+            key.define_keymap("n", "<leader>fd", function ()
+                vim.diagnostic.open_float()
+            end, "Check diagnostic", { silent = true })
+            key.define_keymap("n", "<leader>od", function ()
+                vim.diagnostic.setqflist()
+                vim.cmd [[copen]]
+            end, "Open diagnostics", { silent = true })
             require("telescope").load_extension("csharpls_definition")
         end
     },

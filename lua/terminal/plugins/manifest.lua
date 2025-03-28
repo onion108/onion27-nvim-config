@@ -160,6 +160,9 @@ return {
                     '╚═╝     ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝',
                 },
                 week_header = { enable = false, },
+                shortcut = {
+                    { desc = "[NVIM Version: " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch .. "]", group = "DashboardShortCut"  }
+                }
             },
             hide = {
                 statusline = false,
