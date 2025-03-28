@@ -23,6 +23,9 @@ return {
         "saghen/blink.cmp",
         build = "cargo +nightly build --release",
         opts = {
+            completion = {
+                accept = { auto_brackets = { enabled = true } }
+            },
             keymap = {
                 preset = "default",
                 ["<CR>"] = { "select_and_accept", "fallback" },
@@ -156,6 +159,13 @@ return {
 
             for server, lsconfig in pairs(opts.servers) do
                 lsconfig.capabilities = require('blink.cmp').get_lsp_capabilities(lsconfig.capabilities)
+
+                ---@diagnostic disable-next-line: undefined-field
+                if server == "clangd" and vim.loop.os_uname().sysname == "Darwin" and vim.loop.os_gethostname() == "QZKago-Requiem.local" then
+                    -- Only set on my machine.
+                    lsconfig.cmd[1] = "/opt/homebrew/opt/llvm/bin/clangd"
+                end
+
                 config[server].setup(lsconfig)
             end
 

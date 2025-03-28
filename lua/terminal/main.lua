@@ -73,7 +73,6 @@ end
 
 -- context.vim setup
 vim.g.context_highlight_normal = 'PMenu'
-vim.g.AutoPairsMapCR = 0
 
 -- scrollbar setup
 require("scrollbar").setup()

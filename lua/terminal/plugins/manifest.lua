@@ -174,7 +174,7 @@ return {
 
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
-    { "jiangmiao/auto-pairs", lazy = false },
+    { 'windwp/nvim-autopairs', event = "InsertEnter", config = true },
     { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
     { "nvim-lua/plenary.nvim", lazy = true },
