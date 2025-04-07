@@ -185,6 +185,9 @@ return {
             key.define_keymap("n", "<leader>fd", function ()
                 vim.diagnostic.open_float()
             end, "Check diagnostic", { silent = true })
+            key.define_keymap({"n", "v"}, "grf", function ()
+                vim.lsp.buf.format()
+            end, "Check diagnostic", { silent = true })
             key.define_keymap("n", "<leader>od", function ()
                 vim.diagnostic.setqflist()
                 vim.cmd [[copen]]
