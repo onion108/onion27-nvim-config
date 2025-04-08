@@ -14,3 +14,10 @@ if not success then
     vim.notify("Failed to setup telescope keybind", vim.log.levels.ERROR)
 end
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "TelescopeResults" },
+    callback = function ()
+        vim.opt_local.foldenable = false
+    end
+})
+

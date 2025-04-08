@@ -16,7 +16,7 @@ options.THEME = "bamboo"
 options.TWEAKS = {
     "compilation-mode",
     "dynamic-line-number",
-    "telescope-keybind",
+    "telescope",
     "right-click-menu",
     "termbuf-filetype",
     "neotree-keybind",
