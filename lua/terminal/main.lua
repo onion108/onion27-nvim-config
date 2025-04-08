@@ -48,8 +48,6 @@ end
 
 -- Theme Setup end
 
-require('terminal.barbar')
-
 -- Other setups
 
 require("todo-comments").setup()

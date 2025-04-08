@@ -1,13 +1,13 @@
 return {
 
-    -- {{{ Scratch Buffer 
+    -- {{{ Scratch Buffer
     {
         "LintaoAmons/scratch.nvim",
         event = "VeryLazy",
         dependencies = {
             { "nvim-telescope/telescope.nvim" }
         },
-        config = function ()
+        config = function()
             require("scratch").setup {
                 file_picker = "telescope",
                 scratch_file_dir = vim.fn.stdpath("cache") .. "/scratch.nvim",
@@ -24,14 +24,14 @@ return {
             }
         end,
         keys = {
-            { "<leader>bs", "<cmd>Scratch<cr>", desc = "Create Scratch File", mode = "n" },
-            { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File", mode = "n" }
+            { "<leader>bs", "<cmd>Scratch<cr>",     desc = "Create Scratch File", mode = "n" },
+            { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File",   mode = "n" }
         },
         hooks = {
             {
-                -- TODO: How to correct barbar? 
-                callback = function ()
-                    vim.schedule(function ()
+                -- TODO: How to correct barbar?
+                callback = function()
+                    vim.schedule(function()
                         vim.cmd [[ Neotree toggle ]]
                         vim.cmd [[ Neotree toggle ]]
                     end)
@@ -50,12 +50,10 @@ return {
             "MunifTanjim/nui.nvim"
         },
         config = function()
-            --vim.fn.sign_define("DiagnosticSignError", {text = "? ", texthl = "DiagnosticSignError"})
-            --vim.fn.sign_define("DiagnosticSignWarn", {text = "? ", texthl = "DiagnosticSignWarn"})
-            --vim.fn.sign_define("DiagnosticSignInfo", {text = "? ", texthl = "DiagnosticSignInfo"})
-            --vim.fn.sign_define("DiagnosticSignHint", {text = "??", texthl = "DiagnosticSignHint"})
-
             require("neo-tree").setup({
+                filesystem = {
+                    hijack_netrw_behavior = "disabled",
+                },
                 default_component_configs = {
                     filesystem = {
                         window = {
@@ -96,9 +94,9 @@ return {
         "nvim-telescope/telescope.nvim",
         lazy = true,
         opts = {
-                extensions = {}
-            }
-        },
+            extensions = {}
+        }
+    },
     -- }}}
 
     --{{{ LazyGit
@@ -130,15 +128,15 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {
             sections = {
-                lualine_a = {'mode'},
-                lualine_b = {'branch', 'diff', 'diagnostics'},
+                lualine_a = { 'mode' },
+                lualine_b = { 'branch', 'diff', 'diagnostics' },
                 lualine_c = {
                     { 'filename', path = 1 },
                     'lsp_status'
                 },
-                lualine_x = {'encoding', 'fileformat', 'filetype'},
-                lualine_y = {'progress'},
-                lualine_z = {'location'}
+                lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                lualine_y = { 'progress' },
+                lualine_z = { 'location' }
             },
         }
     },
@@ -161,7 +159,7 @@ return {
                 },
                 week_header = { enable = false, },
                 shortcut = {
-                    { desc = "[NVIM Version: " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch .. "]", group = "DashboardShortCut"  }
+                    { desc = "[NVIM Version: " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch .. "]", group = "DashboardShortCut" }
                 }
             },
             hide = {
@@ -172,19 +170,71 @@ return {
     },
     -- }}}
 
-    { "ryanoasis/vim-devicons", lazy = false },
-    { "honza/vim-snippets", lazy = true },
-    { 'windwp/nvim-autopairs', event = "InsertEnter", config = true },
+    -- {{{ oil.nvim
+    {
+        'stevearc/oil.nvim',
+
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {
+            columns = {
+                "icon", "permissions", "size", "mtime"
+            }
+        },
+
+        -- Optional dependencies
+        dependencies = {
+            { "echasnovski/mini.icons",     opts = {} },
+            { "nvim-tree/nvim-web-devicons" }
+        },
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+        config = function (_, opts)
+            require("oil").setup(opts)
+            local keymap = require("common.utils.keymap")
+            keymap.define_keymap("n", "<leader>of", ":Oil<CR>", "Open file manager", { silent = true })
+        end
+    },
+    -- }}}
+
+    { "ryanoasis/vim-devicons",      lazy = false },
+    { "honza/vim-snippets",          lazy = true },
+    { 'windwp/nvim-autopairs',       event = "InsertEnter",          config = true },
     { "Pocco81/auto-save.nvim" },
-    { "folke/todo-comments.nvim", event = {"BufRead", "BufEnter"} },
-    { "nvim-lua/plenary.nvim", lazy = true },
-    { "lewis6991/gitsigns.nvim", lazy = false },
+    { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
+    { "nvim-lua/plenary.nvim",       lazy = true },
+    { "lewis6991/gitsigns.nvim",     lazy = false },
     { "nvim-tree/nvim-web-devicons", lazy = true },
-    { "romgrk/barbar.nvim" },
-    { "edluffy/hologram.nvim", lazy = true },
+
+    {
+        'crispgm/nvim-tabline',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional
+        config = true,
+    },
+    {
+        "EL-MASTOR/bufferlist.nvim",
+        lazy = true,
+        keys = { { "<Leader>ob", ':BufferList<CR>', desc = "Open bufferlist" } },
+        dependencies = "nvim-tree/nvim-web-devicons",
+        cmd = "BufferList",
+        opts = {
+            win_keymaps = {
+                {
+                    "<CR>",
+                    function(opts)
+                        local curpos = vim.fn.line(".")
+                        vim.cmd("bwipeout | buffer " .. opts.buffers[curpos])
+                    end,
+                    { desc = "BufferList: Enter buffer" },
+                },
+            }
+        },
+    },
+    { "edluffy/hologram.nvim",    lazy = true },
     { "petertriho/nvim-scrollbar" },
     {
-        "rcarriga/nvim-notify", config = function()
+        "rcarriga/nvim-notify",
+        config = function()
             vim.notify = require("notify")
             local notify = require 'notify'
             vim.lsp.handlers['window/showMessage'] = function(_, result, ctx)
@@ -204,8 +254,8 @@ return {
                     end,
                 })
             end
-        end, lazy = false, priority = 114514
+        end,
+        lazy = false,
+        priority = 114514
     },
 }
-
-
