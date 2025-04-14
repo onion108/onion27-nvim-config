@@ -5,8 +5,6 @@ if options.retro_mode() then
     vim.cmd [[set guicursor=n-v-c-i:block]]
 end
 
-vim.o.mopt = "wait:1000,history:5000"
-
 
 vim.o.background = 'dark'
 
@@ -53,9 +51,9 @@ end
 require("todo-comments").setup()
 
 for _, tweak in ipairs(options.TWEAKS) do
-    local ok = pcall(require, "terminal.tweaks." .. tweak)
+    local ok, error = pcall(require, "terminal.tweaks." .. tweak)
     if not ok then
-        vim.notify("Cannot load tweak " .. tweak, vim.log.levels.ERROR)
+        vim.notify("Cannot load tweak " .. tweak .. ": " .. error, vim.log.levels.ERROR)
     end
 end
 

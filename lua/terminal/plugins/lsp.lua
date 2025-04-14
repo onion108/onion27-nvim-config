@@ -203,6 +203,7 @@ return {
         end
     },
     {
+        --dir = "~/Workspace/Programming/Projects/outline.nvim",
         "hedyhli/outline.nvim",
         lazy = true,
         cmd = { "Outline", "OutlineOpen" },

@@ -159,7 +159,8 @@ return {
                 },
                 week_header = { enable = false, },
                 shortcut = {
-                    { desc = "[NVIM Version: " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch .. "]", group = "DashboardShortCut" }
+                    { desc = "[NVIM Version: " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch .. "]", group = "DashboardShortCut" },
+                    { desc = "File manager", key = 'f', action = "Oil", group = "DashboardShortCut" },
                 }
             },
             hide = {
@@ -198,41 +199,7 @@ return {
     },
     -- }}}
 
-    { "ryanoasis/vim-devicons",      lazy = false },
-    { "honza/vim-snippets",          lazy = true },
-    { 'windwp/nvim-autopairs',       event = "InsertEnter",          config = true },
-    { "Pocco81/auto-save.nvim" },
-    { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
-    { "nvim-lua/plenary.nvim",       lazy = true },
-    { "lewis6991/gitsigns.nvim",     lazy = false },
-    { "nvim-tree/nvim-web-devicons", lazy = true },
-
-    {
-        'crispgm/nvim-tabline',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional
-        config = true,
-    },
-    {
-        "EL-MASTOR/bufferlist.nvim",
-        lazy = true,
-        keys = { { "<Leader>ob", ':BufferList<CR>', desc = "Open bufferlist" } },
-        dependencies = "nvim-tree/nvim-web-devicons",
-        cmd = "BufferList",
-        opts = {
-            win_keymaps = {
-                {
-                    "<CR>",
-                    function(opts)
-                        local curpos = vim.fn.line(".")
-                        vim.cmd("bwipeout | buffer " .. opts.buffers[curpos])
-                    end,
-                    { desc = "BufferList: Enter buffer" },
-                },
-            }
-        },
-    },
-    { "edluffy/hologram.nvim",    lazy = true },
-    { "petertriho/nvim-scrollbar" },
+    -- {{{ nvim-notify
     {
         "rcarriga/nvim-notify",
         config = function()
@@ -259,4 +226,44 @@ return {
         lazy = false,
         priority = 114514
     },
+    -- }}}
+
+    -- {{{ bufferlist.nvim
+    {
+        --dir = "/Users/onion27/Workspace/Programming/Projects/bufferlist.nvim",
+        "EL-MASTOR/bufferlist.nvim",
+        lazy = true,
+        keys = { { "<Leader>ob", ':BufferList<CR>', desc = "Open bufferlist" } },
+        dependencies = "nvim-tree/nvim-web-devicons",
+        cmd = "BufferList",
+        opts = {
+            win_keymaps = {
+                {
+                    "<CR>",
+                    function(opts)
+                        local curpos = vim.fn.line(".")
+                        vim.cmd("bwipeout | buffer " .. opts.buffers[curpos])
+                    end,
+                    { desc = "BufferList: Enter buffer" },
+                },
+            }
+        },
+    },
+    -- }}}
+
+    { "ryanoasis/vim-devicons",      lazy = false },
+    { "honza/vim-snippets",          lazy = true },
+    { 'windwp/nvim-autopairs',       event = "InsertEnter",          config = true },
+    { "Pocco81/auto-save.nvim" },
+    { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
+    { "nvim-lua/plenary.nvim",       lazy = true },
+    { "lewis6991/gitsigns.nvim",     lazy = false },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+    {
+        'crispgm/nvim-tabline',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = true,
+    },
+    { "edluffy/hologram.nvim",    lazy = true },
+    { "petertriho/nvim-scrollbar" },
 }
