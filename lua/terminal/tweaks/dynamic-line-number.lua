@@ -25,4 +25,3 @@ vim.api.nvim_create_autocmd(
         group = number_toggle_group
     }
 )
-

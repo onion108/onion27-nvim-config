@@ -20,7 +20,6 @@ require("terminal.theme-setup.gruvbox-material-setup")
 
 
 if options.THEME == "vscode" then
-
     local c = require('vscode.colors').get_colors()
 
     require('vscode').setup({
@@ -33,15 +32,10 @@ if options.THEME == "vscode" then
     })
 
     require('vscode').load()
-
 elseif options.THEME == 'devcpp' then
-
     require('theme.devcpp')
-
 else
-
     vim.cmd({ cmd = 'colorscheme', args = { options.THEME } })
-
 end
 
 -- Theme Setup end
@@ -72,4 +66,3 @@ vim.g.context_highlight_normal = 'PMenu'
 
 -- scrollbar setup
 require("scrollbar").setup()
-

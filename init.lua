@@ -24,7 +24,7 @@ end
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = { "*.s", "*.S" },
-    callback = function ()
+    callback = function()
         vim.bo.filetype = "arm"
     end,
 })
@@ -48,7 +48,7 @@ local grp_color_scheme_modify = vim.api.nvim_create_augroup("ColorSchemeModify",
 vim.api.nvim_create_autocmd({ "User" }, {
     pattern = "LazyLoad",
     group = grp_color_scheme_modify,
-    callback = function ()
+    callback = function()
         vim.cmd.highlight({ "link", "cErrInParen", "NONE" })
         vim.cmd.highlight({ "link", "cErrInBracket", "NONE" })
         vim.cmd.highlight({ "link", "csStringStart", "csString", bang = true })
@@ -57,12 +57,12 @@ vim.api.nvim_create_autocmd({ "User" }, {
 })
 
 
-vim.api.nvim_create_user_command("DbgBufs", function (_)
+vim.api.nvim_create_user_command("DbgBufs", function(_)
     local buflist = vim.api.nvim_list_bufs()
     local message = ""
     for i = 1, #buflist do
-        message = message .. "bufnr=" .. tostring(buflist[i]) .. ", buflisted=" .. tostring(vim.bo[buflist[i]].buflisted) .. "\n"
+        message = message ..
+        "bufnr=" .. tostring(buflist[i]) .. ", buflisted=" .. tostring(vim.bo[buflist[i]].buflisted) .. "\n"
     end
     require("notify").notify(message, vim.log.levels.INFO, { title = "Debug Message" })
 end, {})
-

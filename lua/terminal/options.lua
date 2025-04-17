@@ -3,7 +3,8 @@ local options = {}
 -- {{{ Helper functions
 
 function options.retro_mode()
-    return os.getenv("TERM_PROGRAM") == "Apple_Terminal" or (os.getenv("TERM_PROGRAM") == "iTerm.app" and (os.getenv("ITERM_PROFILE") == "Retro" or os.getenv("ITERM_PROFILE") == "Retro Colored"))
+    return os.getenv("TERM_PROGRAM") == "Apple_Terminal" or
+    (os.getenv("TERM_PROGRAM") == "iTerm.app" and (os.getenv("ITERM_PROFILE") == "Retro" or os.getenv("ITERM_PROFILE") == "Retro Colored"))
 end
 
 -- }}}
@@ -36,4 +37,3 @@ end
 -- }}}
 
 return options
-

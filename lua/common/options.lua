@@ -1,4 +1,3 @@
-
 local options = {}
 
 -- Enabled tweaks
@@ -8,4 +7,3 @@ options.TWEAKS = {
 }
 
 return options
-

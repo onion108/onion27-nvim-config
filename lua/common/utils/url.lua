@@ -7,11 +7,10 @@ exports.urldecode = function(url)
         return
     end
     url = url:gsub("+", " ")
-    url = url:gsub("%%(%x%x)", function (x)
+    url = url:gsub("%%(%x%x)", function(x)
         return string.char(tonumber(x, 16))
     end)
     return url
 end
 
 return exports
-

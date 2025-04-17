@@ -160,7 +160,7 @@ return {
                 week_header = { enable = false, },
                 shortcut = {
                     { desc = "[NVIM Version: " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch .. "]", group = "DashboardShortCut" },
-                    { desc = "File manager", key = 'f', action = "Oil", group = "DashboardShortCut" },
+                    { desc = "File manager",                                                                                              key = 'f',                  action = "Oil", group = "DashboardShortCut" },
                 }
             },
             hide = {
@@ -191,7 +191,7 @@ return {
         },
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
-        config = function (_, opts)
+        config = function(_, opts)
             require("oil").setup(opts)
             local keymap = require("common.utils.keymap")
             keymap.define_keymap("n", "<leader>of", ":Oil<CR>", "Open file manager", { silent = true })
@@ -253,7 +253,7 @@ return {
 
     { "ryanoasis/vim-devicons",      lazy = false },
     { "honza/vim-snippets",          lazy = true },
-    { 'windwp/nvim-autopairs',       event = "InsertEnter",          config = true },
+    { 'windwp/nvim-autopairs',       event = "InsertEnter",            config = true },
     { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
     { "nvim-lua/plenary.nvim",       lazy = true },

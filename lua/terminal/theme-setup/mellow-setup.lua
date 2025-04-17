@@ -9,4 +9,3 @@ vim.g.mellow_bold_booleans = true
 vim.g.mellow_bold_functions = false
 vim.g.mellow_bold_variables = false
 vim.g.mellow_transparent = false
-

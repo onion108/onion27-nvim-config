@@ -8,4 +8,3 @@ end)
 if not success then
     vim.notify("Failed to setup neotree keybind", vim.log.levels.ERROR)
 end
-

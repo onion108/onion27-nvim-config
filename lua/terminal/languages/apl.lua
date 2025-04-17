@@ -1,1 +1,1 @@
-vim.g.apl_prefix_key="\\"
+vim.g.apl_prefix_key = "\\"

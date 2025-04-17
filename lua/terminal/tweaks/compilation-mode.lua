@@ -10,7 +10,7 @@ local function try_find_compilation_command()
     for _, line in ipairs(lines) do
         local i = line:find(COMPILE_START_PATTERN)
         if i ~= nil then
-            result = line:sub(i+COMPILE_START_PATTERN:len())
+            result = line:sub(i + COMPILE_START_PATTERN:len())
             break
         end
     end
@@ -24,14 +24,15 @@ end
 
 local last_compilation_command = nil
 
-vim.api.nvim_create_user_command("Compile", function (args)
+vim.api.nvim_create_user_command("Compile", function(args)
     local compilation_command
     if args.args == nil or (string.gsub(args.args, "^%s*(.-)%s*$", "%1")):len() == 0 then
         if last_compilation_command == nil then
             -- Try to find a command line in the current buffer when not provided
             local command = try_find_compilation_command()
             if command == nil then
-                vim.notify("No recent compilation command found and no command find in current buffer", vim.log.levels.ERROR)
+                vim.notify("No recent compilation command found and no command find in current buffer",
+                    vim.log.levels.ERROR)
                 return
             else
                 compilation_command = command
@@ -53,7 +54,7 @@ end, {
     complete = "shellcmdline"
 })
 
-vim.api.nvim_create_user_command("SetCompileCommand", function (args)
+vim.api.nvim_create_user_command("SetCompileCommand", function(args)
     if args.args == nil or (string.gsub(args.args, "^%s*(.-)%s*$", "%1")):len() == 0 then
         vim.notify("Please provide command to set", vim.log.levels.ERROR)
     else
@@ -65,7 +66,7 @@ end, {
 })
 
 
-vim.api.nvim_create_user_command("RefreshCompile", function (_)
+vim.api.nvim_create_user_command("RefreshCompile", function(_)
     local compile_command = try_find_compilation_command()
     if compile_command == nil then
         vim.notify("Cannot find compilation command from current buffer", vim.log.levels.ERROR)
@@ -97,6 +98,6 @@ vim.api.nvim_create_autocmd("SessionWritePost", {
 if CREATE_27ONION_KEYBIND then
     local keymap = require("common.utils.keymap")
     keymap.define_keymap("n", "<leader>CC", "<cmd>Compile<cr>", "Run compile command", { silent = true })
-    keymap.define_keymap("n", "<leader>CR", "<cmd>RefreshCompile<cr>", "Refresh compile command from buffer", { silent = true })
+    keymap.define_keymap("n", "<leader>CR", "<cmd>RefreshCompile<cr>", "Refresh compile command from buffer",
+        { silent = true })
 end
-

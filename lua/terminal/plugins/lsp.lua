@@ -1,21 +1,21 @@
 local function root_pattern_with_single(...)
-  local patterns = M.tbl_flatten { ... }
-  return function(startpath)
-    startpath = M.strip_archive_subpath(startpath)
-    for _, pattern in ipairs(patterns) do
-      local match = M.search_ancestors(startpath, function(path)
-        for _, p in ipairs(vim.fn.glob(table.concat({ escape_wildcards(path), pattern }, '/'), true, true)) do
-          if vim.loop.fs_stat(p) then
-            return path
-          end
-        end
-      end)
+    local patterns = M.tbl_flatten { ... }
+    return function(startpath)
+        startpath = M.strip_archive_subpath(startpath)
+        for _, pattern in ipairs(patterns) do
+            local match = M.search_ancestors(startpath, function(path)
+                for _, p in ipairs(vim.fn.glob(table.concat({ escape_wildcards(path), pattern }, '/'), true, true)) do
+                    if vim.loop.fs_stat(p) then
+                        return path
+                    end
+                end
+            end)
 
-      if match ~= nil then
-        return match
-      end
+            if match ~= nil then
+                return match
+            end
+        end
     end
-  end
 end
 
 return {
@@ -51,7 +51,7 @@ return {
         "neovim/nvim-lspconfig",
         lazy = false,
         dependencies = {
-            {'saghen/blink.cmp'}, {"Decodetalkers/csharpls-extended-lsp.nvim"}, { "nvim-telescope/telescope.nvim" }
+            { 'saghen/blink.cmp' }, { "Decodetalkers/csharpls-extended-lsp.nvim" }, { "nvim-telescope/telescope.nvim" }
         },
         opts = {
             servers = {
@@ -79,7 +79,8 @@ return {
                 kotlin_language_server = {},
                 neocmake = {},
                 powershell_es = {
-                    bundle_path = vim.fn.expand("$HOME/Workspace/Programming/third-party/pwsh-es/PowerShellEditorServices")
+                    bundle_path = vim.fn.expand(
+                    "$HOME/Workspace/Programming/third-party/pwsh-es/PowerShellEditorServices")
                 },
                 denols = {
                     settings = {
@@ -179,16 +180,16 @@ return {
                 vim.lsp.enable(server)
             end
 
-            key.define_keymap("n", "<leader>ti", function ()
+            key.define_keymap("n", "<leader>ti", function()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, "Toggle Inlay Hint", { silent = true })
-            key.define_keymap("n", "<leader>fd", function ()
+            key.define_keymap("n", "<leader>fd", function()
                 vim.diagnostic.open_float()
             end, "Check diagnostic", { silent = true })
-            key.define_keymap({"n", "v"}, "grf", function ()
+            key.define_keymap({ "n", "v" }, "grf", function()
                 vim.lsp.buf.format()
             end, "Check diagnostic", { silent = true })
-            key.define_keymap("n", "<leader>od", function ()
+            key.define_keymap("n", "<leader>od", function()
                 vim.diagnostic.setqflist()
                 vim.cmd [[copen]]
             end, "Open diagnostics", { silent = true })
@@ -198,7 +199,7 @@ return {
     {
         "Decodetalkers/csharpls-extended-lsp.nvim",
         lazy = false,
-        config = function ()
+        config = function()
             require("csharpls_extended").buf_read_cmd_bind()
         end
     },
@@ -213,5 +214,5 @@ return {
         opts = {
             -- Your setup opts here
         },
-},
+    },
 }
