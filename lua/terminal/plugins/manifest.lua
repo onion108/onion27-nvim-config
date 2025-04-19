@@ -251,9 +251,32 @@ return {
     },
     -- }}}
 
+    -- {{{ nvim-autopair
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = function()
+            local autopairs = require('nvim-autopairs')
+
+            autopairs.setup {}
+            local cond = require('nvim-autopairs.conds')
+            local basic = require('nvim-autopairs.rules.basic')
+
+            autopairs.get_rules("'")[1].not_filetypes = { 'clojure', 'scheme', 'lisp' }
+
+            local bracket = basic.bracket_creator(require("nvim-autopairs").config)
+            autopairs.add_rules({
+                bracket("(", ")", { "clojure", "lisp" })
+                     :with_pair(cond.not_after_regex([=[[%w%%%'%[%"%.%`%$%+%-%/%*]]=]))
+            })
+
+            autopairs.get_rule("(")[1].not_filetypes = { "clojure", "lisp" }
+        end
+    },
+    -- }}}
+
     { "ryanoasis/vim-devicons",      lazy = false },
     { "honza/vim-snippets",          lazy = true },
-    { 'windwp/nvim-autopairs',       event = "InsertEnter",            config = true },
     { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
     { "nvim-lua/plenary.nvim",       lazy = true },
