@@ -262,7 +262,7 @@ return {
             local cond = require('nvim-autopairs.conds')
             local basic = require('nvim-autopairs.rules.basic')
 
-            autopairs.get_rules("'")[1].not_filetypes = { 'clojure', 'scheme', 'lisp' }
+            autopairs.get_rules("'")[1].not_filetypes = { 'clojure', 'scheme', 'lisp', 'rust' }
 
             local bracket = basic.bracket_creator(require("nvim-autopairs").config)
             autopairs.add_rules({
