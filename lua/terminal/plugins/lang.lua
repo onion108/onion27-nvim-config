@@ -10,7 +10,15 @@ return {
     { "Airbus5717/c3.vim",            ft = "c3" },
     { "jlcrochet/vim-cs",             ft = "cs" },
     { "HerringtonDarkholme/yats.vim", ft = "typescript",    lazy = false },
-
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
     -- {{{ Polyglot
     {
         "sheerun/vim-polyglot",
