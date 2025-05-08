@@ -104,6 +104,7 @@ return {
                     filetypes = { "v", "vsh", "vv", "vlang" },
                     single_file_support = true,
                     init_options = {},
+                    trace = "verbose",
                 },
                 vala_ls = {},
                 serve_d = {},
@@ -155,8 +156,6 @@ return {
                 severity_sort = true,
             }
 
-            vim.lsp.set_log_level("OFF")
-
             for _, sign in ipairs(signs) do
                 vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
             end
@@ -171,7 +170,8 @@ return {
                     lsconfig.cmd[1] = "/opt/homebrew/opt/llvm/bin/clangd"
                 end
 
-                config[server].setup(lsconfig)
+                vim.lsp.config(server, lsconfig)
+                vim.lsp.enable(server)
             end
 
             for server, lsconfig in pairs(opts.extra_servers) do
