@@ -215,4 +215,23 @@ return {
             -- Your setup opts here
         },
     },
+    {
+        "Chaitanyabsprip/fastaction.nvim",
+        opts = {},
+        config = function (_, opt)
+            require("fastaction").setup(opt)
+            vim.keymap.set(
+                { 'n', 'x' },
+                'gra',
+                '<cmd>lua require("fastaction").code_action()<CR>',
+                { desc = "Display code actions" }
+            )
+            vim.keymap.set(
+                { 'n', 'x' },
+                'grA',
+                '<cmd>lua require("fastaction").code_action({ select_first = true })<CR>',
+                { desc = "Select and apply first code action" }
+            )
+        end
+    }
 }
