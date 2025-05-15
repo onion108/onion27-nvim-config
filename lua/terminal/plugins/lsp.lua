@@ -113,6 +113,7 @@ return {
                     filetypes = { "swift" },
                     single_file_support = true,
                 },
+                jsonls = {},
             },
             extra_servers = {
                 haskell = {
