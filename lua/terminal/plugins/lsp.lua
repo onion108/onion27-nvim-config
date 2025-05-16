@@ -79,8 +79,10 @@ return {
                 kotlin_language_server = {},
                 neocmake = {},
                 powershell_es = {
-                    bundle_path = vim.fn.expand(
-                    "$HOME/Workspace/Programming/third-party/pwsh-es/PowerShellEditorServices")
+                    bundle_paths = {
+                        vim.fn.expand("$HOME/Workspace/Programming/third-party/pwsh-es/PowerShellEditorServices"),
+                        "/opt/powershell-editor-services"
+                    },
                 },
                 denols = {
                     settings = {
@@ -166,9 +168,27 @@ return {
                 lsconfig.capabilities = require('blink.cmp').get_lsp_capabilities(lsconfig.capabilities)
 
                 ---@diagnostic disable-next-line: undefined-field
-                if server == "clangd" and vim.loop.os_uname().sysname == "Darwin" and vim.loop.os_gethostname() == "QZKago-Requiem.local" then
+                if server == "clangd" and vim.uv.os_uname().sysname == "Darwin" and vim.uv.os_gethostname() == "QZKago-Requiem.local" then
                     -- Only set on my machine.
                     lsconfig.cmd[1] = "/opt/homebrew/opt/llvm/bin/clangd"
+                end
+
+                if server == "powershell_es" then
+                    ---@type string[]
+                    local paths = lsconfig.bundle_paths
+                    local found = false
+                    lsconfig.bundle_paths = nil
+                    for _, v in ipairs(paths) do
+                        vim.notify("path: " .. v, vim.log.levels.INFO)
+                        if vim.fn.isdirectory(v) == 1 then
+                            lsconfig.bundle_path = v
+                            found = true
+                            break
+                        end
+                    end
+                    if not found then
+                        vim.notify("Cannot find path for PowerShellEditorServices", vim.log.levels.WARN)
+                    end
                 end
 
                 vim.lsp.config(server, lsconfig)
