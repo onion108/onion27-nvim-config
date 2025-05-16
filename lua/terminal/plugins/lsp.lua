@@ -179,7 +179,6 @@ return {
                     local found = false
                     lsconfig.bundle_paths = nil
                     for _, v in ipairs(paths) do
-                        vim.notify("path: " .. v, vim.log.levels.INFO)
                         if vim.fn.isdirectory(v) == 1 then
                             lsconfig.bundle_path = v
                             found = true
