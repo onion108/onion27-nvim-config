@@ -1,17 +1,20 @@
 local function virtual_text_document(params)
+    --vim.notify("attempt to read: " .. vim.inspect(params.match))
     local bufnr = params.buf
     local actual_path = params.match:sub(1)
 
     local clients = vim.lsp.get_clients({ name = "denols" })
     if #clients == 0 then
+        vim.notify("cannot find denols", vim.log.levels.WARN)
         return
     end
 
     local client = clients[1]
     local method = "deno/virtualTextDocument"
     local req_params = { textDocument = { uri = actual_path } }
-    local response = client.request_sync(method, req_params, 2000, 0)
+    local response = client:request_sync(method, req_params, 2000, 0)
     if not response or type(response.result) ~= "string" then
+        vim.notify("failed to get virtual document's content", vim.log.levels.WARN)
         return
     end
 
@@ -31,6 +34,6 @@ local function virtual_text_document(params)
 end
 
 vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
-    pattern = { "deno:/*" },
+    pattern = { "deno:/*", "asset://*" },
     callback = virtual_text_document,
 })
