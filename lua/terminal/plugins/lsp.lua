@@ -73,7 +73,9 @@ return {
                     }
                 },
                 zls = {},
-                java_language_server = {},
+                java_language_server = {
+                    cmd = { "java-language-server" }
+                },
                 lua_ls = {},
                 pyright = {},
                 kotlin_language_server = {},
@@ -91,10 +93,12 @@ return {
                                 parameterNames = { enabled = "literals" },
                                 variableTypes = { enabled = true },
                                 functionLikeReturnTypes = { enabled = true },
-                            }
+                            },
+                            internalDebug = true
                         }
                     },
                     single_file_support = true,
+                    trace = "verbose",
                 },
                 csharp_ls = {
                     handlers = {
