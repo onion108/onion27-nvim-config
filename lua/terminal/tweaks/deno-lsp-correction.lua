@@ -1,5 +1,5 @@
 local function virtual_text_document(params)
-    vim.notify("attempt to read: " .. vim.inspect(params.match))
+    --vim.notify("attempt to read: " .. vim.inspect(params.match))
     local bufnr = params.buf
     local actual_path = params.match:sub(1)
 

@@ -275,9 +275,17 @@ return {
     },
     -- }}}
 
+    -- {{{ auto-save
+    {
+        "Pocco81/auto-save.nvim",
+        opts = {
+            debounce_delay = 500,
+        }
+    },
+    -- }}}
+
     { "ryanoasis/vim-devicons",      lazy = false },
     { "honza/vim-snippets",          lazy = true },
-    { "Pocco81/auto-save.nvim" },
     { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
     { "nvim-lua/plenary.nvim",       lazy = true },
     { "lewis6991/gitsigns.nvim",     lazy = false },
