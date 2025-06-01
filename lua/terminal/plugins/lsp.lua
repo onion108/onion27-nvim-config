@@ -5,7 +5,7 @@ local function root_pattern_with_single(...)
         for _, pattern in ipairs(patterns) do
             local match = M.search_ancestors(startpath, function(path)
                 for _, p in ipairs(vim.fn.glob(table.concat({ escape_wildcards(path), pattern }, '/'), true, true)) do
-                    if vim.loop.fs_stat(p) then
+                    if vim.uv.fs_stat(p) then
                         return path
                     end
                 end
@@ -74,7 +74,8 @@ return {
                 },
                 zls = {},
                 java_language_server = {
-                    cmd = { "java-language-server" }
+                    cmd = { "java-language-server" },
+                    single_file_support = true,
                 },
                 lua_ls = {},
                 pyright = {},
