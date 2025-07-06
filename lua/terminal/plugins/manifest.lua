@@ -284,6 +284,7 @@ return {
     },
     -- }}}
 
+    { "onion108/starwalker.nvim", lazy = false, config = true },
     { "ryanoasis/vim-devicons",      lazy = false },
     { "honza/vim-snippets",          lazy = true },
     { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
