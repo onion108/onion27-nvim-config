@@ -222,6 +222,11 @@ return {
         end
     },
     {
+        "nvimtools/none-ls.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+    },
+    {
         "Decodetalkers/csharpls-extended-lsp.nvim",
         lazy = false,
         config = function()
