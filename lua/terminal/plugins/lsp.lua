@@ -76,6 +76,15 @@ return {
                 java_language_server = {
                     cmd = { "java-language-server" },
                     single_file_support = true,
+                    handlers = {
+                        -- Workaround...
+                        ['client/registerCapability'] = function(err, result, ctx, config)
+                            local registration = {
+                                registrations = { result },
+                            }
+                            return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
+                        end
+                    },
                 },
                 lua_ls = {},
                 pyright = {},
