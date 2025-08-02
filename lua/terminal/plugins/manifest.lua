@@ -284,6 +284,16 @@ return {
     },
     -- }}}
 
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            { "s", mode = {"n", "x", "o"}, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = {"n", "x", "o"}, function() require("flash").treesitter() end, desc = "Flash treesitter" },
+        }
+    },
+
     { "onion108/starwalker.nvim", lazy = false, config = true },
     { "ryanoasis/vim-devicons",      lazy = false },
     { "honza/vim-snippets",          lazy = true },

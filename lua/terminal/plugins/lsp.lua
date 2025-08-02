@@ -73,18 +73,12 @@ return {
                     }
                 },
                 zls = {},
-                java_language_server = {
-                    cmd = { "java-language-server" },
+                jdtls = {
                     single_file_support = true,
                     handlers = {
-                        -- Workaround...
-                        ['client/registerCapability'] = function(err, result, ctx, config)
-                            local registration = {
-                                registrations = { result },
-                            }
-                            return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
-                        end
-                    },
+                        -- TODO: Show something on lualine, maybe?
+                        ["language/status"] = function (_, result) end
+                    }
                 },
                 lua_ls = {},
                 pyright = {},
