@@ -66,3 +66,9 @@ vim.g.context_highlight_normal = 'PMenu'
 
 -- scrollbar setup
 require("scrollbar").setup()
+
+-- test keybind
+vim.keymap.set("n", "<leader>dm", function ()
+    require("terminal.linemsg").set_message("some message")
+end)
+

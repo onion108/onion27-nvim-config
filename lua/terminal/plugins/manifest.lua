@@ -132,11 +132,17 @@ return {
                 lualine_b = { 'branch', 'diff', 'diagnostics' },
                 lualine_c = {
                     { 'filename', path = 1 },
-                    'lsp_status'
+                    'lsp_status',
+                    require("terminal.linemsg").get_message
                 },
                 lualine_x = { 'encoding', 'fileformat', 'filetype' },
                 lualine_y = { 'progress' },
                 lualine_z = { 'location' }
+            },
+            options = {
+                refresh = {
+                    refresh_time = 16
+                }
             },
         }
     },

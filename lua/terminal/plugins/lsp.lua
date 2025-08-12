@@ -77,7 +77,9 @@ return {
                     single_file_support = true,
                     handlers = {
                         -- TODO: Show something on lualine, maybe?
-                        ["language/status"] = function (_, result) end
+                        ["language/status"] = function (_, result)
+                            require("terminal.linemsg").set_message(result.message)
+                        end
                     }
                 },
                 lua_ls = {},
@@ -116,7 +118,9 @@ return {
                     init_options = {},
                     trace = "verbose",
                 },
-                vala_ls = {},
+                vala_ls = {
+                    single_file_support = false,
+                },
                 serve_d = {},
                 c3_lsp = {},
                 sourcekit = {
