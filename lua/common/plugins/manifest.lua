@@ -33,4 +33,25 @@ return {
     },
     -- }}}
 
+    {
+        "kylechui/nvim-surround",
+        config = function ()
+            require("nvim-surround").setup {
+                keymaps = {
+                    insert = "<C-g>s",
+                    insert_line = "<C-g>S",
+                    normal = "gs",
+                    normal_cur = "gss",
+                    normal_line = "gS",
+                    normal_cur_line = "gSS",
+                    visual = "gs",
+                    visual_line = "gS",
+                    delete = "dgs",
+                    change = "cgs",
+                    change_line = "cgS",
+                },
+            }
+        end,
+    },
+
 }

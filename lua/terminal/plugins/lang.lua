@@ -10,10 +10,6 @@ return {
     { "Airbus5717/c3.vim",            ft = "c3" },
     { "jlcrochet/vim-cs",             ft = "cs" },
     { "HerringtonDarkholme/yats.vim", ft = "typescript",    lazy = false },
-    --{
-        --'LhKipp/nvim-nu',
-        --opts = {}
-    --},
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

@@ -22,6 +22,10 @@ function M.set_message(msg)
         message = ""
         message_clear = nil
     end)
+    local ok, ll = pcall(require, "lualine")
+    if ok then
+        ll.refresh()
+    end
 end
 
 --- @return string
