@@ -127,7 +127,7 @@ return {
                     filetypes = { "glsl" },
                 },
                 typst = {
-                    cmd = { "typst-lsp" },
+                    cmd = { "tinymist" },
                     filetypes = { "typst" },
                 },
             },
