@@ -185,7 +185,7 @@ return {
                         end
                     end
                     if not found then
-                        vim.notify("Cannot find path for PowerShellEditorServices", vim.log.levels.WARN)
+                        require("fidget").notify("Cannot find path for PowerShellEditorServices", vim.log.levels.WARN)
                     end
                 end
 
