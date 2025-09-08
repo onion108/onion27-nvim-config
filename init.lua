@@ -15,7 +15,7 @@ vim.o.cursorline = true
 vim.o.clipboard = "unnamedplus"
 vim.o.ttyfast = true
 vim.o.foldmethod = "marker"
-vim.o.cino = "m1,l1,j1,(0,ws,Ws" -- )
+vim.o.cino = "m1,l1,j1,(0,ws,Ws,t0" -- )
 vim.o.foldopen = "jump,mark,quickfix,search,tag"
 
 if vim.o.termguicolors then
