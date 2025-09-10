@@ -28,10 +28,16 @@ return {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opt = {},
+        opts = {},
         lazy = true
     },
     -- }}}
+
+
+    {
+        "nvim-mini/mini.align",
+        opts = {},
+    },
 
     {
         "kylechui/nvim-surround",

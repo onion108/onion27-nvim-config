@@ -38,7 +38,9 @@ return {
         "neovim/nvim-lspconfig",
         lazy = false,
         dependencies = {
-            { 'saghen/blink.cmp' }, { "Decodetalkers/csharpls-extended-lsp.nvim" }, { "nvim-telescope/telescope.nvim" }
+            { 'saghen/blink.cmp' },
+            { "Decodetalkers/csharpls-extended-lsp.nvim" },
+            { "nvim-telescope/telescope.nvim" }
         },
         opts = {
             servers = {
@@ -94,10 +96,7 @@ return {
                     trace = "verbose",
                 },
                 csharp_ls = {
-                    handlers = {
-                        ["textDocument/definition"] = function(...) require("csharpls_extended").handler(...) end,
-                        ["textDocument/typeDefinition"] = function(...) require("csharpls_extended").handler(...) end,
-                    },
+                    --cmd = { "/home/onion27/Programming/Projects/CSharpLSPWork/csharp-language-server/src/CSharpLanguageServer/bin/Debug/net9.0/CSharpLanguageServer" },
                 },
                 v_analyzer = {
                     filetypes = { "v", "vsh", "vv", "vlang" },
@@ -115,6 +114,7 @@ return {
                     single_file_support = true,
                 },
                 jsonls = {},
+                fsautocomplete = {},
             },
             extra_servers = {
                 haskell = {
@@ -133,6 +133,7 @@ return {
             },
         },
         config = function(_, opts)
+            vim.lsp.log.set_level(vim.log.levels.TRACE)
             local config = require('lspconfig')
             local icons = require("common.utils.icons")
             local key = require("common.utils.keymap")
