@@ -13,6 +13,16 @@ return {
             completion = {
                 accept = { auto_brackets = { enabled = true } }
             },
+            cmdline = {
+                completion = {
+                    menu = {
+                        auto_show = function (ctx)
+                            return vim.fn.getcmdtype() == ':';
+                        end
+                    },
+                    ghost_text = { enabled = true },
+                }
+            },
             keymap = {
                 preset = "default",
                 ["<CR>"] = { "select_and_accept", "fallback" },
@@ -66,7 +76,7 @@ return {
                     single_file_support = true,
                     handlers = {
                         -- TODO: Show something on lualine, maybe?
-                        ["language/status"] = function (_, result)
+                        ["language/status"] = function(_, result)
                             require("terminal.linemsg").set_message(result.message)
                         end
                     }
@@ -244,7 +254,7 @@ return {
     {
         "Chaitanyabsprip/fastaction.nvim",
         opts = {},
-        config = function (_, opt)
+        config = function(_, opt)
             require("fastaction").setup(opt)
             vim.keymap.set(
                 { 'n', 'x' },

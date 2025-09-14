@@ -20,8 +20,8 @@ return {
                     search_down = { kind = "search", pattern = "^/", icon = "[Search]", lang = "regex" },
                     search_up = { kind = "search", pattern = "^%?", icon = "[Search (above)]", lang = "regex" },
                     filter = { pattern = "^:%s*!", icon = "[Shell]", lang = "bash" },
-                    lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "[Command (lua)]", lang = "lua" },
-                    help = { pattern = "^:%s*he?l?p?%s+", icon = "[Command (help)]" },
+                    lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "[Lua]", lang = "lua" },
+                    help = { pattern = "^:%s*he?l?p?%s+", icon = "[Help]" },
                     input = false
                 },
             },
@@ -92,7 +92,7 @@ return {
                 },
                 {
                     view = "split",
-                    filter = { cmdline = true }
+                    filter = { cmdline = true, min_height = 2 }
                 },
             },
         },
