@@ -283,10 +283,23 @@ return {
 
     -- {{{ auto-save
     {
-        "Pocco81/auto-save.nvim",
+        "okuuva/auto-save.nvim",
         opts = {
-            debounce_delay = 500,
-        }
+        },
+        config = function (opts)
+            require("auto-save").setup(opts)
+            local group = vim.api.nvim_create_augroup('autosave', {})
+
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'AutoSaveWritePost',
+                group = group,
+                callback = function(opts_ac)
+                    if opts_ac.data.saved_buffer ~= nil then
+                        require("terminal.linemsg").set_message("Saved")
+                    end
+                end,
+            })
+        end
     },
     -- }}}
 

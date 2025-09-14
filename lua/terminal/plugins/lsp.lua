@@ -133,7 +133,8 @@ return {
             },
         },
         config = function(_, opts)
-            vim.lsp.log.set_level(vim.log.levels.TRACE)
+            vim.lsp.semantic_tokens.enable(false)
+            --vim.lsp.log.set_level(vim.log.levels.TRACE)
             local config = require('lspconfig')
             local icons = require("common.utils.icons")
             local key = require("common.utils.keymap")
@@ -208,7 +209,7 @@ return {
             end, "Check diagnostic", { silent = true })
             key.define_keymap({ "n", "v" }, "grf", function()
                 vim.lsp.buf.format()
-            end, "Check diagnostic", { silent = true })
+            end, "Format document", { silent = true })
             key.define_keymap("n", "<leader>od", function()
                 vim.diagnostic.setqflist()
                 vim.cmd [[copen]]
