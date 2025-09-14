@@ -1,14 +1,14 @@
 local options = require("terminal.options")
 
 if options.retro_mode() then
-	vim.cmd([[set termguicolors&]])
-	vim.cmd([[set guicursor=n-v-c-i:block]])
+  vim.cmd([[set termguicolors&]])
+  vim.cmd([[set guicursor=n-v-c-i:block]])
 end
 
 vim.o.background = "dark"
 
 vim.g.onedark_config = {
-	style = "darker",
+  style = "darker",
 }
 
 -- Theme Setup
@@ -17,22 +17,22 @@ require("terminal.theme-setup.mellow-setup")
 require("terminal.theme-setup.gruvbox-material-setup")
 
 if options.THEME == "vscode" then
-	local c = require("vscode.colors").get_colors()
+  local c = require("vscode.colors").get_colors()
 
-	require("vscode").setup({
-		transparent = false,
-		italic_comments = true,
-		disable_nvimtree_bg = true,
-		color_overrides = {
-			--vscLineNumber = "#FFFFFF",
-		},
-	})
+  require("vscode").setup {
+    transparent = false,
+    italic_comments = true,
+    disable_nvimtree_bg = true,
+    color_overrides = {
+      --vscLineNumber = "#FFFFFF",
+    },
+  }
 
-	require("vscode").load()
+  require("vscode").load()
 elseif options.THEME == "devcpp" then
-	require("theme.devcpp")
+  require("theme.devcpp")
 else
-	vim.cmd({ cmd = "colorscheme", args = { options.THEME } })
+  vim.cmd { cmd = "colorscheme", args = { options.THEME } }
 end
 
 -- Theme Setup end
@@ -42,10 +42,10 @@ end
 require("todo-comments").setup()
 
 for _, tweak in ipairs(options.TWEAKS) do
-	local ok, error = pcall(require, "terminal.tweaks." .. tweak)
-	if not ok then
-		vim.notify("Cannot load tweak " .. tweak .. ": " .. error, vim.log.levels.ERROR)
-	end
+  local ok, error = pcall(require, "terminal.tweaks." .. tweak)
+  if not ok then
+    vim.notify("Cannot load tweak " .. tweak .. ": " .. error, vim.log.levels.ERROR)
+  end
 end
 
 -- Language Setup
@@ -55,7 +55,7 @@ require("terminal.languages.lua")
 
 -- Neovide Setup
 if vim.g.neovide then
-	require("terminal.neovide")
+  require("terminal.neovide")
 end
 
 -- context.vim setup
@@ -66,5 +66,5 @@ require("scrollbar").setup()
 
 -- test keybind
 vim.keymap.set("n", "<leader>dm", function()
-	require("terminal.linemsg").set_message("some message")
+  require("terminal.linemsg").set_message("some message")
 end)

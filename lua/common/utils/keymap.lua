@@ -7,11 +7,11 @@ local exports = {}
 ---@param opts? vim.keymap.set.Opts
 ---@param description string
 function exports.define_keymap(mode, lhs, rhs, description, opts)
-	vim.keymap.set(mode, lhs, rhs, opts)
-	pcall(function()
-		local wk = require("which-key")
-		wk.add({ { lhs, desc = description } })
-	end)
+  vim.keymap.set(mode, lhs, rhs, opts)
+  pcall(function()
+    local wk = require("which-key")
+    wk.add { { lhs, desc = description } }
+  end)
 end
 
 return exports

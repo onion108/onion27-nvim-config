@@ -2,15 +2,15 @@
 vim.cmd([[highlight clear]])
 
 local highlight = function(group, bg, fg, attr)
-	fg = fg and "guifg=" .. fg or ""
-	bg = bg and "guibg=" .. bg or ""
-	attr = attr and "gui=" .. attr or ""
+  fg = fg and "guifg=" .. fg or ""
+  bg = bg and "guibg=" .. bg or ""
+  attr = attr and "gui=" .. attr or ""
 
-	vim.api.nvim_command("highlight " .. group .. " " .. fg .. " " .. bg .. " " .. attr)
+  vim.api.nvim_command("highlight " .. group .. " " .. fg .. " " .. bg .. " " .. attr)
 end
 
 local link = function(target, group)
-	vim.api.nvim_command("highlight! link " .. target .. " " .. group)
+  vim.api.nvim_command("highlight! link " .. target .. " " .. group)
 end
 
 local Color3 = "#FF0000"
