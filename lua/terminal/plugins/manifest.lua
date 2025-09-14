@@ -218,6 +218,7 @@ return {
 			require("oil").setup(opts)
 			local keymap = require("common.utils.keymap")
 			keymap.define_keymap("n", "<leader>of", ":Oil<CR>", "Open file manager", { silent = true })
+			keymap.define_keymap("n", "<leader>oF", ":Oil .<CR>", "Open project root", { silent = true })
 		end,
 	},
 	-- }}}
