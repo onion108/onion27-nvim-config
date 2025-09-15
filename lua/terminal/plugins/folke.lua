@@ -22,7 +22,7 @@ return {
           filter = { pattern = "^:%s*!", icon = "[Shell]", lang = "bash" },
           lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "[Lua]", lang = "lua" },
           help = { pattern = "^:%s*he?l?p?%s+", icon = "[Help]" },
-          input = false,
+          input = { view = "cmdline_input" },
         },
       },
       messages = {
