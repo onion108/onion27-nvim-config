@@ -24,7 +24,7 @@ return {
     "sheerun/vim-polyglot",
     lazy = false,
     init = function()
-      vim.g.polyglot_disabled = { "markdown", "typescript" }
+      vim.g.polyglot_disabled = { "markdown", "typescript", "zig" }
     end,
   },
   -- }}}

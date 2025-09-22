@@ -16,4 +16,5 @@ end
 keymap.define_keymap("n", "<leader>qo", ":copen<CR>", "Open quickfix", { silent = true })
 keymap.define_keymap("n", "<leader>qc", ":cclose<CR>", "Close quickfix", { silent = true })
 keymap.define_keymap("n", "<BS>", ":nohl<CR>", "Clear highlights", { silent = true })
-keymap.define_keymap("n", "ZZ", ":wqa<CR>", "Quit Neovim", { silent = true })
+keymap.define_keymap("n", "ZZ", ":qa<CR>", "Quit Neovim", { silent = true })
+keymap.define_keymap("n", "ZQ", ":wqa<CR>", "Quit Neovim with Save", { silent = true })
