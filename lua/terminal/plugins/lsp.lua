@@ -82,7 +82,7 @@ return {
         },
         lua_ls = {},
         pyright = {},
-        kotlin_language_server = {},
+        kotlin_lsp = {},
         neocmake = {},
         powershell_es = {
           bundle_paths = {
