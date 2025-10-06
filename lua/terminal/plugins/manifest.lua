@@ -303,7 +303,9 @@ return {
   -- {{{ auto-save
   {
     "okuuva/auto-save.nvim",
-    opts = {},
+    opts = {
+      debounce_delay = 500
+    },
     config = function(opts)
       require("auto-save").setup(opts)
       local group = vim.api.nvim_create_augroup("autosave", {})
