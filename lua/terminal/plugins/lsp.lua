@@ -53,6 +53,7 @@ return {
     },
     opts = {
       servers = {
+        gdscript = {},
         clangd = {
           cmd = { "clangd", "-header-insertion=never" },
           single_file_support = true,
