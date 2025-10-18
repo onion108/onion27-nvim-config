@@ -2,6 +2,7 @@ return {
   { "udalov/kotlin-vim", ft = "kotlin" },
   { "ARM9/arm-syntax-vim", ft = "arm" },
   { "maxbane/vim-asm_ca65", ft = "asm_ca65" },
+  { "fedorenchik/fasm.vim" },
   { "ollykel/v-vim", ft = { "v", "vlang" } },
   { "kaarmu/typst.vim", ft = { "typst" }, lazy = false },
   { "ziglang/zig.vim", lazy = true, ft = "zig" },

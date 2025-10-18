@@ -304,7 +304,7 @@ return {
   {
     "okuuva/auto-save.nvim",
     opts = {
-      debounce_delay = 500
+      debounce_delay = 125
     },
     config = function(opts)
       require("auto-save").setup(opts)
