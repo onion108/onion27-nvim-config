@@ -24,8 +24,8 @@ return {
       }
     end,
     keys = {
-      { "<leader>bs", "<cmd>Scratch<cr>", desc = "Create Scratch File", mode = "n" },
-      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File", mode = "n" },
+      { "<leader>bs", "<cmd>Scratch<cr>",     desc = "Create Scratch File", mode = "n" },
+      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File",   mode = "n" },
     },
     hooks = {
       {
@@ -125,17 +125,27 @@ return {
   -- {{{ lualine
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
     opts = {
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = {
+          "mode",
+        },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {
           { "filename", path = 1 },
           "lsp_status",
           require("terminal.linemsg").get_message,
         },
-        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_x = {
+          "encoding",
+          "fileformat",
+          "filetype",
+          {
+            require("noice").api.statusline.mode.get,
+            cond = require("noice").api.statusline.mode.has,
+          }
+        },
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
@@ -167,12 +177,12 @@ return {
         shortcut = {
           {
             desc = "[NVIM Version: "
-              .. vim.version().major
-              .. "."
-              .. vim.version().minor
-              .. "."
-              .. vim.version().patch
-              .. "]",
+                .. vim.version().major
+                .. "."
+                .. vim.version().minor
+                .. "."
+                .. vim.version().patch
+                .. "]",
             group = "DashboardShortCut",
           },
           {
@@ -209,7 +219,7 @@ return {
 
     -- Optional dependencies
     dependencies = {
-      { "echasnovski/mini.icons", opts = {} },
+      { "echasnovski/mini.icons",     opts = {} },
       { "nvim-tree/nvim-web-devicons" },
     },
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
@@ -347,18 +357,18 @@ return {
     },
   },
 
-  { "onion108/starwalker.nvim", lazy = false, config = true },
-  { "ryanoasis/vim-devicons", lazy = false },
-  { "honza/vim-snippets", lazy = true },
-  { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" } },
-  { "nvim-lua/plenary.nvim", lazy = true },
-  { "lewis6991/gitsigns.nvim", lazy = false },
+  { "onion108/starwalker.nvim",    lazy = false,                     config = true },
+  { "ryanoasis/vim-devicons",      lazy = false },
+  { "honza/vim-snippets",          lazy = true },
+  { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
+  { "nvim-lua/plenary.nvim",       lazy = true },
+  { "lewis6991/gitsigns.nvim",     lazy = false },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     "crispgm/nvim-tabline",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true,
   },
-  { "edluffy/hologram.nvim", lazy = true },
+  { "edluffy/hologram.nvim",    lazy = true },
   { "petertriho/nvim-scrollbar" },
 }

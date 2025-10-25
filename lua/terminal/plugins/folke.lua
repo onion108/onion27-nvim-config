@@ -66,7 +66,6 @@ return {
         documentation = {
           view = "hover",
           opts = {
-            lang = "markdown",
             replace = true,
             render = "plain",
             format = { "{message}" },
@@ -74,7 +73,9 @@ return {
           },
         },
       },
-      markdown = {},
+      --markdown = {
+        --hover = {},
+      --},
       health = {
         checker = true,
       },
