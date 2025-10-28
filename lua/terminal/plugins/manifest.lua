@@ -141,10 +141,6 @@ return {
           "encoding",
           "fileformat",
           "filetype",
-          {
-            require("noice").api.statusline.mode.get,
-            cond = require("noice").api.statusline.mode.has,
-          }
         },
         lualine_y = { "progress" },
         lualine_z = { "location" },
@@ -314,7 +310,7 @@ return {
   {
     "okuuva/auto-save.nvim",
     opts = {
-      debounce_delay = 125
+      debounce_delay = 16
     },
     config = function(opts)
       require("auto-save").setup(opts)
