@@ -92,6 +92,7 @@ return {
   -- {{{ telescope
   {
     "nvim-telescope/telescope.nvim",
+    --dir = "/home/onion27/Programming/Projects/telescope.nvim",
     lazy = true,
     opts = {
       extensions = {},
@@ -232,6 +233,7 @@ return {
   -- {{{ nvim-notify
   {
     "rcarriga/nvim-notify",
+    --dir = "/home/onion27/Programming/Projects/nvim-notify",
     config = function()
       vim.notify = require("notify")
       local notify = require("notify")
@@ -246,7 +248,7 @@ return {
           "INFO",
           "DEBUG",
         })[result.type]
-        notify({ result.message }, lvl, {
+        notify(vim.split(result.message, '\n'), lvl, {
           title = "LSP | " .. client.name,
           timeout = 10000,
           keep = function()
@@ -255,6 +257,9 @@ return {
         })
       end
     end,
+    keys = {
+      { "<leader>nd", function () require("notify").dismiss({}) end, desc = "Dismiss all notifications" },
+    },
     lazy = false,
     priority = 114514,
   },
