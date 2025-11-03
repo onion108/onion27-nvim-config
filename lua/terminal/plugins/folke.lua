@@ -95,15 +95,6 @@ return {
           view = "split",
           filter = { cmdline = true, min_height = 2 },
         },
-        {
-          view = 'notify',
-          filter = {
-            event = 'msg_showmode',
-            any = {
-              { find = 'recording' },
-            },
-          },
-        },
       },
     },
   },

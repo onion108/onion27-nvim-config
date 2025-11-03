@@ -139,6 +139,7 @@ return {
           require("terminal.linemsg").get_message,
         },
         lualine_x = {
+          "macro_recording",
           "encoding",
           "fileformat",
           "filetype",
