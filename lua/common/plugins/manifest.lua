@@ -24,11 +24,14 @@ return {
   -- {{{ which-key
   {
     "folke/which-key.nvim",
-    config = function()
+    config = function(_, opts)
+      require("which-key").setup(opts);
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {},
+    opts = {
+      preset = "helix"
+    },
     lazy = true,
   },
   -- }}}
