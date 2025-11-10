@@ -68,6 +68,7 @@ return {
         indent = { enable = true },
         auto_install = true,
         textobjects = {
+          enable = true,
           move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
@@ -96,9 +97,6 @@ return {
               ["[M"] = "@function.outer",
               ["[]"] = "@class.outer",
             },
-            -- Below will go to either the start or the end, whichever is closer.
-            -- Use if you want more granular movements
-            -- Make it even more gradual by adding multiple queries and regex.
             goto_next = {
               ["]d"] = "@conditional.outer",
             },
@@ -106,9 +104,15 @@ return {
               ["[d"] = "@conditional.outer",
             }
           },
+          select = { enable = true }
         },
       }
     end,
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies =  { 'nvim-treesitter/nvim-treesitter' }
   },
   -- }}}
 
