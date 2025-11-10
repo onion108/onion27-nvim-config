@@ -104,7 +104,16 @@ return {
               ["[d"] = "@conditional.outer",
             }
           },
-          select = { enable = true }
+          select = { enable = true },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<leader>A"] = "@parameter.inner",
+            },
+          },
         },
       }
     end,
@@ -112,7 +121,7 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies =  { 'nvim-treesitter/nvim-treesitter' }
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
   },
   -- }}}
 
