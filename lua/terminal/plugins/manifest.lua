@@ -100,6 +100,14 @@ return {
   },
   -- }}}
 
+  -- {{{ fzf-lua
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {}
+  },
+  -- }}}
+
   --{{{ LazyGit
   {
     "kdheepak/lazygit.nvim",
@@ -259,7 +267,7 @@ return {
       end
     end,
     keys = {
-      { "<leader>nd", function () require("notify").dismiss({}) end, desc = "Dismiss all notifications" },
+      { "<leader>nd", function() require("notify").dismiss({}) end, desc = "Dismiss all notifications" },
     },
     lazy = false,
     priority = 114514,
