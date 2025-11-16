@@ -276,9 +276,15 @@ return {
     keys = { -- Example mapping to toggle outline
       { "<leader>oo", "<cmd>Outline<CR>", desc = "Toggle outline" },
     },
+    event = "VeryLazy",
     opts = {
-      -- Your setup opts here
+      providers = {
+        priority = { 'lsp', 'coc', 'markdown', 'norg', 'treesitter' },
+      },
     },
+    dependencies = {
+      'epheien/outline-treesitter-provider.nvim'
+    }
   },
   {
     "Chaitanyabsprip/fastaction.nvim",
