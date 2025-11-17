@@ -12,6 +12,7 @@ return {
   { "jlcrochet/vim-cs",             ft = "cs" },
   { "imsnif/kdl.vim",               lazy = false },
   { "HerringtonDarkholme/yats.vim", ft = "typescript",    lazy = false },
+  { "vala-lang/vala.vim",           ft = "vala" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -34,94 +35,163 @@ return {
   -- {{{ Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
     config = function()
-      local configs = require("nvim-treesitter.configs")
+      local nvim_ts = require("nvim-treesitter")
 
-      configs.setup {
-        ensure_installed = {
-          "rust",
-          "c",
-          "d",
-          "c_sharp",
-          "haskell",
-          "json",
-          "json5",
-          "objc",
-          "v",
-          "vala",
-          "zig",
-          "cpp",
-          "lua",
-          "html",
-          "xml",
-          "commonlisp",
-          "nu",
-          "kdl",
-          "typescript",
-          "tsx",
-          "javascript",
-          "vue",
-        },
+      nvim_ts.setup {
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
         auto_install = true,
-        textobjects = {
-          enable = true,
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = { query = "@class.outer", desc = "Next class start" },
-              --
-              -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queries.
-              ["]o"] = "@loop.*",
-              -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
-              --
-              -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-              -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
-              ["]s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
-              ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-            goto_next = {
-              ["]d"] = "@conditional.outer",
-            },
-            goto_previous = {
-              ["[d"] = "@conditional.outer",
-            }
-          },
-          select = { enable = true },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>sn"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>sp"] = "@parameter.inner",
-            },
-          },
-        },
       }
+      nvim_ts.install {
+        "rust",
+        "c",
+        "d",
+        "c_sharp",
+        "haskell",
+        "json",
+        "json5",
+        "objc",
+        "v",
+        "vala",
+        "zig",
+        "cpp",
+        "lua",
+        "html",
+        "xml",
+        "commonlisp",
+        "nu",
+        "kdl",
+        "typescript",
+        "tsx",
+        "javascript",
+        "vue",
+      }
+
+      local exclude_ftlist = { 'blink-cmp-menu', 'notify', 'noice', 'fidget', 'dashboard' }
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = "*",
+        callback = function(ev)
+          local lang = ev.match;
+          if vim.list_contains(exclude_ftlist, lang) then
+            return
+          end
+          if vim.list_contains(nvim_ts.get_installed(), lang) then
+            vim.treesitter.start()
+            vim.bo.indentexpr = "v:lua.require 'nvim-treesitter'.indentexpr()"
+          else
+            if vim.list_contains(nvim_ts.get_installed(), lang) then
+              nvim_ts.install({ lang })
+            end
+          end
+        end
+      })
     end,
   },
 
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+    branch = "main",
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      move = {
+        set_jumps = true,
+      }
+    },
+    keys = {
+      { "<leader>sn", function() require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner" end,     mode = "n", desc = "Swap with next parameter" },
+      { "<leader>sp", function() require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.outer" end, mode = "n", desc = "Swap with previous parameter" },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Next method (treesitter)",
+        "]m",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+        end
+      },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Next class (treesitter)",
+        "]]",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+        end
+      },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Next method end (treesitter)",
+        "]M",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+        end
+      },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Next class end (treesitter)",
+        "][",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+        end
+      },
+
+      {
+        mode = { "n", "x", "o" },
+        desc = "Previous method (treesitter)",
+        "[m",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+        end
+      },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Previous class (treesitter)",
+        "[[",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+        end
+      },
+
+      {
+        mode = { "n", "x", "o" },
+        desc = "Previous method end (treesitter)",
+        "[M",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+        end
+      },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Previous class end (treesitter)",
+        "[]",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+        end
+      },
+
+      {
+        mode = { "n", "x", "o" },
+        desc = "Next conditional (treesitter)",
+        "]c",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next("@conditional.outer", "textobjects")
+        end
+      },
+      {
+        mode = { "n", "x", "o" },
+        desc = "Previous conditional (treesitter)",
+        "[c",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
+        end
+      },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter-textobjects").setup(opts)
+    end
   },
   -- }}}
 
