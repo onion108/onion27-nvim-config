@@ -17,6 +17,7 @@ vim.o.ttyfast = true
 vim.o.foldmethod = "marker"
 vim.o.cino = "m1,l1,j1,(0,ws,Ws,t0" -- )
 vim.o.foldopen = "jump,mark,quickfix,search,tag"
+vim.o.exrc = true
 
 if vim.o.termguicolors then
   vim.o.termguicolors = true

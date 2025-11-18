@@ -87,7 +87,7 @@ return {
               --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             --end
           else
-            if vim.list_contains(nvim_ts.get_installed(), lang) then
+            if vim.list_contains(nvim_ts.get_available(), lang) then
               nvim_ts.install({ lang })
             end
           end
