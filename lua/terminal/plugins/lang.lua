@@ -84,7 +84,7 @@ return {
             vim.treesitter.start()
             -- Treesitter indent seems to be not mature yet.
             --if vim.treesitter.query.get(lang, "indents") then
-              --vim.bo.indentexpr = "v:lua.require 'nvim-treesitter'.indentexpr()"
+              --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             --end
           else
             if vim.list_contains(nvim_ts.get_installed(), lang) then
