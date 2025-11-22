@@ -14,7 +14,7 @@ end
 
 -- Specify the theme to use.
 -- Values: "vscode" or other theme names.
-options.THEME = "bamboo"
+options.THEME = "yorumi"
 
 -- Enabled tweaks
 options.TWEAKS = {
