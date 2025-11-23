@@ -13,6 +13,14 @@ vim.g.onedark_config = {
 
 -- Theme Setup
 
+for k, v in pairs(require("terminal.theme-setup.theme-overrides")) do
+  vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = k,
+    callback = v
+  })
+end
+
+
 require("terminal.theme-setup.mellow-setup")
 require("terminal.theme-setup.gruvbox-material-setup")
 
