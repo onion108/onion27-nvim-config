@@ -1,18 +1,18 @@
 return {
-  { "udalov/kotlin-vim",            ft = "kotlin" },
-  { "ARM9/arm-syntax-vim",          ft = "arm" },
-  { "maxbane/vim-asm_ca65",         ft = "asm_ca65" },
+  { "udalov/kotlin-vim", ft = "kotlin" },
+  { "ARM9/arm-syntax-vim", ft = "arm" },
+  { "maxbane/vim-asm_ca65", ft = "asm_ca65" },
   { "fedorenchik/fasm.vim" },
-  { "ollykel/v-vim",                ft = { "v", "vlang" } },
-  { "kaarmu/typst.vim",             ft = { "typst" },     lazy = false },
-  { "ziglang/zig.vim",              lazy = true,          ft = "zig" },
-  { "PyGamer0/vim-apl",             lazy = true,          ft = "apl" },
-  { "drmingdrmer/vim-indent-lua",   ft = "lua" },
-  { "Airbus5717/c3.vim",            ft = "c3" },
-  { "jlcrochet/vim-cs",             ft = "cs" },
-  { "imsnif/kdl.vim",               lazy = false },
-  { "HerringtonDarkholme/yats.vim", ft = "typescript",    lazy = false },
-  { "vala-lang/vala.vim",           ft = "vala" },
+  { "ollykel/v-vim", ft = { "v", "vlang" } },
+  { "kaarmu/typst.vim", ft = { "typst" }, lazy = false },
+  { "ziglang/zig.vim", lazy = true, ft = "zig" },
+  { "PyGamer0/vim-apl", lazy = true, ft = "apl" },
+  { "drmingdrmer/vim-indent-lua", ft = "lua" },
+  { "Airbus5717/c3.vim", ft = "c3" },
+  { "jlcrochet/vim-cs", ft = "cs" },
+  { "imsnif/kdl.vim", lazy = false },
+  { "HerringtonDarkholme/yats.vim", ft = "typescript", lazy = false },
+  { "vala-lang/vala.vim", ft = "vala" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -71,12 +71,12 @@ return {
         "vue",
       }
 
-      local exclude_ftlist = { 'blink-cmp-menu', 'notify', 'noice', 'fidget', 'dashboard' }
+      local exclude_ftlist = { "blink-cmp-menu", "notify", "noice", "fidget", "dashboard" }
 
-      vim.api.nvim_create_autocmd('FileType', {
+      vim.api.nvim_create_autocmd("FileType", {
         pattern = "*",
         callback = function(ev)
-          local lang = ev.match;
+          local lang = ev.match
           if vim.list_contains(exclude_ftlist, lang) then
             return
           end
@@ -84,37 +84,51 @@ return {
             vim.treesitter.start()
             -- Treesitter indent seems to be not mature yet.
             --if vim.treesitter.query.get(lang, "indents") then
-              --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             --end
           else
             if vim.list_contains(nvim_ts.get_available(), lang) then
-              nvim_ts.install({ lang })
+              nvim_ts.install { lang }
             end
           end
-        end
+        end,
       })
     end,
   },
 
   {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       move = {
         set_jumps = true,
-      }
+      },
     },
     keys = {
-      { "<leader>sn", function() require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner" end,     mode = "n", desc = "Swap with next parameter" },
-      { "<leader>sp", function() require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.outer" end, mode = "n", desc = "Swap with previous parameter" },
+      {
+        "<leader>sn",
+        function()
+          require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+        end,
+        mode = "n",
+        desc = "Swap with next parameter",
+      },
+      {
+        "<leader>sp",
+        function()
+          require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer")
+        end,
+        mode = "n",
+        desc = "Swap with previous parameter",
+      },
       {
         mode = { "n", "x", "o" },
         desc = "Next method (treesitter)",
         "]m",
         function()
           require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-        end
+        end,
       },
       {
         mode = { "n", "x", "o" },
@@ -122,7 +136,7 @@ return {
         "]]",
         function()
           require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
-        end
+        end,
       },
       {
         mode = { "n", "x", "o" },
@@ -130,7 +144,7 @@ return {
         "]M",
         function()
           require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
-        end
+        end,
       },
       {
         mode = { "n", "x", "o" },
@@ -138,7 +152,7 @@ return {
         "][",
         function()
           require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
-        end
+        end,
       },
 
       {
@@ -147,7 +161,7 @@ return {
         "[m",
         function()
           require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
-        end
+        end,
       },
       {
         mode = { "n", "x", "o" },
@@ -155,7 +169,7 @@ return {
         "[[",
         function()
           require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
-        end
+        end,
       },
 
       {
@@ -164,7 +178,7 @@ return {
         "[M",
         function()
           require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
-        end
+        end,
       },
       {
         mode = { "n", "x", "o" },
@@ -172,7 +186,7 @@ return {
         "[]",
         function()
           require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
-        end
+        end,
       },
 
       {
@@ -181,7 +195,7 @@ return {
         "]c",
         function()
           require("nvim-treesitter-textobjects.move").goto_next("@conditional.outer", "textobjects")
-        end
+        end,
       },
       {
         mode = { "n", "x", "o" },
@@ -189,12 +203,12 @@ return {
         "[c",
         function()
           require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
-        end
+        end,
       },
     },
     config = function(_, opts)
       require("nvim-treesitter-textobjects").setup(opts)
-    end
+    end,
   },
   -- }}}
 

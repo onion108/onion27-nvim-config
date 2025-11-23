@@ -74,7 +74,7 @@ return {
         },
       },
       --markdown = {
-        --hover = {},
+      --hover = {},
       --},
       health = {
         checker = true,

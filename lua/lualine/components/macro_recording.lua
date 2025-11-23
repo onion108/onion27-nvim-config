@@ -21,14 +21,14 @@ M.autocmd = function()
     callback = function()
       local timer = vim.loop.new_timer()
       timer:start(50, 0, vim.schedule_wrap(M.refresh))
-    end
+    end,
   })
 end
 
 M.refresh = function()
-  require("lualine").refresh({
-    place = { "statusline" }
-  })
+  require("lualine").refresh {
+    place = { "statusline" },
+  }
 end
 
 M.update_status = function(self)

@@ -29,7 +29,7 @@ options.TWEAKS = {
   "xmake-filetype",
   "c-highlight-correction",
   "deno-lsp-correction",
-  "evil-thingy"
+  "evil-thingy",
 }
 
 -- {{{ Modifications

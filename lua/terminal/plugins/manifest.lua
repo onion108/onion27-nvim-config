@@ -24,8 +24,8 @@ return {
       }
     end,
     keys = {
-      { "<leader>bs", "<cmd>Scratch<cr>",     desc = "Create Scratch File", mode = "n" },
-      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File",   mode = "n" },
+      { "<leader>bs", "<cmd>Scratch<cr>", desc = "Create Scratch File", mode = "n" },
+      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File", mode = "n" },
     },
     hooks = {
       {
@@ -104,7 +104,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {}
+    opts = {},
   },
   -- }}}
 
@@ -183,12 +183,12 @@ return {
         shortcut = {
           {
             desc = "[NVIM Version: "
-                .. vim.version().major
-                .. "."
-                .. vim.version().minor
-                .. "."
-                .. vim.version().patch
-                .. "]",
+              .. vim.version().major
+              .. "."
+              .. vim.version().minor
+              .. "."
+              .. vim.version().patch
+              .. "]",
             group = "DashboardShortCut",
           },
           {
@@ -225,7 +225,7 @@ return {
 
     -- Optional dependencies
     dependencies = {
-      { "echasnovski/mini.icons",     opts = {} },
+      { "echasnovski/mini.icons", opts = {} },
       { "nvim-tree/nvim-web-devicons" },
     },
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
@@ -257,7 +257,7 @@ return {
           "INFO",
           "DEBUG",
         })[result.type]
-        notify(vim.split(result.message, '\n'), lvl, {
+        notify(vim.split(result.message, "\n"), lvl, {
           title = "LSP | " .. client.name,
           timeout = 10000,
           keep = function()
@@ -267,7 +267,13 @@ return {
       end
     end,
     keys = {
-      { "<leader>nd", function() require("notify").dismiss({}) end, desc = "Dismiss all notifications" },
+      {
+        "<leader>nd",
+        function()
+          require("notify").dismiss {}
+        end,
+        desc = "Dismiss all notifications",
+      },
     },
     lazy = false,
     priority = 114514,
@@ -324,7 +330,7 @@ return {
   {
     "okuuva/auto-save.nvim",
     opts = {
-      debounce_delay = 250
+      debounce_delay = 250,
     },
     config = function(_, opts)
       require("auto-save").setup(opts)
@@ -367,18 +373,18 @@ return {
     },
   },
 
-  { "onion108/starwalker.nvim",    lazy = false,                     config = true },
-  { "ryanoasis/vim-devicons",      lazy = false },
-  { "honza/vim-snippets",          lazy = true },
-  { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
-  { "nvim-lua/plenary.nvim",       lazy = true },
-  { "lewis6991/gitsigns.nvim",     lazy = false },
+  { "onion108/starwalker.nvim", lazy = false, config = true },
+  { "ryanoasis/vim-devicons", lazy = false },
+  { "honza/vim-snippets", lazy = true },
+  { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" } },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "lewis6991/gitsigns.nvim", lazy = false },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     "crispgm/nvim-tabline",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true,
   },
-  { "edluffy/hologram.nvim",    lazy = true },
+  { "edluffy/hologram.nvim", lazy = true },
   { "petertriho/nvim-scrollbar" },
 }

@@ -60,16 +60,16 @@ return {
               tsserver = {
                 globalPlugins = {
                   {
-                    name = '@vue/typescript-plugin',
+                    name = "@vue/typescript-plugin",
                     location = "/usr/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin",
-                    languages = { 'vue' },
-                    configNamespace = 'typescript',
+                    languages = { "vue" },
+                    configNamespace = "typescript",
                   },
                 },
               },
-            }
+            },
           },
-          filetypes = { 'vue' },
+          filetypes = { "vue" },
         },
         vue_ls = {},
         clangd = {
@@ -176,9 +176,9 @@ return {
       local key = require("common.utils.keymap")
       local signs = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
+        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
       }
       vim.diagnostic.config {
         virtual_text = { prefix = icons.ui.VirtualPrefix, current_line = false },
@@ -205,9 +205,9 @@ return {
 
         ---@diagnostic disable-next-line: undefined-field
         if
-            server == "clangd"
-            and vim.uv.os_uname().sysname == "Darwin"
-            and vim.uv.os_gethostname() == "QZKago-Requiem.local"
+          server == "clangd"
+          and vim.uv.os_uname().sysname == "Darwin"
+          and vim.uv.os_gethostname() == "QZKago-Requiem.local"
         then
           -- Only set on my machine.
           lsconfig.cmd[1] = "/opt/homebrew/opt/llvm/bin/clangd"
@@ -279,12 +279,12 @@ return {
     event = "VeryLazy",
     opts = {
       providers = {
-        priority = { 'lsp', 'coc', 'markdown', 'norg', 'treesitter' },
+        priority = { "lsp", "coc", "markdown", "norg", "treesitter" },
       },
     },
     dependencies = {
-      'epheien/outline-treesitter-provider.nvim'
-    }
+      "epheien/outline-treesitter-provider.nvim",
+    },
   },
   {
     "Chaitanyabsprip/fastaction.nvim",

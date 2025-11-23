@@ -9,12 +9,12 @@ return {
   { "m6vrm/gruber.vim", lazy = true },
   { "arzg/vim-colors-xcode", lazy = true },
   { "scottmckendry/cyberdream.nvim", lazy = true },
-  {'oneslash/helix-nvim', lazy = true},
-  {'ok-ryoko/blue-screen', lazy = true},
-  {'catppuccin/nvim', lazy = true},
-  {'dgox16/oldworld.nvim', lazy = true},
-  {'rafamadriz/neon', lazy = true},
-  {'onion108/yorumi.nvim', lazy = true},
+  { "oneslash/helix-nvim", lazy = true },
+  { "ok-ryoko/blue-screen", lazy = true },
+  { "catppuccin/nvim", lazy = true },
+  { "dgox16/oldworld.nvim", lazy = true },
+  { "rafamadriz/neon", lazy = true },
+  { "onion108/yorumi.nvim", lazy = true },
 
   -- {{{ Ayu theme
   {
