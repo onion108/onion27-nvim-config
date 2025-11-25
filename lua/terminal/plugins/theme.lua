@@ -14,7 +14,7 @@ return {
   { "catppuccin/nvim", lazy = true },
   { "dgox16/oldworld.nvim", lazy = true },
   { "rafamadriz/neon", lazy = true },
-  { "onion108/yorumi.nvim", lazy = true },
+  { "yorumicolors/yorumi.nvim", lazy = true },
 
   -- {{{ Ayu theme
   {

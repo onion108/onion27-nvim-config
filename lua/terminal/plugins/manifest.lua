@@ -134,7 +134,7 @@ return {
   -- {{{ lualine
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim", "yorumicolors/yorumi.nvim" },
     opts = {
       sections = {
         lualine_a = {
