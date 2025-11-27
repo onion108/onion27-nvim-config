@@ -20,7 +20,7 @@ options.THEME = "yorumi"
 options.TWEAKS = {
   "compilation-mode",
   "dynamic-line-number",
-  "telescope",
+  "fuzzy-finders",
   "right-click-menu",
   "termbuf-filetype",
   "neotree-keybind",
