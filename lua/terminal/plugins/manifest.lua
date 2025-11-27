@@ -92,7 +92,7 @@ return {
   -- {{{ telescope
   {
     "nvim-telescope/telescope.nvim",
-    dir = "/home/onion27/Programming/Projects/telescope.nvim",
+    --dir = "/home/onion27/Programming/Projects/telescope.nvim",
     lazy = true,
     opts = {
       defaults = {
@@ -380,7 +380,7 @@ return {
     { "ryanoasis/vim-devicons", lazy = false },
     { "honza/vim-snippets", lazy = true },
     { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" } },
-    { "nvim-lua/plenary.nvim", dir = "/home/onion27/Programming/Projects/plenary.nvim", lazy = true },
+    { "nvim-lua/plenary.nvim", lazy = true },
     { "lewis6991/gitsigns.nvim", lazy = false },
     { "nvim-tree/nvim-web-devicons", lazy = true },
     {
