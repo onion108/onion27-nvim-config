@@ -88,7 +88,9 @@ return {
             --end
           else
             if vim.list_contains(nvim_ts.get_available(), lang) then
-              nvim_ts.install { lang }
+              nvim_ts.install({ lang }):await(function()
+                pcall(vim.treesitter.start)
+              end)
             end
           end
         end,
