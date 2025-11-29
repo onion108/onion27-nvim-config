@@ -37,7 +37,12 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     build = ":TSUpdate",
-    config = function()
+    opts = {
+      indent = {
+        "xml"
+      },
+    },
+    config = function(_, opts)
       local nvim_ts = require("nvim-treesitter")
 
       nvim_ts.setup {
@@ -83,9 +88,13 @@ return {
           if vim.list_contains(nvim_ts.get_installed(), lang) then
             vim.treesitter.start()
             -- Treesitter indent seems to be not mature yet.
-            --if vim.treesitter.query.get(lang, "indents") then
-            --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            --end
+            if vim.tbl_contains(opts.indent, lang) then
+              if vim.treesitter.query.get(lang, "indents") then
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+              else
+                vim.notify("Language list in indent " .. lang .. " doesn't support Treesitter indentation. ", vim.log.levels.WARN)
+              end
+            end
           else
             if vim.list_contains(nvim_ts.get_available(), lang) then
               nvim_ts.install({ lang }):await(function()
