@@ -11,7 +11,7 @@ return {
   { "scottmckendry/cyberdream.nvim", lazy = true },
   { "oneslash/helix-nvim", lazy = true },
   { "ok-ryoko/blue-screen", lazy = true },
-  { "catppuccin/nvim", lazy = true },
+  { "catppuccin/nvim", name = "catppuccin", lazy = true },
   { "dgox16/oldworld.nvim", lazy = true },
   { "rafamadriz/neon", lazy = true },
   { "yorumicolors/yorumi.nvim", lazy = true },
