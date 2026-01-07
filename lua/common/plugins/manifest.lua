@@ -42,6 +42,15 @@ return {
   },
 
   {
+    "nvim-mini/mini.splitjoin",
+    opts = {
+      mappings = {
+        toggle = "<leader>tj",
+      },
+    },
+  },
+
+  {
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup {

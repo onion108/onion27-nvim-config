@@ -39,7 +39,7 @@ return {
     build = ":TSUpdate",
     opts = {
       indent = {
-        "xml"
+        "xml",
       },
     },
     config = function(_, opts)
@@ -92,7 +92,10 @@ return {
               if vim.treesitter.query.get(lang, "indents") then
                 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
               else
-                vim.notify("Language list in indent " .. lang .. " doesn't support Treesitter indentation. ", vim.log.levels.WARN)
+                vim.notify(
+                  "Language list in indent " .. lang .. " doesn't support Treesitter indentation. ",
+                  vim.log.levels.WARN
+                )
               end
             end
           else

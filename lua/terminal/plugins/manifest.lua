@@ -352,6 +352,7 @@ return {
   },
   -- }}}
 
+  -- {{{ flash.nvim
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -375,6 +376,7 @@ return {
       },
     },
   },
+  -- }}}
 
   { "onion108/starwalker.nvim", lazy = false, config = true },
   { "ryanoasis/vim-devicons", lazy = false },
