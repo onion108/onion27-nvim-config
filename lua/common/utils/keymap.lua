@@ -1,5 +1,6 @@
 local exports = {}
 
+---Exists only for historical reasons.
 ---@param mode string|string[] Mode short-name, see |nvim_set_keymap()|.
 ---                            Can also be list of modes to create mapping on multiple modes.
 ---@param lhs string           Left-hand side |{lhs}| of the mapping.
@@ -7,6 +8,7 @@ local exports = {}
 ---@param opts? vim.keymap.set.Opts
 ---@param description string
 function exports.define_keymap(mode, lhs, rhs, description, opts)
+  opts.desc = description
   vim.keymap.set(mode, lhs, rhs, opts)
   pcall(function()
     local wk = require("which-key")
