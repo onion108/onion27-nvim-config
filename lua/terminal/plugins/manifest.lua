@@ -24,8 +24,8 @@ return {
       }
     end,
     keys = {
-      { "<leader>bs", "<cmd>Scratch<cr>",     desc = "Create Scratch File", mode = "n" },
-      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File",   mode = "n" },
+      { "<leader>bs", "<cmd>Scratch<cr>", desc = "Create Scratch File", mode = "n" },
+      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File", mode = "n" },
     },
     hooks = {
       {
@@ -104,7 +104,7 @@ return {
 
   {
     "nvim-telescope/telescope-symbols.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" }
+    dependencies = { "nvim-telescope/telescope.nvim" },
   },
   -- }}}
 
@@ -191,12 +191,12 @@ return {
         shortcut = {
           {
             desc = "[NVIM Version: "
-                .. vim.version().major
-                .. "."
-                .. vim.version().minor
-                .. "."
-                .. vim.version().patch
-                .. "]",
+              .. vim.version().major
+              .. "."
+              .. vim.version().minor
+              .. "."
+              .. vim.version().patch
+              .. "]",
             group = "DashboardShortCut",
           },
           {
@@ -205,6 +205,18 @@ return {
             action = "Oil",
             group = "DashboardShortCut",
           },
+        },
+        project = {
+          enable = true,
+          limit = 8,
+          icon = "your icon",
+          label = "",
+          action = function(path)
+            require("snacks").picker.files {
+              layout = { preset = "vscode" },
+              cwd = path,
+            }
+          end,
         },
       },
       hide = {
@@ -233,7 +245,7 @@ return {
 
     -- Optional dependencies
     dependencies = {
-      { "echasnovski/mini.icons",     opts = {} },
+      { "echasnovski/mini.icons", opts = {} },
       { "nvim-tree/nvim-web-devicons" },
     },
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
@@ -383,18 +395,18 @@ return {
   },
   -- }}}
 
-  { "onion108/starwalker.nvim",    lazy = false,                     config = true },
-  { "ryanoasis/vim-devicons",      lazy = false },
-  { "honza/vim-snippets",          lazy = true },
-  { "folke/todo-comments.nvim",    event = { "BufRead", "BufEnter" } },
-  { "nvim-lua/plenary.nvim",       lazy = true },
-  { "lewis6991/gitsigns.nvim",     lazy = false },
+  { "onion108/starwalker.nvim", lazy = false, config = true },
+  { "ryanoasis/vim-devicons", lazy = false },
+  { "honza/vim-snippets", lazy = true },
+  { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" } },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "lewis6991/gitsigns.nvim", lazy = false },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     "crispgm/nvim-tabline",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true,
   },
-  { "edluffy/hologram.nvim",    lazy = true },
+  { "edluffy/hologram.nvim", lazy = true },
   { "petertriho/nvim-scrollbar" },
 }

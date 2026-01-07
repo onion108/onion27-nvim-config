@@ -11,34 +11,9 @@ local success = pcall(function()
     "GREP current word using telescope",
     { silent = true }
   )
-  keymap.define_keymap("n", "<leader><leader>", function()
-    builtin.keymaps(themes.get_dropdown { hidden = true, no_ignore = true, no_ignore_parent = true })
-  end, "Find symbol", { silent = true })
-  keymap.define_keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", "GREP using telescope", { silent = true })
-  keymap.define_keymap("n", "<leader>ff", function()
-    builtin.find_files(themes.get_ivy())
-  end, "Find file", { silent = true })
-  keymap.define_keymap("n", "<leader>fF", function()
-    builtin.find_files(themes.get_ivy { hidden = true, no_ignore = true, no_ignore_parent = true })
-  end, "Find file (all)", { silent = true })
   keymap.define_keymap("n", "<leader>fs", function()
     builtin.symbols(themes.get_cursor { hidden = true, no_ignore = true, no_ignore_parent = true })
   end, "Find symbol", { silent = true })
-  keymap.define_keymap("n", "<leader>fq", function()
-    builtin.quickfix(themes.get_ivy { hidden = true, no_ignore = true, no_ignore_parent = true })
-  end, "Find quickfix", { silent = true })
-  keymap.define_keymap("n", "<leader>fb", function()
-    builtin.buffers(themes.get_ivy())
-  end, "Find buffer", { silent = true })
-  keymap.define_keymap("n", "<leader>fd", function()
-    builtin.diagnostics(themes.get_ivy())
-  end, "Telescope Diagnostics", { silent = true })
-  vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "TelescopeResults" },
-    callback = function()
-      vim.opt_local.foldenable = false
-    end,
-  })
 end)
 
 if not success then
@@ -50,6 +25,47 @@ success = pcall(function()
   keymap.define_keymap("n", "<leader>fi", function()
     picker.icons()
   end, "Find icon", { silent = true })
+  keymap.define_keymap("n", "<leader><leader>", function()
+    picker.keymaps { layout = { preset = "vscode" } }
+  end, "Find symbol", { silent = true })
+  keymap.define_keymap("n", "<leader>fg", function()
+    picker.grep {
+      layout = { preset = "telescope" },
+    }
+  end, "GREP using telescope", { silent = true })
+  keymap.define_keymap("n", "<leader>ff", function()
+    picker.files {
+      layout = { preset = "ivy" },
+    }
+  end, "Find file", { silent = true })
+  keymap.define_keymap("n", "<leader>fF", function()
+    picker.files {
+      layout = { preset = "ivy" },
+      hidden = true,
+      ignored = true,
+    }
+  end, "Find file (all)", { silent = true })
+  keymap.define_keymap("n", "<leader>fq", function()
+    picker.qflist {
+      layout = { preset = "ivy" },
+    }
+  end, "Find quickfix", { silent = true })
+  keymap.define_keymap("n", "<leader>fb", function()
+    picker.buffers {
+      layout = { preset = "ivy" },
+    }
+  end, "Find buffer", { silent = true })
+  keymap.define_keymap("n", "<leader>fd", function()
+    picker.diagnostics {
+      layout = { preset = "ivy" },
+    }
+  end, "Pick Diagnostics", { silent = true })
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "TelescopeResults" },
+    callback = function()
+      vim.opt_local.foldenable = false
+    end,
+  })
 end)
 
 if not success then
