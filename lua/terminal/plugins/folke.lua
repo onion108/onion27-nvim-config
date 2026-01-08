@@ -79,6 +79,13 @@ return {
         end,
         desc = "Dismiss all notifications",
       },
+      {
+        "<leader>on",
+        function()
+          require("snacks").notifier.show_history()
+        end,
+        desc = "Open notification history",
+      },
     },
   },
   {
