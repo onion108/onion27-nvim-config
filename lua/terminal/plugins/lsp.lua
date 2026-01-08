@@ -108,7 +108,7 @@ return {
           },
         },
         lua_ls = {},
-        pyright = {},
+        ty = {},
         kotlin_lsp = {},
         neocmake = {},
         powershell_es = {
