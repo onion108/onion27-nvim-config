@@ -116,29 +116,6 @@ return {
   },
   -- }}}
 
-  --{{{ LazyGit
-  {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
-  },
-  --}}}
-
   -- {{{ lualine
   {
     "nvim-lualine/lualine.nvim",
@@ -209,8 +186,6 @@ return {
         project = {
           enable = true,
           limit = 8,
-          icon = "your icon",
-          label = "",
           action = function(path)
             require("snacks").picker.files {
               layout = { preset = "vscode" },
@@ -256,47 +231,6 @@ return {
       keymap.define_keymap("n", "<leader>of", ":Oil<CR>", "Open file manager", { silent = true })
       keymap.define_keymap("n", "<leader>oF", ":Oil .<CR>", "Open project root", { silent = true })
     end,
-  },
-  -- }}}
-
-  -- {{{ nvim-notify
-  {
-    "rcarriga/nvim-notify",
-    --dir = "/home/onion27/Programming/Projects/nvim-notify",
-    config = function()
-      vim.notify = require("notify")
-      local notify = require("notify")
-      vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
-        local client = vim.lsp.get_client_by_id(ctx.client_id)
-        if not client then
-          return
-        end
-        local lvl = ({
-          "ERROR",
-          "WARN",
-          "INFO",
-          "DEBUG",
-        })[result.type]
-        notify(vim.split(result.message, "\n"), lvl, {
-          title = "LSP | " .. client.name,
-          timeout = 10000,
-          keep = function()
-            return lvl == "ERROR" or lvl == "WARN"
-          end,
-        })
-      end
-    end,
-    keys = {
-      {
-        "<leader>nd",
-        function()
-          require("notify").dismiss {}
-        end,
-        desc = "Dismiss all notifications",
-      },
-    },
-    lazy = false,
-    priority = 114514,
   },
   -- }}}
 

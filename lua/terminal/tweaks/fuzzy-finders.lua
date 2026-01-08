@@ -52,7 +52,7 @@ success = pcall(function()
   end, "Find quickfix", { silent = true })
   keymap.define_keymap("n", "<leader>fb", function()
     picker.buffers {
-      layout = { preset = "ivy" },
+      layout = { preset = "left" },
     }
   end, "Find buffer", { silent = true })
   keymap.define_keymap("n", "<leader>fd", function()
@@ -66,6 +66,11 @@ success = pcall(function()
       vim.opt_local.foldenable = false
     end,
   })
+  keymap.define_keymap("n", "<leader>fp", function()
+    picker.pickers {
+      layout = { preset = "vscode" },
+    }
+  end, "Find more picker", { silent = true })
 end)
 
 if not success then
