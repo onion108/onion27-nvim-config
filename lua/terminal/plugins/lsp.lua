@@ -109,6 +109,7 @@ return {
         },
         lua_ls = {},
         ty = {},
+        ruff = {},
         kotlin_lsp = {},
         neocmake = {},
         powershell_es = {
