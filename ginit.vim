@@ -1,1 +1,1 @@
-call rpcnotify(1, 'Gui', 'Font', 'Lilex Nerd Font Mono 12')
+call rpcnotify(1, 'Gui', 'Font', 'Mizuki Mono NF 12')
