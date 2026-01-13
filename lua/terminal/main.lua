@@ -62,7 +62,12 @@ require("terminal.languages.lua")
 
 -- Neovide Setup
 if vim.g.neovide then
-  require("terminal.neovide")
+  require("terminal.gui.neovide")
+end
+
+-- Firenvim Setup
+if vim.g.started_by_firenvim then
+  require("terminal.gui.firenvim")
 end
 
 -- context.vim setup

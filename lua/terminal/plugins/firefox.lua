@@ -5,8 +5,13 @@ return {
     vim.g.firenvim_config = {
       localSettings = {
         [".*"] = {
-          cmdline = "neovim"
-        }
+          cmdline = "neovim",
+          takeover = "never",
+        },
+        ["https:?//(www\\.)?github\\.com/.*"] = {
+          cmdline = "neovim",
+          takeover = "always",
+        },
       }
     }
   end
