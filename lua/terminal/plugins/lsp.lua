@@ -151,6 +151,14 @@ return {
           trace = "verbose",
         },
         csharp_ls = {
+          cmd = { 'csharp-ls' },
+          capabilities = {
+            experimental = {
+              csharp = {
+                metadataUris = true
+              },
+            }
+          },
           --cmd = { "/home/onion27/Programming/Projects/CSharpLSPWork/csharp-language-server/src/CSharpLanguageServer/bin/Debug/net9.0/CSharpLanguageServer" },
         },
         v_analyzer = {
@@ -197,7 +205,6 @@ return {
     config = function(_, opts)
       vim.lsp.semantic_tokens.enable(false)
       --vim.lsp.log.set_level(vim.log.levels.TRACE)
-      local config = require("lspconfig")
       local icons = require("common.utils.icons")
       local key = require("common.utils.keymap")
       local signs = {
