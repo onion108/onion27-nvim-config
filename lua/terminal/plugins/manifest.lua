@@ -101,11 +101,6 @@ return {
       extensions = {},
     },
   },
-
-  {
-    "nvim-telescope/telescope-symbols.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-  },
   -- }}}
 
   -- {{{ fzf-lua
