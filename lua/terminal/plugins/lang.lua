@@ -62,6 +62,7 @@ return {
         "objc",
         "v",
         "vala",
+        "vim",
         "zig",
         "cpp",
         "lua",
