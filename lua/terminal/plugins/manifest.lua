@@ -149,59 +149,6 @@ return {
   },
   -- }}}
 
-  -- {{{ dashboard-nvim
-  {
-    "nvimdev/dashboard-nvim",
-    lazy = false,
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    opts = {
-      config = {
-        header = {
-          "███╗   ███╗██╗███████╗██╗   ██╗██╗  ██╗██╗",
-          "████╗ ████║██║╚══███╔╝██║   ██║██║ ██╔╝██║",
-          "██╔████╔██║██║  ███╔╝ ██║   ██║█████╔╝ ██║",
-          "██║╚██╔╝██║██║ ███╔╝  ██║   ██║██╔═██╗ ██║",
-          "██║ ╚═╝ ██║██║███████╗╚██████╔╝██║  ██╗██║",
-          "╚═╝     ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝",
-        },
-        week_header = { enable = false },
-        shortcut = {
-          {
-            desc = "[NVIM Version: "
-              .. vim.version().major
-              .. "."
-              .. vim.version().minor
-              .. "."
-              .. vim.version().patch
-              .. "]",
-            group = "DashboardShortCut",
-          },
-          {
-            desc = "File manager",
-            key = "f",
-            action = "Oil",
-            group = "DashboardShortCut",
-          },
-        },
-        project = {
-          enable = true,
-          limit = 8,
-          action = function(path)
-            require("snacks").picker.files {
-              layout = { preset = "vscode" },
-              cwd = path,
-            }
-          end,
-        },
-      },
-      hide = {
-        statusline = false,
-      },
-      shortcut_type = "number",
-    },
-  },
-  -- }}}
-
   -- {{{ oil.nvim
   {
     "stevearc/oil.nvim",
@@ -231,29 +178,6 @@ return {
       keymap.define_keymap("n", "<leader>of", ":Oil<CR>", "Open file manager", { silent = true })
       keymap.define_keymap("n", "<leader>oF", ":Oil .<CR>", "Open project root", { silent = true })
     end,
-  },
-  -- }}}
-
-  -- {{{ bufferlist.nvim
-  {
-    --dir = "/Users/onion27/Workspace/Programming/Projects/bufferlist.nvim",
-    "EL-MASTOR/bufferlist.nvim",
-    lazy = true,
-    keys = { { "<Leader>ob", ":BufferList<CR>", desc = "Open bufferlist" } },
-    dependencies = "nvim-tree/nvim-web-devicons",
-    cmd = "BufferList",
-    opts = {
-      win_keymaps = {
-        {
-          "<CR>",
-          function(opts)
-            local curpos = vim.fn.line(".")
-            vim.cmd("bwipeout | buffer " .. opts.buffers[curpos])
-          end,
-          { desc = "BufferList: Enter buffer" },
-        },
-      },
-    },
   },
   -- }}}
 
@@ -335,12 +259,8 @@ return {
   { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" } },
   { "nvim-lua/plenary.nvim", lazy = true },
   { "lewis6991/gitsigns.nvim", lazy = false },
+  { "backdround/tabscope.nvim", config = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  {
-    "crispgm/nvim-tabline",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = true,
-  },
   { "edluffy/hologram.nvim", lazy = true },
   { "petertriho/nvim-scrollbar" },
 }
