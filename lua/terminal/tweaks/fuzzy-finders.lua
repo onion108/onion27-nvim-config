@@ -14,6 +14,12 @@ local success = pcall(function()
   keymap.define_keymap("n", "<leader>fs", function()
     builtin.symbols(themes.get_cursor { hidden = true, no_ignore = true, no_ignore_parent = true })
   end, "Find symbol", { silent = true })
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "TelescopeResults" },
+    callback = function()
+      vim.opt_local.foldenable = false
+    end,
+  })
 end)
 
 if not success then
@@ -60,12 +66,10 @@ success = pcall(function()
       layout = { preset = "ivy" },
     }
   end, "Pick Diagnostics", { silent = true })
-  vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "TelescopeResults" },
-    callback = function()
-      vim.opt_local.foldenable = false
-    end,
-  })
+  keymap.define_keymap("n", "<leader>fn", function()
+    picker.notifications()
+    picker.pick()
+  end, "Find notifications", { silent = true })
   keymap.define_keymap("n", "<leader>fp", function()
     picker.pickers {
       layout = { preset = "vscode" },

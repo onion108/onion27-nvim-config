@@ -151,14 +151,20 @@ return {
           trace = "verbose",
         },
         csharp_ls = {
-          cmd = { 'csharp-ls' },
+          cmd = { "csharp-ls" },
           capabilities = {
             experimental = {
               csharp = {
-                metadataUris = true
+                metadataUris = true,
               },
-            }
+            },
           },
+          get_language_id = function(_, ft)
+            if ft == "cs" then
+              return "csharp"
+            end
+            return ft
+          end,
           --cmd = { "/home/onion27/Programming/Projects/CSharpLSPWork/csharp-language-server/src/CSharpLanguageServer/bin/Debug/net9.0/CSharpLanguageServer" },
         },
         v_analyzer = {

@@ -59,6 +59,7 @@ end
 require("terminal.languages.zig")
 require("terminal.languages.apl")
 require("terminal.languages.lua")
+require("terminal.languages.lean")
 
 -- Neovide Setup
 if vim.g.neovide then

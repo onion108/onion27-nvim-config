@@ -1,5 +1,5 @@
 return {
-  'glacambre/firenvim',
+  "glacambre/firenvim",
   build = ":call firenvim#install(0)",
   config = function()
     vim.g.firenvim_config = {
@@ -12,7 +12,7 @@ return {
           cmdline = "neovim",
           takeover = "always",
         },
-      }
+      },
     }
-  end
+  end,
 }
