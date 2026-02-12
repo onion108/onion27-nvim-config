@@ -33,7 +33,7 @@ success = pcall(function()
   end, "Find icon", { silent = true })
   keymap.define_keymap("n", "<leader><leader>", function()
     picker.keymaps { layout = { preset = "vscode" } }
-  end, "Find symbol", { silent = true })
+  end, "Find keybind", { silent = true })
   keymap.define_keymap("n", "<leader>fg", function()
     picker.grep {
       layout = { preset = "telescope" },
@@ -68,7 +68,6 @@ success = pcall(function()
   end, "Pick Diagnostics", { silent = true })
   keymap.define_keymap("n", "<leader>fn", function()
     picker.notifications()
-    picker.pick()
   end, "Find notifications", { silent = true })
   keymap.define_keymap("n", "<leader>fp", function()
     picker.pickers {
