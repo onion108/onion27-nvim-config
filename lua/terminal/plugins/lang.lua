@@ -22,6 +22,8 @@ return {
     end,
     ft = { "markdown" },
   },
+  { "ariedov/android-nvim", config = true },
+
   -- {{{ Polyglot
   {
     "sheerun/vim-polyglot",
@@ -41,6 +43,7 @@ return {
       indent = {
         "xml",
       },
+      exclude_ft = { "blink-cmp-menu", "notify", "noice", "fidget", "dashboard", "snacks_dashboard" }
     },
     config = function(_, opts)
       local nvim_ts = require("nvim-treesitter")
@@ -51,6 +54,8 @@ return {
         indent = { enable = true },
         auto_install = true,
       }
+
+      -- {{{ Install bunch of parsers 
       nvim_ts.install {
         "rust",
         "c",
@@ -76,14 +81,13 @@ return {
         "javascript",
         "vue",
       }
-
-      local exclude_ftlist = { "blink-cmp-menu", "notify", "noice", "fidget", "dashboard" }
+      -- }}}
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "*",
         callback = function(ev)
           local lang = ev.match
-          if vim.list_contains(exclude_ftlist, lang) then
+          if vim.list_contains(opts.exclude_ft, lang) then
             return
           end
           if vim.list_contains(nvim_ts.get_installed(), lang) then
