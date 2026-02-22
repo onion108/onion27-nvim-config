@@ -131,7 +131,7 @@ return {
           root_dir = function(bufnr, on_dir)
             local root_markers = { "deno.lock" }
             root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers, { ".git" } }
-              or vim.list_extend(root_markers, { ".git" })
+                or vim.list_extend(root_markers, { ".git" })
             local project_root = vim.fs.root(bufnr, root_markers)
             on_dir(project_root or vim.fn.getcwd())
           end,
@@ -203,9 +203,9 @@ return {
       local key = require("common.utils.keymap")
       local signs = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+        { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
       }
       vim.diagnostic.config {
         virtual_text = { prefix = icons.ui.VirtualPrefix, current_line = false },
@@ -232,9 +232,9 @@ return {
 
         ---@diagnostic disable-next-line: undefined-field
         if
-          server == "clangd"
-          and vim.uv.os_uname().sysname == "Darwin"
-          and vim.uv.os_gethostname() == "QZKago-Requiem.local"
+            server == "clangd"
+            and vim.uv.os_uname().sysname == "Darwin"
+            and vim.uv.os_gethostname() == "QZKago-Requiem.local"
         then
           -- Only set on my machine.
           lsconfig.cmd[1] = "/opt/homebrew/opt/llvm/bin/clangd"
@@ -311,22 +311,27 @@ return {
     },
   },
   {
-    "Chaitanyabsprip/fastaction.nvim",
-    opts = {},
-    config = function(_, opt)
-      require("fastaction").setup(opt)
-      vim.keymap.set(
-        { "n", "x" },
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+      { "ibhagwan/fzf-lua" },
+      { "folke/snacks.nvim" },
+    },
+    event = "LspAttach",
+    opts = {
+      picker = "snacks"
+    },
+    keys = {
+      {
         "gra",
-        '<cmd>lua require("fastaction").code_action()<CR>',
-        { desc = "Display code actions" }
-      )
-      vim.keymap.set(
-        { "n", "x" },
-        "grA",
-        '<cmd>lua require("fastaction").code_action({ select_first = true })<CR>',
-        { desc = "Select and apply first code action" }
-      )
-    end,
+        function()
+          require("tiny-code-action").code_action()
+        end,
+        mode = { "n", "x" },
+        desc = "Code Action",
+        noremap = true,
+      }
+    },
   },
 }

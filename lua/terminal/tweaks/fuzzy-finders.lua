@@ -2,31 +2,6 @@ local keymap = require("common.utils.keymap")
 require("which-key").add { "<leader>f", group = "Fuzzy Finders" }
 
 local success = pcall(function()
-  local themes = require("telescope.themes")
-  local builtin = require("telescope.builtin")
-  keymap.define_keymap(
-    "n",
-    "<leader>fw",
-    "<cmd>Telescope grep_string<cr>",
-    "GREP current word using telescope",
-    { silent = true }
-  )
-  keymap.define_keymap("n", "<leader>fs", function()
-    builtin.symbols(themes.get_cursor { hidden = true, no_ignore = true, no_ignore_parent = true })
-  end, "Find symbol", { silent = true })
-  vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "TelescopeResults" },
-    callback = function()
-      vim.opt_local.foldenable = false
-    end,
-  })
-end)
-
-if not success then
-  vim.notify("Failed to setup telescope keybind", vim.log.levels.ERROR)
-end
-
-success = pcall(function()
   local picker = require("snacks").picker
   keymap.define_keymap("n", "<leader>fi", function()
     picker.icons()
@@ -39,6 +14,19 @@ success = pcall(function()
       layout = { preset = "telescope" },
     }
   end, "GREP using telescope", { silent = true })
+  keymap.define_keymap(
+    "n",
+    "<leader>fw",
+    function()
+      picker.grep_word {
+        layout = {
+          preset = "telescope"
+        }
+      }
+    end,
+    "GREP current word using telescope",
+    { silent = true }
+  )
   keymap.define_keymap("n", "<leader>ff", function()
     picker.files {
       layout = { preset = "ivy" },
@@ -90,5 +78,5 @@ success = pcall(function()
 end)
 
 if not success then
-  vim.notify("Failed to setup snackes keybind", vim.log.levels.ERROR)
+  vim.notify("Failed to setup snacks keybind", vim.log.levels.ERROR)
 end
