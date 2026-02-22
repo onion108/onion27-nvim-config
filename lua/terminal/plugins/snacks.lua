@@ -105,5 +105,13 @@ return {
       end,
       desc = "Open notification history",
     },
+    {
+      "<leader>bs",
+      function()
+        require("snacks").scratch()
+      end,
+      desc = "Scratch",
+      mode = "n",
+    },
   },
 }

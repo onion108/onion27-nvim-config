@@ -1,46 +1,5 @@
 return {
 
-  -- {{{ Scratch Buffer
-  {
-    "LintaoAmons/scratch.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" },
-    },
-    config = function()
-      require("scratch").setup {
-        file_picker = "telescope",
-        scratch_file_dir = vim.fn.stdpath("cache") .. "/scratch.nvim",
-        window_cmd = "edit",
-        use_telescope = true,
-        filetypes = {
-          "js",
-          "ts",
-          "lua",
-          "c",
-          "cc",
-          "txt",
-        },
-      }
-    end,
-    keys = {
-      { "<leader>bs", "<cmd>Scratch<cr>", desc = "Create Scratch File", mode = "n" },
-      { "<leader>bo", "<cmd>ScratchOpen<cr>", desc = "Open Scratch File", mode = "n" },
-    },
-    hooks = {
-      {
-        -- TODO: How to correct barbar?
-        callback = function()
-          vim.schedule(function()
-            vim.cmd([[ Neotree toggle ]])
-            vim.cmd([[ Neotree toggle ]])
-          end)
-        end,
-      },
-    },
-  },
-  -- }}}
-
   -- {{{ NeoTree
   {
     "nvim-neo-tree/neo-tree.nvim",

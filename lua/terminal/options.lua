@@ -30,6 +30,7 @@ options.TWEAKS = {
   "c-highlight-correction",
   "deno-lsp-correction",
   "evil-thingy",
+  "fun",
 }
 
 -- {{{ Modifications

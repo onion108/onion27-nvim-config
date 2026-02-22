@@ -67,7 +67,20 @@ success = pcall(function()
     }
   end, "Pick Diagnostics", { silent = true })
   keymap.define_keymap("n", "<leader>fn", function()
-    picker.notifications()
+    picker.notifications({
+      win = {
+        input = {
+          keys = {
+            ["Y"] = "copy_content"
+          }
+        }
+      },
+      actions = {
+        copy_content = function(_, item)
+          vim.fn.setreg("+", item.text)
+        end
+      }
+    })
   end, "Find notifications", { silent = true })
   keymap.define_keymap("n", "<leader>fp", function()
     picker.pickers {

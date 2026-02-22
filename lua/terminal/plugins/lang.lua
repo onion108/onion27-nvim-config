@@ -7,7 +7,6 @@ return {
   { "kaarmu/typst.vim", ft = { "typst" }, lazy = false },
   { "ziglang/zig.vim", lazy = true, ft = "zig" },
   { "PyGamer0/vim-apl", lazy = true, ft = "apl" },
-  { "drmingdrmer/vim-indent-lua", ft = "lua" },
   { "Airbus5717/c3.vim", ft = "c3" },
   { "jlcrochet/vim-cs", ft = "cs" },
   { "imsnif/kdl.vim", lazy = false },
@@ -262,6 +261,9 @@ return {
 
     opts = { -- see below for full configuration options
       mappings = true,
+      infoview = {
+        autoopen = false,
+      },
     },
   },
   -- }}}

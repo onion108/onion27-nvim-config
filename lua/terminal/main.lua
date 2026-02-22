@@ -71,8 +71,5 @@ if vim.g.started_by_firenvim then
   require("terminal.gui.firenvim")
 end
 
--- context.vim setup
-vim.g.context_highlight_normal = "PMenu"
-
 -- scrollbar setup
 require("scrollbar").setup()
