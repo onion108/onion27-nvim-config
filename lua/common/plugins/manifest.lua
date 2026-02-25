@@ -36,6 +36,7 @@ return {
   },
   -- }}}
 
+  -- {{{ mini.nvim stuff
   {
     "nvim-mini/mini.align",
     opts = {},
@@ -58,7 +59,9 @@ return {
       }
     end,
   },
+  -- }}}
 
+  -- {{{ nvim-surround
   {
     "kylechui/nvim-surround",
     config = true,
@@ -134,4 +137,5 @@ return {
       },
     },
   },
+  -- }}}
 }
