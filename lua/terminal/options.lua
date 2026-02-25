@@ -33,6 +33,13 @@ options.TWEAKS = {
   "fun",
 }
 
+-- Language setups
+options.LANGUAGES = {
+  "zig",
+  "apl",
+  "lean",
+}
+
 -- {{{ Modifications
 
 if options.retro_mode() then

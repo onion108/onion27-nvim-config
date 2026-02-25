@@ -210,11 +210,11 @@ return {
   { "onion108/starwalker.nvim", lazy = false, config = true },
   { "ryanoasis/vim-devicons", lazy = false },
   { "honza/vim-snippets", lazy = true },
-  { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" } },
+  { "folke/todo-comments.nvim", event = { "BufRead", "BufEnter" }, config = true },
   { "nvim-lua/plenary.nvim", lazy = true },
   { "lewis6991/gitsigns.nvim", lazy = false },
   { "backdround/tabscope.nvim", config = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "edluffy/hologram.nvim", lazy = true },
-  { "petertriho/nvim-scrollbar" },
+  { "petertriho/nvim-scrollbar", config = true },
 }

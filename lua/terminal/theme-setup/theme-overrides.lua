@@ -5,6 +5,7 @@ return {
     vim.api.nvim_set_hl(0, "Visual", { bg = colors.kuroiGray })
     vim.api.nvim_set_hl(0, "Title", { fg = colors.sangoMagenta })
   end,
+  vscode = function() end,
   ["*"] = function()
     vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#ddaacc" })
   end,
