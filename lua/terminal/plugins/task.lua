@@ -16,7 +16,7 @@ end
 
 return {
   {
-    'stevearc/overseer.nvim',
+    "stevearc/overseer.nvim",
     ---@module 'overseer'
     ---@type overseer.SetupOpts
     opts = {},
@@ -52,9 +52,10 @@ return {
           local search_opts = get_search_params()
 
           template.list(search_opts, function(tmpls)
-            Snacks.picker.pick({
-              items = vim.tbl_map(
-              function(tmpl) return vim.tbl_extend('keep', tmpl, { text = format_template(tmpl) }) end, tmpls),
+            Snacks.picker.pick {
+              items = vim.tbl_map(function(tmpl)
+                return vim.tbl_extend("keep", tmpl, { text = format_template(tmpl) })
+              end, tmpls),
               format = function(item)
                 local title = ""
                 if item.desc then
@@ -62,10 +63,12 @@ return {
                 else
                   title = item.name
                 end
-                return { { title, virtual = false, } }
+                return { { title, virtual = false } }
               end,
-              preview = function() return false end,
-              layout = { preset = "vscode" },
+              preview = function()
+                return false
+              end,
+              layout = { preset = "vscode", hidden = { "preview" } },
               confirm = function(self, item)
                 local build_opts = {
                   params = {},
@@ -80,13 +83,13 @@ return {
                     vim.notify(string.format("Failed to start task %s", item.name), vim.log.levels.ERROR)
                   end
                 end)
-              end
-            })
+              end,
+            }
           end)
         end,
-        desc = "Run Task"
+        desc = "Run Task",
       },
     },
     lazy = false,
-  }
+  },
 }

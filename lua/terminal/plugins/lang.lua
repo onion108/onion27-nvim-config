@@ -42,7 +42,7 @@ return {
       indent = {
         "xml",
       },
-      exclude_ft = { "blink-cmp-menu", "notify", "noice", "fidget", "dashboard", "snacks_dashboard" }
+      exclude_ft = { "blink-cmp-menu", "notify", "noice", "fidget", "dashboard", "snacks_dashboard" },
     },
     config = function(_, opts)
       local nvim_ts = require("nvim-treesitter")
@@ -54,7 +54,7 @@ return {
         auto_install = true,
       }
 
-      -- {{{ Install bunch of parsers 
+      -- {{{ Install bunch of parsers
       nvim_ts.install {
         "rust",
         "c",

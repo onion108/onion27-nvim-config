@@ -14,19 +14,13 @@ local success = pcall(function()
       layout = { preset = "telescope" },
     }
   end, "GREP using telescope", { silent = true })
-  keymap.define_keymap(
-    "n",
-    "<leader>fw",
-    function()
-      picker.grep_word {
-        layout = {
-          preset = "telescope"
-        }
-      }
-    end,
-    "GREP current word using telescope",
-    { silent = true }
-  )
+  keymap.define_keymap("n", "<leader>fw", function()
+    picker.grep_word {
+      layout = {
+        preset = "telescope",
+      },
+    }
+  end, "GREP current word using telescope", { silent = true })
   keymap.define_keymap("n", "<leader>ff", function()
     picker.files {
       layout = { preset = "ivy" },
@@ -55,20 +49,20 @@ local success = pcall(function()
     }
   end, "Pick Diagnostics", { silent = true })
   keymap.define_keymap("n", "<leader>fn", function()
-    picker.notifications({
+    picker.notifications {
       win = {
         input = {
           keys = {
-            ["Y"] = "copy_content"
-          }
-        }
+            ["Y"] = "copy_content",
+          },
+        },
       },
       actions = {
         copy_content = function(_, item)
           vim.fn.setreg("+", item.text)
-        end
-      }
-    })
+        end,
+      },
+    }
   end, "Find notifications", { silent = true })
   keymap.define_keymap("n", "<leader>fp", function()
     picker.pickers {
