@@ -20,6 +20,8 @@ return {
         },
       },
     },
+
+    --- {{{ Dashboard
     dashboard = {
       preset = {
         header = [[
@@ -62,6 +64,12 @@ return {
         { section = "startup" },
       },
     },
+    --- }}}
+
+    toggle = {
+      notify = false,
+    },
+    terminal = {},
   },
   config = function(_, opts)
     local snacks = require("snacks")
@@ -87,8 +95,34 @@ return {
         end,
       })
     end
+    snacks
+      .toggle({
+        name = "Quickfix",
+        get = function()
+          return require("terminal.quickfix").is_qfopen()
+        end,
+        set = function(enabled)
+          if enabled then
+            vim.cmd("copen")
+          else
+            vim.cmd("cclose")
+          end
+        end,
+        wk_desc = {
+          enabled = "Close ",
+          disabled = "Open ",
+        },
+      })
+      :map("<leader>tq")
   end,
   keys = {
+    {
+      "<leader>ot",
+      function()
+        Snacks.terminal.toggle()
+      end,
+      desc = "Toggle Terminal",
+    },
     {
       "<leader>lg",
       function()

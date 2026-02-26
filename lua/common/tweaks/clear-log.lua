@@ -1,4 +1,4 @@
-local log_dir = vim.fn.stdpath('log')
+local log_dir = vim.fn.stdpath("log")
 local LOGS_TO_CLEAR = {
   "lsp.log",
   "noice.log",
@@ -15,4 +15,3 @@ for _, log in ipairs(LOGS_TO_CLEAR) do
     vim.notify("Clear " .. log .. " with size " .. tostring(stat.size), "info")
   end
 end
-

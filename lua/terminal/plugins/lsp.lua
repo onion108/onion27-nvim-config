@@ -56,6 +56,7 @@ return {
       { "saghen/blink.cmp" },
       { "Decodetalkers/csharpls-extended-lsp.nvim" },
       { "nvim-telescope/telescope.nvim" },
+      { "folke/snacks.nvim" },
     },
     opts = {
       servers = {
@@ -267,9 +268,6 @@ return {
         vim.lsp.enable(server)
       end
 
-      key.define_keymap("n", "<leader>ti", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-      end, "Toggle Inlay Hint", { silent = true })
       key.define_keymap({ "n", "v" }, "grf", function()
         vim.lsp.buf.format()
       end, "Format document", { silent = true })
@@ -277,10 +275,8 @@ return {
         vim.diagnostic.setqflist()
         vim.cmd([[copen]])
       end, "Open diagnostics", { silent = true })
-      key.define_keymap("n", "<leader>td", function()
-        vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-      end, "Toggle diagnostics", { silent = true })
-      require("telescope").load_extension("csharpls_definition")
+      Snacks.toggle.diagnostics():map("<leader>td")
+      Snacks.toggle.inlay_hints():map("<leader>ti")
     end,
   },
   {
@@ -301,7 +297,8 @@ return {
     lazy = true,
     cmd = { "Outline", "OutlineOpen" },
     keys = { -- Example mapping to toggle outline
-      { "<leader>oo", "<cmd>Outline<CR>", desc = "Toggle outline" },
+      { "<leader>oo" },
+      { "<leader>to" },
     },
     event = "VeryLazy",
     opts = {
@@ -309,6 +306,45 @@ return {
         priority = { "lsp", "coc", "markdown", "norg", "treesitter" },
       },
     },
+    config = function(_, opts)
+      local outline = require("outline")
+      outline.setup(opts)
+      Snacks.toggle({
+        name = "Outline",
+        get = function()
+          return outline.is_focus_in_outline() or false
+        end,
+        set = function(enabled)
+          if enabled then
+            outline.focus_outline()
+          else
+            outline.focus_code()
+          end
+        end,
+        wk_desc = {
+          enabled = "Unfocus ",
+          disabled = "Focus ",
+        },
+      }):map("<leader>to")
+
+      Snacks.toggle({
+        name = "Outline",
+        get = function()
+          return outline.is_open()
+        end,
+        set = function(enabled)
+          if enabled then
+            outline.open_outline()
+          else
+            outline.close_outline()
+          end
+        end,
+        wk_desc = {
+          enabled = "Close ",
+          disabled = "Open ",
+        },
+      }):map("<leader>oo")
+    end,
     dependencies = {
       "epheien/outline-treesitter-provider.nvim",
     },

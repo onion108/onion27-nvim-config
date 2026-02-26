@@ -30,24 +30,6 @@ return {
   },
   -- }}}
 
-  -- {{{ ToggleTerm
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = function()
-      require("toggleterm").setup {
-        insert_mappings = false,
-        open_mapping = [[<leader>ot]],
-      }
-    end,
-    lazy = true,
-    cmd = {
-      "ToggleTerm",
-      "TermExec",
-    },
-  },
-  -- }}}
-
   -- {{{ telescope
   {
     "nvim-telescope/telescope.nvim",

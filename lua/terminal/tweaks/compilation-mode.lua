@@ -1,4 +1,4 @@
-local ok, toggleterm = pcall(require, "toggleterm")
+local ok, overseer = pcall(require, "overseer")
 
 local COMPILE_START_PATTERN = "vimtcompile:"
 local CREATE_27ONION_KEYBIND = true
@@ -18,11 +18,22 @@ local function try_find_compilation_command()
 end
 
 if not ok then
-  vim.notify("Cannot load toggleterm.nvim", vim.log.levels.ERROR)
+  vim.notify("Cannot load overseer", vim.log.levels.ERROR)
   return
 end
 
 local last_compilation_command = nil
+
+local function do_compile(cmd, args)
+  if not args.bang then
+    last_compilation_command = cmd
+  end
+  overseer
+    .new_task({
+      cmd = cmd,
+    })
+    :start()
+end
 
 vim.api.nvim_create_user_command("Compile", function(args)
   local compilation_command
@@ -31,7 +42,17 @@ vim.api.nvim_create_user_command("Compile", function(args)
       -- Try to find a command line in the current buffer when not provided
       local command = try_find_compilation_command()
       if command == nil then
-        vim.notify("No recent compilation command found and no command find in current buffer", vim.log.levels.ERROR)
+        vim.ui.input({ prompt = "Enter compile command: ", completion = "shellcmdline" }, function(input)
+          if input then
+            compilation_command = input
+            do_compile(input, args)
+          else
+            vim.notify(
+              "No recent compilation command found and no command find in current buffer",
+              vim.log.levels.ERROR
+            )
+          end
+        end)
         return
       else
         compilation_command = command
@@ -42,11 +63,7 @@ vim.api.nvim_create_user_command("Compile", function(args)
   else
     compilation_command = args.args
   end
-  if not args.bang then
-    last_compilation_command = compilation_command
-  end
-
-  toggleterm.exec(compilation_command)
+  do_compile(compilation_command, args)
 end, {
   nargs = "?",
   bang = true,

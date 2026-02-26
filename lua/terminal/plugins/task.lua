@@ -17,17 +17,34 @@ end
 return {
   {
     "stevearc/overseer.nvim",
+    dependencies = { { "folke/snacks.nvim" } },
     ---@module 'overseer'
     ---@type overseer.SetupOpts
     opts = {},
-    keys = {
-      {
-        "<leader>to",
-        function()
-          require("overseer").toggle()
+    config = function(_, opts)
+      local overseer = require("overseer")
+      local overseer_win = require("overseer.window")
+      overseer.setup(opts)
+
+      Snacks.toggle({
+        name = "Task List",
+        get = function()
+          return overseer_win.is_open()
         end,
-        desc = "Toggle Task List",
-      },
+        set = function(enabled)
+          if enabled then
+            overseer_win.open()
+          else
+            overseer_win.close()
+          end
+        end,
+        wk_desc = {
+          disabled = "Open ",
+          enabled = "Close ",
+        },
+      }):map("<leader>tt")
+    end,
+    keys = {
       {
         "<leader>rs",
         ":OverseerShell<CR>",
