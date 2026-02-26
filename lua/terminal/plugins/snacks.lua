@@ -69,7 +69,14 @@ return {
     toggle = {
       notify = false,
     },
-    terminal = {},
+    terminal = {
+      win = {
+        style = "terminal",
+        wo = {
+          winbar = "",
+        },
+      }
+    },
   },
   config = function(_, opts)
     local snacks = require("snacks")
