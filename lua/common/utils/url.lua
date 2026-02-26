@@ -1,4 +1,4 @@
-exports = {}
+local exports = {}
 
 ---@param url string | nil
 ---@return string | nil

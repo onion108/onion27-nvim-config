@@ -277,6 +277,9 @@ return {
         vim.diagnostic.setqflist()
         vim.cmd([[copen]])
       end, "Open diagnostics", { silent = true })
+      key.define_keymap("n", "<leader>td", function()
+        vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+      end, "Toggle diagnostics", { silent = true })
       require("telescope").load_extension("csharpls_definition")
     end,
   },
