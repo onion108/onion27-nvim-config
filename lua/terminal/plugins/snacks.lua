@@ -75,7 +75,7 @@ return {
         wo = {
           winbar = "",
         },
-      }
+      },
     },
   },
   config = function(_, opts)

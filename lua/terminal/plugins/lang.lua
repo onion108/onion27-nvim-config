@@ -90,18 +90,20 @@ return {
             return
           end
           if vim.list_contains(nvim_ts.get_installed(), lang) then
-            vim.treesitter.start()
-            -- Treesitter indent seems to be not mature yet.
-            if vim.tbl_contains(opts.indent, lang) then
-              if vim.treesitter.query.get(lang, "indents") then
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-              else
-                vim.notify(
-                  "Language list in indent " .. lang .. " doesn't support Treesitter indentation. ",
-                  vim.log.levels.WARN
-                )
+            vim.schedule(function()
+              vim.treesitter.start(ev.buf)
+              -- Treesitter indent seems to be not mature yet.
+              if vim.tbl_contains(opts.indent, lang) then
+                if vim.treesitter.query.get(lang, "indents") then
+                  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                else
+                  vim.notify(
+                    "Language list in indent " .. lang .. " doesn't support Treesitter indentation. ",
+                    vim.log.levels.WARN
+                  )
+                end
               end
-            end
+            end)
           else
             if vim.list_contains(nvim_ts.get_available(), lang) then
               nvim_ts.install({ lang }):await(function()

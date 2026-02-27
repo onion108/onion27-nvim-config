@@ -1,5 +1,11 @@
 -- Correct file type for Xmake config file.
 
+vim.filetype.add {
+  pattern = {
+    ["xmake.lua"] = "xmake.lua",
+  },
+}
+
 local termbuf_group = vim.api.nvim_create_augroup("XmakeTypeCorrection", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
