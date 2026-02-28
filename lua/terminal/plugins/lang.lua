@@ -91,7 +91,7 @@ return {
           end
           if vim.list_contains(nvim_ts.get_installed(), lang) then
             vim.schedule(function()
-              vim.treesitter.start(ev.buf)
+              pcall(vim.treesitter.start, ev.buf)
               -- Treesitter indent seems to be not mature yet.
               if vim.tbl_contains(opts.indent, lang) then
                 if vim.treesitter.query.get(lang, "indents") then
@@ -107,7 +107,7 @@ return {
           else
             if vim.list_contains(nvim_ts.get_available(), lang) then
               nvim_ts.install({ lang }):await(function()
-                pcall(vim.treesitter.start)
+                pcall(vim.treesitter.start, ev.buf)
               end)
             end
           end

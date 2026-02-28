@@ -20,7 +20,11 @@ return {
     dependencies = { { "folke/snacks.nvim" } },
     ---@module 'overseer'
     ---@type overseer.SetupOpts
-    opts = {},
+    opts = {
+      task_win = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      },
+    },
     config = function(_, opts)
       local overseer = require("overseer")
       local overseer_win = require("overseer.window")
