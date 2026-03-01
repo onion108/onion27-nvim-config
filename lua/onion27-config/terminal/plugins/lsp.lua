@@ -109,7 +109,12 @@ return {
         },
         lua_ls = {},
         ty = {},
-        ruff = {},
+        ruff = {
+          --- @param client vim.lsp.Client
+          attach_handler = function(client)
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
         kotlin_lsp = {},
         neocmake = {},
         powershell_es = {
@@ -173,8 +178,6 @@ return {
         },
         jsonls = {},
         fsautocomplete = {},
-      },
-      extra_servers = {
         haskell = {
           cmd = { "haskell-language-server-wrapper", "--lsp" },
           filetypes = { "hs", "lhs", "haskell", "lhaskell" },
@@ -228,8 +231,14 @@ return {
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
       end
 
+      local attach_handlers = {}
       for server, lsconfig in pairs(opts.servers) do
         lsconfig.capabilities = require("blink.cmp").get_lsp_capabilities(lsconfig.capabilities)
+
+        if lsconfig.attach_handler then
+          attach_handlers[server] = lsconfig.attach_handler
+          lsconfig.attach_handler = nil
+        end
 
         ---@diagnostic disable-next-line: undefined-field
         if
@@ -262,12 +271,6 @@ return {
         vim.lsp.enable(server)
       end
 
-      for server, lsconfig in pairs(opts.extra_servers) do
-        lsconfig.capabilities = require("blink.cmp").get_lsp_capabilities(lsconfig.capabilities)
-        vim.lsp.config[server] = lsconfig
-        vim.lsp.enable(server)
-      end
-
       key.define_keymap({ "n", "v" }, "grf", function()
         vim.lsp.buf.format()
       end, "Format document", { silent = true })
@@ -277,6 +280,19 @@ return {
       end, "Open diagnostics", { silent = true })
       Snacks.toggle.diagnostics():map("<leader>td")
       Snacks.toggle.inlay_hints():map("<leader>ti")
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client == nil then
+            return
+          end
+
+          if attach_handlers[client.name] then
+            attach_handlers[client.name](client)
+          end
+        end,
+      })
     end,
   },
   {
