@@ -9,7 +9,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local out = vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
-      { "Cannot clone the fucking lazy.nvim are you fucking sure your fucking internet connection is fucking fine:\n", "ErrorMsg" },
+      {
+        "Cannot clone the fucking lazy.nvim are you fucking sure your fucking internet connection is fucking fine:\n",
+        "ErrorMsg",
+      },
       { out, "WarningMsg" },
       { "\nPress any fucking key to exit..." },
     }, true, {})

@@ -10,4 +10,3 @@ vim.api.nvim_create_autocmd({ "User" }, {
     vim.cmd.highlight { "link", "csStringEnd", "csString", bang = true }
   end,
 })
-

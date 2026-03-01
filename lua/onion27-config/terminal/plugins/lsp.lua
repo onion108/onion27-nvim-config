@@ -365,7 +365,7 @@ return {
       {
         "gra",
         function()
-          require("tiny-code-action").code_action({})
+          require("tiny-code-action").code_action {}
         end,
         mode = { "n", "x" },
         desc = "Code Action",

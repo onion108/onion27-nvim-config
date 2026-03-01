@@ -24,4 +24,3 @@ vim.g.maplocalleader = "\\"
 if vim.o.termguicolors then
   vim.o.termguicolors = true
 end
-
