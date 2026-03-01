@@ -5,6 +5,7 @@ if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
       "ErrorMsg",
     },
   }, true, {})
+  vim.fn.getchar()
   os.exit(69)
 end
 
@@ -19,5 +20,6 @@ if vim.fn.has("wsl") == 1 then
       "ErrorMsg",
     },
   }, true, {})
+  vim.fn.getchar()
   os.exit(69)
 end
