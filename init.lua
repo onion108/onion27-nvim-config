@@ -4,4 +4,4 @@ if vim.fn.exists("g:vscode") ~= 0 then
 else
   require("onion27-config.terminal.main")
 end
-
+require("onion27-config.postcommon.main")

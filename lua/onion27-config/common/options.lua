@@ -6,6 +6,7 @@ options.TWEAKS = {
   "ft-alias",
   "hilink",
   "debug",
+  "load-lazy",
   "clear-line",
   "duplicate-line",
   "clear-log",

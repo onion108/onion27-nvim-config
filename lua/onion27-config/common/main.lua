@@ -1,5 +1,3 @@
-require("onion27-config.common.load-lazy")
-
 local options = require("onion27-config.common.options")
 
 local keymap = require("onion27-config.common.utils.keymap")
