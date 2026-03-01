@@ -1,5 +1,3 @@
-vim.notify("Enhanced nvim configurations with Lua 💪", vim.log.levels.INFO)
-
 require("onion27-config.common.load-lazy")
 
 local options = require("onion27-config.common.options")
