@@ -44,11 +44,11 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
-require("common.main")
+require("onion27-config.common.main")
 if vim.fn.exists("g:vscode") ~= 0 then
-  require("vscode.main")
+  require("onion27-config.vscode.main")
 else
-  require("terminal.main")
+  require("onion27-config.terminal.main")
 end
 
 local grp_color_scheme_modify = vim.api.nvim_create_augroup("ColorSchemeModify", { clear = true })

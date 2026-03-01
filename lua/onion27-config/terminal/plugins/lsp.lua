@@ -103,7 +103,7 @@ return {
           handlers = {
             -- TODO: Show something on lualine, maybe?
             ["language/status"] = function(_, result)
-              require("terminal.linemsg").set_message(result.message)
+              require("onion27-config.terminal.linemsg").set_message(result.message)
             end,
           },
         },
@@ -200,8 +200,8 @@ return {
     config = function(_, opts)
       vim.lsp.semantic_tokens.enable(false)
       --vim.lsp.log.set_level(vim.log.levels.TRACE)
-      local icons = require("common.utils.icons")
-      local key = require("common.utils.keymap")
+      local icons = require("onion27-config.common.utils.icons")
+      local key = require("onion27-config.common.utils.keymap")
       local signs = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
         { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
@@ -365,7 +365,7 @@ return {
       {
         "gra",
         function()
-          require("tiny-code-action").code_action()
+          require("tiny-code-action").code_action({})
         end,
         mode = { "n", "x" },
         desc = "Code Action",

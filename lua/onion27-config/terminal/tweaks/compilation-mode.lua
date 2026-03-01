@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd("SessionWritePost", {
 })
 
 if CREATE_27ONION_KEYBIND then
-  local keymap = require("common.utils.keymap")
+  local keymap = require("onion27-config.common.utils.keymap")
   keymap.define_keymap("n", "<leader>CC", "<cmd>Compile<cr>", "Run compile command", { silent = true })
   keymap.define_keymap(
     "n",

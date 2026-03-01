@@ -65,7 +65,7 @@ return {
         lualine_c = {
           { "filename", path = 1 },
           "lsp_status",
-          require("terminal.linemsg").get_message,
+          require("onion27-config.terminal.linemsg").get_message,
         },
         lualine_x = {
           "macro_recording",
@@ -110,7 +110,7 @@ return {
     lazy = false,
     config = function(_, opts)
       require("oil").setup(opts)
-      local keymap = require("common.utils.keymap")
+      local keymap = require("onion27-config.common.utils.keymap")
       keymap.define_keymap("n", "<leader>of", ":Oil<CR>", "Open file manager", { silent = true })
       keymap.define_keymap("n", "<leader>oF", ":Oil .<CR>", "Open project root", { silent = true })
     end,
@@ -155,7 +155,7 @@ return {
         group = group,
         callback = function(opts_ac)
           if opts_ac.data.saved_buffer ~= nil then
-            require("terminal.linemsg").set_message("Saved")
+            require("onion27-config.terminal.linemsg").set_message("Saved")
           end
         end,
       })

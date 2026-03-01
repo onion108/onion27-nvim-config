@@ -1,4 +1,4 @@
-local keymap = require("common.utils.keymap")
+local keymap = require("onion27-config.common.utils.keymap")
 require("which-key").add { "<leader>f", group = "Fuzzy Finders" }
 
 local success = pcall(function()

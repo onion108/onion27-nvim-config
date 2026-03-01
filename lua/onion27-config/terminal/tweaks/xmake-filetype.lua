@@ -1,4 +1,5 @@
 -- Correct file type for Xmake config file.
+--
 
 vim.filetype.add {
   pattern = {

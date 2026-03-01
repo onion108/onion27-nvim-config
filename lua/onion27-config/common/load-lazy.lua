@@ -26,25 +26,25 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 
-local env = "terminal.plugins"
+local env = "onion27-config.terminal.plugins"
 if vim.fn.exists("g:vscode") ~= 0 then
-  env = "vscode.plugins"
+  env = "onion27-config.vscode.plugins"
 else
-  env = "terminal.plugins"
+  env = "onion27-config.terminal.plugins"
 end
 
 require("lazy").setup {
   spec = {
     -- import your plugins
-    { import = "common.plugins" },
+    { import = "onion27-config.common.plugins" },
     {
-      import = "vscode.plugins",
+      import = "onion27-config.vscode.plugins",
       cond = function(x)
         return vim.fn.exists("g:vscode") ~= 0
       end,
     },
     {
-      import = "terminal.plugins",
+      import = "onion27-config.terminal.plugins",
       cond = function(x)
         return vim.fn.exists("g:vscode") == 0
       end,

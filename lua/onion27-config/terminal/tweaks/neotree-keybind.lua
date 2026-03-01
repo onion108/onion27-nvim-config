@@ -1,4 +1,4 @@
-local keymap = require("common.utils.keymap")
+local keymap = require("onion27-config.common.utils.keymap")
 
 local success = pcall(function()
   require("neo-tree")

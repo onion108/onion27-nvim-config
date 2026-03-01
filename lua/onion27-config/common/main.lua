@@ -1,13 +1,13 @@
 vim.notify("Enhanced nvim configurations with Lua 💪", vim.log.levels.INFO)
 
-require("common.load-lazy")
+require("onion27-config.common.load-lazy")
 
-local options = require("common.options")
+local options = require("onion27-config.common.options")
 
-local keymap = require("common.utils.keymap")
+local keymap = require("onion27-config.common.utils.keymap")
 
 for _, tweak in ipairs(options.TWEAKS) do
-  local ok = pcall(require, "common.tweaks." .. tweak)
+  local ok = pcall(require, "onion27-config.common.tweaks." .. tweak)
   if not ok then
     vim.notify("Cannot load tweak " .. tweak, vim.log.levels.ERROR)
   end
