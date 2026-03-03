@@ -77,6 +77,9 @@ return {
         },
       },
     },
+    image = {
+      math = { enabled = true },
+    },
   },
   config = function(_, opts)
     local snacks = require("snacks")
@@ -106,7 +109,7 @@ return {
       .toggle({
         name = "Quickfix",
         get = function()
-          return require("terminal.quickfix").is_qfopen()
+          return require("onion27-config.terminal.quickfix").is_qfopen()
         end,
         set = function(enabled)
           if enabled then

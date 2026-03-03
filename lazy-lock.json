@@ -61,7 +61,7 @@
   "tender.vim": { "branch": "master", "commit": "b66dc330aff998dff9d44459d84bc1c5f4304fcc" },
   "tiny-code-action.nvim": { "branch": "main", "commit": "8e72efa075ba3154bbc4c7d1db532b03b4e68373" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
-  "typst.vim": { "branch": "main", "commit": "1d5436c0f55490893892441c0eca55e6cdf4916c" },
+  "typst-preview.nvim": { "branch": "master", "commit": "bf5d5eaf23bbfcca9f98a24ed29bd084abf89bf2" },
   "v-vim": { "branch": "master", "commit": "1dc1388bafb89072f8349dbd96f9462ae22237cb" },
   "vala.vim": { "branch": "master", "commit": "44b2dfde07fb65e75e8b3a87b57f0c771efbbb13" },
   "vim": { "branch": "master", "commit": "6b0f9cca6263f60ef961d139541a999aeee97006" },

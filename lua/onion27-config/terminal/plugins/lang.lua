@@ -4,7 +4,6 @@ return {
   { "maxbane/vim-asm_ca65", ft = "asm_ca65" },
   { "fedorenchik/fasm.vim" },
   { "ollykel/v-vim", ft = { "v", "vlang" } },
-  { "kaarmu/typst.vim", ft = { "typst" }, lazy = false },
   { "ziglang/zig.vim", lazy = true, ft = "zig" },
   { "PyGamer0/vim-apl", lazy = true, ft = "apl" },
   { "Airbus5717/c3.vim", ft = "c3" },
@@ -22,6 +21,20 @@ return {
     ft = { "markdown" },
   },
   { "ariedov/android-nvim", config = true },
+
+  -- {{{ Typst
+  {
+    "chomosuke/typst-preview.nvim",
+    ft = { "typst" },
+    opts = {
+      open_cmd = "chromium --app=%s",
+      dependencies_bin = {
+        ["tinymist"] = "tinymist",
+        ["websocat"] = "websocat",
+      },
+    },
+  },
+  -- }}}
 
   -- {{{ Polyglot
   {
