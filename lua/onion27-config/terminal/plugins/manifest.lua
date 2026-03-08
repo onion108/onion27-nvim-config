@@ -189,6 +189,21 @@ return {
   },
   -- }}}
 
+  {
+    "xorid/swap-split.nvim",
+    config = true,
+    keys = {
+      {
+        "<leader>ss",
+        function()
+          require("swap-split").swap()
+        end,
+        desc = "Swap with another split",
+        mode = "n"
+      }
+    }
+  },
+
   { "onion108/starwalker.nvim", lazy = false, config = true },
   { "ryanoasis/vim-devicons", lazy = false },
   { "honza/vim-snippets", lazy = true },
