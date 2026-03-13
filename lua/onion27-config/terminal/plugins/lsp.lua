@@ -198,6 +198,10 @@ return {
           cmd = { "tinymist" },
           filetypes = { "typst" },
         },
+        fortls = {},
+        racket_langserver = {
+          filetypes = { "racket" },
+        },
       },
     },
     config = function(_, opts)
@@ -274,6 +278,10 @@ return {
       key.define_keymap({ "n", "v" }, "grf", function()
         vim.lsp.buf.format()
       end, "Format document", { silent = true })
+      -- This is already defined in most of filetypes, but redefined to avoid ftplugin rewriting the keybind
+      key.define_keymap({ "n", "v" }, "K", function()
+        vim.lsp.buf.hover()
+      end, "Hover Symbol", { silent = true })
       key.define_keymap("n", "<leader>od", function()
         vim.diagnostic.setqflist()
         vim.cmd([[copen]])
