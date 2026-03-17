@@ -37,10 +37,6 @@ return {
       }
     end,
   },
-  {
-    "nvim-mini/mini.pairs",
-    opts = {}
-  },
   -- }}}
 
   -- {{{ nvim-surround

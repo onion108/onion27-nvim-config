@@ -176,9 +176,9 @@ return {
           require("swap-split").swap()
         end,
         desc = "Swap with another split",
-        mode = "n"
-      }
-    }
+        mode = "n",
+      },
+    },
   },
 
   { "onion108/starwalker.nvim", lazy = false, config = true },
