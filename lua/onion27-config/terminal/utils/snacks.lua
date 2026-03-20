@@ -69,7 +69,7 @@ M.header_format = function(item, ctx)
         "OnionConfigTransPink",
         "OnionConfigTransSkyBlue",
       }),
-      { { "Happy Pride Month!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" } },
+      { { "Happy TDOV!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" } },
     }
     else
     return base
