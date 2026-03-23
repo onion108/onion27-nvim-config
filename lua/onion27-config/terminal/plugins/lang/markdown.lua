@@ -10,12 +10,13 @@ return {
   },
   {
     "OXY2DEV/markview.nvim",
-    dependencies = { "saghen/blink.cmp" },
+    dependencies = { "saghen/blink.cmp", "mini.icons" },
     --- @module 'markview'
     --- @type markview.config
     opts = {
       preview = {
         enable = false,
+        icon_provider = "mini",
       },
     },
     config = function(_, opts)
