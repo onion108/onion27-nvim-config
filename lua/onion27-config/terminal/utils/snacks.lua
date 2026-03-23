@@ -71,7 +71,7 @@ M.header_format = function(item, ctx)
       }),
       { { "Happy TDOV!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" } },
     }
-    else
+  else
     return base
   end
 end
