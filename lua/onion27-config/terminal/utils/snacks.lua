@@ -34,6 +34,9 @@ M.header_format = function(item, ctx)
   local trans_condition = function()
     return vim.fn.strftime("%m:%d") == "03:31"
   end
+  local mizuki_birth_condition = function ()
+    return vim.fn.strftime("%m:%d") == "08:21"
+  end
   vim.api.nvim_set_hl(0, "OnionConfigMizukiColor", { fg = "#D99FC5" })
   vim.api.nvim_set_hl(0, "OnionConfigPrideRed", { fg = "#E50000" })
   vim.api.nvim_set_hl(0, "OnionConfigPrideOrange", { fg = "#FF8D00" })
@@ -44,7 +47,15 @@ M.header_format = function(item, ctx)
   vim.api.nvim_set_hl(0, "OnionConfigTransPink", { fg = "#F5ABB9" })
   vim.api.nvim_set_hl(0, "OnionConfigTransSkyBlue", { fg = "#5BCFFB" })
   vim.api.nvim_set_hl(0, "OnionConfigTransWhite", { fg = "#FFFFFF" })
-  if pride_condition() then
+  if mizuki_birth_condition() then
+    return listutil.synthesize_list {
+      base,
+      {
+        { "\n" },
+        { "Happy Birthday, Akiyama Mizuki!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" },
+      }
+    }
+  elseif pride_condition() then
     return listutil.synthesize_list {
       base,
       { { "\n" } },
