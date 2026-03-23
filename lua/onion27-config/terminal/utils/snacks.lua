@@ -21,6 +21,80 @@ local function generate_header_strip_flag(ctx_width, width, highlights)
   return text
 end
 
+--- @class HeaderMod
+--- @field condition fun():boolean
+--- @field mod fun(base: snacks.dashboard.Text, width: number): snacks.dashboard.Text
+
+--- @type HeaderMod[]
+local header_mods = {
+  {
+    condition = function()
+      return vim.fn.strftime("%m:%d") == "08:21"
+    end,
+    mod = function(base, width)
+      return listutil.synthesize_list {
+        base,
+        {
+          { "\n" },
+          { "Happy Birthday, Akiyama Mizuki!", width = width, hl = "OnionConfigMizukiColor", align = "center" },
+        },
+      }
+    end,
+  },
+  {
+    condition = function()
+      return vim.fn.strftime("%m") == "06"
+    end,
+    mod = function(base, width)
+      return listutil.synthesize_list {
+        base,
+        { { "\n" } },
+        generate_header_strip_flag(width, 19, {
+          "OnionConfigPrideRed",
+          "OnionConfigPrideOrange",
+          "OnionConfigPrideYellow",
+          "OnionConfigPrideGreen",
+          "OnionConfigPrideBlue",
+          "OnionConfigPridePurple",
+        }),
+        { { "Happy Pride Month!", width = width, hl = "OnionConfigMizukiColor", align = "center" } },
+      }
+    end,
+  },
+  {
+    condition = function()
+      return vim.fn.strftime("%m:%d") == "03:31"
+    end,
+    mod = function(base, width)
+      return listutil.synthesize_list {
+        base,
+        { { "\n" } },
+        generate_header_strip_flag(width, 16, {
+          "OnionConfigTransSkyBlue",
+          "OnionConfigTransPink",
+          "OnionConfigTransWhite",
+          "OnionConfigTransPink",
+          "OnionConfigTransSkyBlue",
+        }),
+        { { "Happy TDOV!", width = width, hl = "OnionConfigMizukiColor", align = "center" } },
+      }
+    end,
+  },
+}
+
+local header_palette = {
+  OnionConfigMizukiColor = "#D99FC5",
+  OnionConfigPrideRed = "#E50000",
+  OnionConfigPrideOrange = "#FF8D00",
+  OnionConfigPrideYellow = "#FFEE00",
+  OnionConfigPrideGreen = "#028121",
+  OnionConfigPrideBlue = "#004CFF",
+  OnionConfigPridePurple = "#770088",
+  OnionConfigTransPink = "#F5ABB9",
+  OnionConfigTransSkyBlue = "#5BCFFB",
+  OnionConfigTransWhite = "#FFFFFF",
+}
+
 --- @param item snacks.dashboard.Item
 --- @param ctx { width: number }
 --- @return snacks.dashboard.Text
@@ -28,63 +102,15 @@ M.header_format = function(item, ctx)
   local base = {
     { item.header, width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" },
   }
-  local pride_condition = function()
-    return vim.fn.strftime("%m") == "06"
+  for k, v in pairs(header_palette) do
+    vim.api.nvim_set_hl(0, k, { fg = v })
   end
-  local trans_condition = function()
-    return vim.fn.strftime("%m:%d") == "03:31"
+  for _, mod in ipairs(header_mods) do
+    if mod.condition() then
+      return mod.mod(base, ctx.width)
+    end
   end
-  local mizuki_birth_condition = function ()
-    return vim.fn.strftime("%m:%d") == "08:21"
-  end
-  vim.api.nvim_set_hl(0, "OnionConfigMizukiColor", { fg = "#D99FC5" })
-  vim.api.nvim_set_hl(0, "OnionConfigPrideRed", { fg = "#E50000" })
-  vim.api.nvim_set_hl(0, "OnionConfigPrideOrange", { fg = "#FF8D00" })
-  vim.api.nvim_set_hl(0, "OnionConfigPrideYellow", { fg = "#FFEE00" })
-  vim.api.nvim_set_hl(0, "OnionConfigPrideGreen", { fg = "#028121" })
-  vim.api.nvim_set_hl(0, "OnionConfigPrideBlue", { fg = "#004CFF" })
-  vim.api.nvim_set_hl(0, "OnionConfigPridePurple", { fg = "#770088" })
-  vim.api.nvim_set_hl(0, "OnionConfigTransPink", { fg = "#F5ABB9" })
-  vim.api.nvim_set_hl(0, "OnionConfigTransSkyBlue", { fg = "#5BCFFB" })
-  vim.api.nvim_set_hl(0, "OnionConfigTransWhite", { fg = "#FFFFFF" })
-  if mizuki_birth_condition() then
-    return listutil.synthesize_list {
-      base,
-      {
-        { "\n" },
-        { "Happy Birthday, Akiyama Mizuki!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" },
-      }
-    }
-  elseif pride_condition() then
-    return listutil.synthesize_list {
-      base,
-      { { "\n" } },
-      generate_header_strip_flag(ctx.width, 19, {
-        "OnionConfigPrideRed",
-        "OnionConfigPrideOrange",
-        "OnionConfigPrideYellow",
-        "OnionConfigPrideGreen",
-        "OnionConfigPrideBlue",
-        "OnionConfigPridePurple",
-      }),
-      { { "Happy Pride Month!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" } },
-    }
-  elseif trans_condition() then
-    return listutil.synthesize_list {
-      base,
-      { { "\n" } },
-      generate_header_strip_flag(ctx.width, 16, {
-        "OnionConfigTransSkyBlue",
-        "OnionConfigTransPink",
-        "OnionConfigTransWhite",
-        "OnionConfigTransPink",
-        "OnionConfigTransSkyBlue",
-      }),
-      { { "Happy TDOV!", width = ctx.width, hl = "OnionConfigMizukiColor", align = "center" } },
-    }
-  else
-    return base
-  end
+  return base
 end
 
 return M
