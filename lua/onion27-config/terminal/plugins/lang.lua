@@ -20,7 +20,7 @@ return {
     "chomosuke/typst-preview.nvim",
     ft = { "typst" },
     opts = {
-      open_cmd = "chromium --app=%s",
+      open_cmd = "borderless-chromium %s",
       dependencies_bin = {
         ["tinymist"] = "tinymist",
         ["websocat"] = "websocat",

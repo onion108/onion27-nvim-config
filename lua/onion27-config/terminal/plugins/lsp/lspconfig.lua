@@ -151,6 +151,8 @@ return {
       racket_langserver = {
         filetypes = { "racket" },
       },
+      dartls = {},
+      nim_langserver = {},
     },
   },
   config = function(_, opts)

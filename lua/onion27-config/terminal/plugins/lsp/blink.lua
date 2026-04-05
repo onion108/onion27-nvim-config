@@ -1,7 +1,14 @@
 return {
   {
     "saghen/blink.cmp",
-    build = "cargo +nightly build --release",
+    dependencies = {
+      'saghen/blink.lib',
+      -- optional: provides snippets for the snippet source
+      --'rafamadriz/friendly-snippets',
+    },
+    build = function()
+      require('blink.cmp').build():wait(60000)
+    end,
     opts = {
       completion = {
         accept = { auto_brackets = { enabled = true } },
@@ -37,16 +44,12 @@ return {
       },
       fuzzy = {
         implementation = "rust",
-        prebuilt_binaries = {
-          download = true,
-        },
       },
     },
   },
 
   {
     "saghen/blink.pairs",
-    dependencies = "saghen/blink.download",
     build = "cargo build --release",
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config

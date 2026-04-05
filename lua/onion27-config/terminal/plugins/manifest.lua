@@ -190,4 +190,5 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "edluffy/hologram.nvim", lazy = true },
   { "petertriho/nvim-scrollbar", config = true },
+  { "seandewar/nvimesweeper", cmd = { "Nvimesweeper" } }
 }
