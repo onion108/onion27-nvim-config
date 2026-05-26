@@ -2,12 +2,12 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = {
-      'saghen/blink.lib',
+      "saghen/blink.lib",
       -- optional: provides snippets for the snippet source
       --'rafamadriz/friendly-snippets',
     },
     build = function()
-      require('blink.cmp').build():wait(60000)
+      require("blink.cmp").build():wait(60000)
     end,
     opts = {
       completion = {

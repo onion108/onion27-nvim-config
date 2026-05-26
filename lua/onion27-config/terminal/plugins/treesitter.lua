@@ -1,8 +1,9 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
+    "romus204/tree-sitter-manager.nvim",
+    build = function()
+      -- TODO: update?
+    end,
     opts = {
       indent = {
         "xml",
@@ -10,72 +11,56 @@ return {
       exclude_ft = { "blink-cmp-menu", "notify", "noice", "fidget", "dashboard", "snacks_dashboard" },
     },
     config = function(_, opts)
-      local nvim_ts = require("nvim-treesitter")
+      local ts_mgr = require("tree-sitter-manager")
 
-      nvim_ts.setup {
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
+      ts_mgr.setup {
+        hightlight = false,
         auto_install = true,
+        ensure_install = {
+          "rust",
+          "c",
+          "d",
+          "c_sharp",
+          "haskell",
+          "json",
+          "json5",
+          "objc",
+          "v",
+          "vala",
+          "vim",
+          "zig",
+          "cpp",
+          "lua",
+          "html",
+          "xml",
+          "commonlisp",
+          "nu",
+          "kdl",
+          "typescript",
+          "tsx",
+          "javascript",
+          "vue",
+        },
+        nohighlight = opts.exclude_ft,
       }
-
-      -- {{{ Install bunch of parsers
-      nvim_ts.install {
-        "rust",
-        "c",
-        "d",
-        "c_sharp",
-        "haskell",
-        "json",
-        "json5",
-        "objc",
-        "v",
-        "vala",
-        "vim",
-        "zig",
-        "cpp",
-        "lua",
-        "html",
-        "xml",
-        "commonlisp",
-        "nu",
-        "kdl",
-        "typescript",
-        "tsx",
-        "javascript",
-        "vue",
-      }
-      -- }}}
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "*",
         callback = function(ev)
           local lang = ev.match
-          if vim.list_contains(opts.exclude_ft, lang) then
-            return
-          end
-          if vim.list_contains(nvim_ts.get_installed(), lang) then
-            vim.schedule(function()
-              pcall(vim.treesitter.start, ev.buf)
-              -- Treesitter indent seems to be not mature yet.
-              if vim.tbl_contains(opts.indent, lang) then
-                if vim.treesitter.query.get(lang, "indents") then
-                  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                else
-                  vim.notify(
-                    "Language list in indent " .. lang .. " doesn't support Treesitter indentation. ",
-                    vim.log.levels.WARN
-                  )
-                end
+          vim.schedule(function()
+            -- Treesitter indent seems to be not mature yet.
+            if vim.tbl_contains(opts.indent, lang) then
+              if vim.treesitter.query.get(lang, "indents") then
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+              else
+                vim.notify(
+                  "Language list in indent " .. lang .. " doesn't support Treesitter indentation. ",
+                  vim.log.levels.WARN
+                )
               end
-            end)
-          else
-            if vim.list_contains(nvim_ts.get_available(), lang) then
-              nvim_ts.install({ lang }):await(function()
-                pcall(vim.treesitter.start, ev.buf)
-              end)
             end
-          end
+          end)
         end,
       })
     end,
