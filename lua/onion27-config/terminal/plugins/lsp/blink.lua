@@ -50,7 +50,7 @@ return {
 
   {
     "saghen/blink.pairs",
-    build = "cargo build --release",
+    build = function() require('blink.pairs').build():pwait(60000) end,
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
     opts = {
