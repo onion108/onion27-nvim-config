@@ -173,7 +173,7 @@ return {
       graph_style = "unicode"
     },
     keys = {
-      { "<leader>ng", "Neogit", desc = "Open neogit panel", mode = "n" }
+      { "<leader>ng", ":Neogit<CR>", desc = "Open neogit panel", mode = "n" }
     }
   },
   -- }}}

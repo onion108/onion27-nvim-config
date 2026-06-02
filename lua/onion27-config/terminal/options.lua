@@ -31,6 +31,7 @@ options.TWEAKS = {
   "deno-lsp-correction",
   "evil-thingy",
   "fun",
+  "tab",
 }
 
 -- Language setups
