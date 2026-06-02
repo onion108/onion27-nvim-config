@@ -166,6 +166,18 @@ return {
   },
   -- }}}
 
+  -- {{{ Neogit
+  {
+    'NeogitOrg/neogit',
+    opts = {
+      graph_style = "unicode"
+    },
+    keys = {
+      { "<leader>ng", "Neogit", desc = "Open neogit panel", mode = "n" }
+    }
+  },
+  -- }}}
+
   {
     "xorid/swap-split.nvim",
     config = true,
