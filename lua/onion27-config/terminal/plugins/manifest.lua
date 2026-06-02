@@ -168,13 +168,20 @@ return {
 
   -- {{{ Neogit
   {
-    'NeogitOrg/neogit',
+    "NeogitOrg/neogit",
     opts = {
-      graph_style = "unicode"
+      graph_style = "unicode",
     },
     keys = {
-      { "<leader>ng", ":Neogit<CR>", desc = "Open neogit panel", mode = "n" }
-    }
+      {
+        "<leader>ng",
+        function()
+          require("neogit").open()
+        end,
+        desc = "Open neogit panel",
+        mode = "n",
+      },
+    },
   },
   -- }}}
 
